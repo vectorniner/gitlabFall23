@@ -10,6 +10,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+int room37ShowOptions(int chosen);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -213,15 +215,23 @@ int main(int argc, char *argv[])
 
 			case 37:
 			{
-				int choicesChosen = 0;
-				bool choices[5] = {0, 0, 0, 0, 0};
+				int chosen = 0;
+				bool userChoices[5] = {0, 0, 0, 0, 0};
+				char items[5][3][11] = {
+					{"Straw Hat",    "Top Hat",     "Wizard Hat"},
+					{"Red Shirt",    "Suit",        "Full Robe"},
+					{"Brown Shorts", "Suit Pants",  "Old Pants"},
+					{"Sandals",      "Dress Shoes", "Worn Boots"},
+					{"Meat",         "Caviar",      "Mushrooms"}
+				};
 
 				puts("\n\n");
 				puts("You enter room 37.");
 				puts("A mysterious figure approaches you and says:");
 				puts("MAN: You will need equipment for your Adventure, I will gift you with 5\n");
-				puts("The man opens up a box with 5 different types of option (Choose one)");
-				puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Weapon");  
+				puts("The man opens up a box with 5 different types of option.");
+				chosen = room37ShowOptions(chosen)
+				 
 					
 				break;
 			}
@@ -329,6 +339,11 @@ int main(int argc, char *argv[])
 	}
 	puts("Game Over");
 	return EXIT_SUCCESS;
+}
+
+void room37ShowOptions(int chosen) {
+	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger");
+
 }
 
 
