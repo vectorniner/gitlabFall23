@@ -257,7 +257,7 @@ int main(int argc, char *argv[])
 				puts("room45");
 				break;
 			}
-			case 46: //Cameron T
+			case 46: //Ctalebi
 			{
 				puts("room46");
 				break;
