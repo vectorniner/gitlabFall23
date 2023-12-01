@@ -230,8 +230,21 @@ int main(int argc, char *argv[])
 				puts("A mysterious figure approaches you and says:");
 				puts("MAN: You will need equipment for your Adventure, I will gift you with 5\n");
 				puts("The man opens up a box with 5 different types of option.");
-				int userChoice = room37ShowOptions(chosen);
-				 
+
+				while (chosen < 5) {
+					int userChoice = room37ShowOptions(chosen);
+
+					if (userChoices[userChoice] == 0) {
+						userChoices[userChoice] = 1;
+						chosen++;
+					} else {
+						puts("\nMAN: You have already recieved this type of equipment. Try Again.");
+						continue;
+					}
+
+				}
+				
+
 					
 				break;
 			}
