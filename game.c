@@ -260,6 +260,7 @@ int main(int argc, char *argv[])
 			case 46: //Ctalebi testing
 			{
 				puts("room46");
+                puts("hello");
 				break;
 			}
 			case 47:
