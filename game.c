@@ -20,7 +20,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 
+<<<<<<< HEAD
 //Start of RED Door Series25
 void specialRoom25(void);
 void AetherDoor25(void);
@@ -54,24 +59,31 @@ int main(int argc, char *argv[])
 {
 	int choice = 0;
 	char name[30] = "bob";
+=======
+// Function prototype
+void separateFunction();
+void room38Feature();
+int main(int argc, char *argv[]) {
+    int choice = 0;
+    char name[30] = "bob";
+>>>>>>> 4d4373e (Added Room 38 feature)
 
-	srand(time(NULL));
-	
-	printf("Please enter your name: ");
-	scanf("%s",name);
+    srand(time(NULL));
 
-	printf("Hello %s welcome to the RPG Game!\n",name);
+    printf("Please enter your name: ");
+    scanf("%s", name);
 
-	while(choice != 99)
-	{
-		puts("You find yourself in a dark room and you are not sure how you got here.");
-        	puts("As you look around you see the room has 55 doors, each labeled with a number.");
-        	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
-        	puts("What door do you choose?");
-        	scanf("%d",&choice);
+    printf("Hello %s welcome to the RPG Game!\n", name);
 
-		switch(choice)
-		{
+    while (choice != 99) {
+        puts("You find yourself in a dark room and you are not sure how you got here.");
+        puts("As you look around you see the room has 55 doors, each labeled with a number.");
+        puts("The room starts filling with water, and you must choose a door to open or you will likely drown.");
+        puts("You may quit anytime by selecting option 99.");
+        puts("What door do you choose?");
+        scanf("%d", &choice);
+
+        switch (choice) {
 			case 1:
 			{
 				puts("room1");
@@ -521,10 +533,12 @@ int main(int argc, char *argv[])
 				break;
 			}
 
-			case 38:
-			{
-				puts("room38");
-				break;
+                        case 38: // Modified for room 38
+                        {
+                               puts("Welcome to room 38!");
+                               room38Feature();
+                               // Additional functionality for room 38
+                               break;
 			}
 			case 39:
 			{
@@ -564,7 +578,11 @@ int main(int argc, char *argv[])
 			case 46: //Ctalebi testing
 			{
 				puts("room46");
+<<<<<<< HEAD
 		puts("hello");
+=======
+                                puts("hello");
+>>>>>>> 4d4373e (Added Room 38 feature)
 				break;
 			}
 			case 47:
@@ -612,19 +630,62 @@ int main(int argc, char *argv[])
 				puts("room55");
 				break;
 			}
-			case 99:
-			{
-				puts("You have escaped");
-				break;
-			}
-			default:
-			{
-				puts("invalid choice");
-			}
-		}
-	}
-	puts("Game Over");
-	return EXIT_SUCCESS;
+                        case 99:
+                        {
+                                puts("You have escaped.\n");
+                                break;
+                        }
+                        default:
+                        {
+                                 puts("Invalid choice.\n");
+                        }
+                        }
+                        }
+
+                                puts("Game Over\n");
+                                return EXIT_SUCCESS;
+                        }
+
+
+// Function definition for Room 38 feature
+void room38Feature() {
+    int userChoice;
+    const char *menu[] = {
+        "Explore the mysterious artifact.",
+        "Talk to the ancient wizard.",
+        "Inspect the strange markings on the wall.",
+        "Search for hidden passages.",
+        "Leave the room."
+    };
+
+    do {
+        printf("Room 38 Feature Menu:\n");
+        for (int i = 0; i < 5; ++i) {
+            printf("%d: %s\n", i + 1, menu[i]);
+        }
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &userChoice);
+
+        switch (userChoice) {
+            case 1:
+                printf("You discover a glowing artifact with unknown powers.\n");
+                break;
+            case 2:
+                printf("The ancient wizard reveals secrets of the room's history.\n");
+                break;
+            case 3:
+                printf("Upon closer inspection, the markings seem to be a cryptic message.\n");
+                break;
+            case 4:
+                printf("You search for hidden passages but find none.\n");
+                break;
+            case 5:
+                printf("You decide to leave Room 38.\n");
+                break;
+            default:
+                printf("Invalid choice. Please choose again.\n");
+        }
+    } while (userChoice != 5);
 }
  //Method userChoice_door15()
                                 void userChoice_door15(void){
@@ -1445,10 +1506,6 @@ bool guessGame25(void){
     return false;
 
 }//end of guessGame25
-
-
-
-
 
 
 
