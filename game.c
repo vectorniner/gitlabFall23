@@ -265,9 +265,9 @@ int main(int argc, char *argv[])
 
 						// Paths for items: >3(retry), <1(skip selection), else(give item)
 						if (itemChoice > 3) {
-							puts("MAN: There are only 3 options, choose one.");
+							puts("MAN: There are only 3 options, choose one.\n");
 						} else if (itemChoice < 1) {
-							puts("MAN: Very well, we'll skip this selection.");
+							puts("MAN: Very well, we'll skip this selection.\n");
 							chosen++;
 							break;
 						} else {
@@ -396,7 +396,7 @@ int room37ShowOptions(int chosen) {
 	int choice = 0;
 	
 	// show options and return user choice
-	printf("Choose One (%d Options Left or input a negative number to leave)\n", 5-chosen);
+	printf("Choose One (%d Options Left or input zero or a negative number to leave)\n", 5-chosen);
 	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
 	scanf("%d", &choice);
 
