@@ -261,9 +261,9 @@ int main(int argc, char *argv[])
 						// Print out items
                                         	puts("Choose an item. (zero or negative number to skip option)");
                                         	printf("1. %-15s 2. %-15s 3. %-15s\n", items[userChoice-1][0], items[userChoice-1][1], items[userChoice-1][2]);
-
 						scanf("%d", &itemChoice);
 
+						// Paths for items: >3(retry), <1(skip selection), else(give item)
 						if (itemChoice > 3) {
 							puts("MAN: There are only 3 options, choose one.");
 						} else if (itemChoice < 1) {
@@ -271,18 +271,18 @@ int main(int argc, char *argv[])
 							chosen++;
 							break;
 						} else {
-							printf("The man gives you the %s\n\n", items[userChoice-1][itemChoice-1]);
+							int r = rand() % 100; // random number to engrave onto item
+							printf("The man gives you the %s and engraves the number %d on it.\n\n", items[userChoice-1][itemChoice-1], r);
 							chosen++;
 						}
 
 					} while (itemChoice < 0 || itemChoice > 3);
 				}
 
+				// end dialogue
 				puts("You now feel prepared and ready to leave on your Journey.");
 				puts("MAN: Farewell Adventurer. Good luck.");
 				puts("You begin going through another door and your vision fades... you begin to forget and...\n\n");
-				
-
 					
 				break;
 			}
@@ -395,6 +395,7 @@ int main(int argc, char *argv[])
 int room37ShowOptions(int chosen) {
 	int choice = 0;
 	
+	// show options and return user choice
 	printf("Choose One (%d Options Left or input a negative number to leave)\n", 5-chosen);
 	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
 	scanf("%d", &choice);
