@@ -1,6 +1,6 @@
 //contributors
 //gpoppe room 55
-//Cameron Talebi 2
+//Cameron Talebi 46
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -257,7 +257,7 @@ int main(int argc, char *argv[])
 				puts("room45");
 				break;
 			}
-			case 46:
+			case 46: //Cameron T
 			{
 				puts("room46");
 				break;
