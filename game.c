@@ -217,7 +217,7 @@ int main(int argc, char *argv[])
 			{
 				int chosen = 0;
 				bool userChoices[5] = {0, 0, 0, 0, 0};
-				char items[5][3][11] = {
+				char items[5][3][12] = {
 					{"Straw Hat",    "Top Hat",     "Wizard Hat"},
 					{"Red Shirt",    "Suit",        "Full Robe"},
 					{"Brown Shorts", "Suit Pants",  "Old Pants"},
@@ -230,7 +230,7 @@ int main(int argc, char *argv[])
 				puts("A mysterious figure approaches you and says:");
 				puts("MAN: You will need equipment for your Adventure, I will gift you with 5\n");
 				puts("The man opens up a box with 5 different types of option.");
-				chosen = room37ShowOptions(chosen)
+				int userChoice = room37ShowOptions(chosen);
 				 
 					
 				break;
@@ -341,9 +341,14 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-void room37ShowOptions(int chosen) {
+int room37ShowOptions(int chosen) {
+	int choice = 0;
+	
+	printf("Choose One (%d Options Left)\n", 5-chosen);
 	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger");
+	scanf("%d", &choice);
 
+	return choice;
 }
 
 
