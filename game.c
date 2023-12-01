@@ -1,6 +1,6 @@
 //contributors
 //gpoppe room 55
-//Cameron Talebi 46
+//ctalebi 46
 
 #include <stdlib.h>
 #include <ctype.h>
