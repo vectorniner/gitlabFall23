@@ -1,5 +1,5 @@
 //contributors
-//Cameron Talebi
+//Cameron Talebi 2
 
 #include <stdlib.h>
 #include <ctype.h>
