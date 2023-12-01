@@ -259,7 +259,7 @@ int main(int argc, char *argv[])
 					int itemChoice = -1;
 					do {
 						// Print out items
-                                        	puts("Choose an item. (zero or negative number to skip option)");
+                                        	puts("Choose an item. (integers only) - zero or negative number to skip option");
                                         	printf("1. %-15s 2. %-15s 3. %-15s\n", items[userChoice-1][0], items[userChoice-1][1], items[userChoice-1][2]);
 						scanf("%d", &itemChoice);
 
@@ -396,7 +396,7 @@ int room37ShowOptions(int chosen) {
 	int choice = 0;
 	
 	// show options and return user choice
-	printf("Choose One (%d Options Left or input zero or a negative number to leave)\n", 5-chosen);
+	printf("Choose One (integers only) - %d Options Left or input zero or a negative number to leave\n", 5-chosen);
 	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
 	scanf("%d", &choice);
 
