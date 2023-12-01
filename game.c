@@ -223,7 +223,7 @@ int main(int argc, char *argv[])
 					{"Red Shirt",    "Suit",        "Full Robe"},
 					{"Brown Shorts", "Suit Pants",  "Old Pants"},
 					{"Sandals",      "Dress Shoes", "Worn Boots"},
-					{"Meat",         "Caviar",      "Mushrooms"}
+					{"Meat Snack",   "Caviar",      "Mushrooms"}
 				};
 
 				// Beginning Dialogue
@@ -259,24 +259,28 @@ int main(int argc, char *argv[])
 					int itemChoice = -1;
 					do {
 						// Print out items
-                                        	puts("Choose an item. (zero or negative number to skip option) ");
+                                        	puts("Choose an item. (zero or negative number to skip option)");
                                         	printf("1. %-15s 2. %-15s 3. %-15s\n", items[userChoice-1][0], items[userChoice-1][1], items[userChoice-1][2]);
 
 						scanf("%d", &itemChoice);
 
 						if (itemChoice > 3) {
-							puts("MAN: There are only 3 options, choose one.\n");
+							puts("MAN: There are only 3 options, choose one.");
 						} else if (itemChoice < 1) {
 							puts("MAN: Very well, we'll skip this selection.");
 							chosen++;
 							break;
 						} else {
-							printf("The man gives you the %s\n", items[userChoice-1][itemChoice-1]);
+							printf("The man gives you the %s\n\n", items[userChoice-1][itemChoice-1]);
 							chosen++;
 						}
 
 					} while (itemChoice < 0 || itemChoice > 3);
 				}
+
+				puts("You now feel prepared and ready to leave on your Journey.");
+				puts("MAN: Farewell Adventurer. Good luck.");
+				puts("You begin going through another door and your vision fades... you begin to forget and...\n\n");
 				
 
 					
@@ -392,7 +396,7 @@ int room37ShowOptions(int chosen) {
 	int choice = 0;
 	
 	printf("Choose One (%d Options Left or input a negative number to leave)\n", 5-chosen);
-	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger");
+	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
 	scanf("%d", &choice);
 
 	return choice;
