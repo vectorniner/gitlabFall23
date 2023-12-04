@@ -272,7 +272,7 @@ int main(int argc, char *argv[])
 							break;
 						} else {
 							int r = rand() % 100; // random number to engrave onto item
-							printf("The man gives you the %s and engraves the number %d on it.\n\n", items[userChoice-1][itemChoice-1], r);
+							printf("\n\nThe man gives you the %s and engraves the number %d on it.\n\n", items[userChoice-1][itemChoice-1], r);
 							chosen++;
 						}
 
