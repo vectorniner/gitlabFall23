@@ -10,7 +10,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-int room46(char name[]);
+int room46(char name[]);//used to execute the bulk of room 46's code
+int inputNumber(); //used to ensure only integers are allowed and any others are flushed from the input buffer
 
 int main(int argc, char *argv[])
 {
@@ -331,7 +332,14 @@ int main(int argc, char *argv[])
 }
 
 
-
+//**********************************************************************************************************************
+int inputNumber(){
+    int input;
+    char temp[100];
+    if (scanf("%d", &input) != 1)
+        scanf("%s", temp);
+    return input;
+}
 //**********************************************************************************************************************
 int room46(char name[]){//Coded by ctalebi
     /*todo needs
@@ -348,7 +356,7 @@ int room46(char name[]){//Coded by ctalebi
     int choice = -1;
     int counter = 0;
     int rng = rand() % 10;
-    int d20 = rand() % 20;
+    int d20 = (rand() % 20) + 1;
 
     //puts("************************************************************************************************************************\n");
 
@@ -356,8 +364,8 @@ int room46(char name[]){//Coded by ctalebi
     printf("Your name is %s\n", name);
     puts("************************************************************************************************************************\n"
          "You quickly enter what you think to be the next room and close the door behind you as to not let any more water in. As\n"
-         "you look around, you notice this is a much smaller space than you had anticipated. There is a singular door with a large\n"
-         "dial. Upon closer inspection, you see that you can use it to select from 5 different pictures.\n"
+         "you look around, you notice this is a much smaller space than you had anticipated. There is a singular door with a\n"
+         "large dial. Upon closer inspection, you see that you can use it to select from 5 different pictures.\n"
          "The first is a Lion, the second a dragon, the third a rabbit,\n"
          "fourth a snake, and the fifth a fin sticking out of water.\n"
          "The door is otherwise locked and there are no other exits.");
@@ -365,13 +373,13 @@ int room46(char name[]){//Coded by ctalebi
     do {
         puts("************************************************************************************************************************\n"
              "What choice do you make? (#1-5)");
-        if (scanf("%d", &choice) != 1 || choice == -1)
-            choice = 0;
-        //if (choice == -1) choice = 0; //-1 is a reserved number, not for user access.
+        choice = inputNumber();
+        if (choice == -1) choice = 0; //-1 is a reserved number, not for user access.
         switch (choice) {
             case 1://the lion
             {
-                puts("You select the lion and open the door. A rush of air blows through as you open the door. a few mothballs roll past your\n "
+                puts("************************************************************************************************************************\n"
+                     "You select the lion and open the door. A rush of air blows through as you open the door. a few mothballs roll past your\n "
                      "feet as you realize what you've opened is some sort of... Wooden clothing storage furnishing... But knowing what you\n"
                      "do about such a furnishing, you know that air lacking a certain musk that comes with old clothing could not have come\n"
                      "from a furnishing such as this so there must be an opening in the back. You push your way through some coats, jackets,\n"
@@ -387,8 +395,8 @@ int room46(char name[]){//Coded by ctalebi
                 counter = 0;
                 do {
                     if (counter == 0)
-                    puts("What do you do?");
-                        scanf("%d", &choice);
+                        puts("What do you do?");
+                    choice = inputNumber();
                     if (counter == 3 || choice == 1){//Stay in place
                         printf("The source of the footsteps enters the clearing, it is a lion. You dont see any\n"
                              "sense of malice in it's eyes and to your surprise, it greets you.\n"
@@ -420,11 +428,77 @@ int room46(char name[]){//Coded by ctalebi
                 return 0;
             }
             case 2://the dragon
-            {    //can use the RNG for a D20
-                puts("You select the Dragon and open the door. The dungeon continues as a hallway, with a closed "
-                     "door");
-                puts("************************************************************************************************************************\n");
-                return 0;
+            {
+                int hp = 10;
+                puts("************************************************************************************************************************\n"
+                     "You select the Dragon and open the door. The dungeon continues as a hallway, with a closed door at the end of it.\n"
+                     "You notice some of the stones are uneven and decide to proceed forward. Suddenly your perception shifts into\n"
+                     "bullet time. You hear something, is that, a dice rolling?");
+                if (d20 >= 15)
+                    puts("Your perception slowly shifts back into real time as you notice there's holes in the walls.\n"
+                         "And they're shooting arrows! You try your best to avoid them and you succeed making it to the door unscathed.");
+                else {
+                    puts("You come back to your senses and start hearing wooshing sounds. Suddenly you feel a sharp, terrible pain in\n"
+                         "your side. You've been hit by a stray arrow and bolt for the door as best you can. You make it there, but\n"
+                         "you're looking pretty bloodied.");
+                    hp -= 4;
+                    printf("Health now at %d\n", hp);
+                }
+                puts("You're at the door now and you decide to open it. Inside you spy a red dragon which so far hasn't noticed you.\n"
+                     "There is an archway behind it you could possibly escape from."
+                     "You can try to sneak past it or run past it, but it will be risky. What do you do?\n"
+                     "1: Try to sneak past.\n"
+                     "2: Try to run past.");
+                choice = inputNumber();
+                if (choice == 1)//sneak
+                {
+                    puts("You try your best to sneak past and you hear the familiar sound of a plastic icosahedron.");
+                    if (d20 >= 18) {//succeed sneaking
+                        puts("You successfully sneak past and make it to the archway. In front of you, you see an open field. \n"
+                             "You make your way away from the Dungeon and the Dragon. And try to forget about all that as you head for home.");
+                        puts("************************************************************************************************************************\n");
+                        return 1;
+                    } else {//fail sneaking
+                        puts("The dragon's sense of smell is too strong and it notices you as you try to give it a wide berth.\n"
+                             "It is immediately angered and breathes fire at you. You are not faste enough to get out of the way and\n"
+                             "you are consumed");
+                        hp -= 9;
+                        if (hp < 1) {//if you fail and die
+                            puts("You die on the spot, consumed in flames and failure.");
+                            puts("************************************************************************************************************************\n");
+                            return -1;
+                        } else {//if you fail and survive
+                            puts("IT BURNS, but you're still alive. Barely. You sprint for the archway as it charges up another volley of flame.\n"
+                                 "Just as you make it through the archway and turn the corner, the wall of flame shoots from the archway narrowly\n"
+                                 "missing you. As you look out in front of you, you see an open field. \n"
+                                 "You make your way away from the Dungeon and the Dragon. And try to forget about all that as you head for\n"
+                                 "the nearest hospital.");
+                            puts("************************************************************************************************************************\n");
+                            return 1;
+                        }
+                    }
+                } else//dont sneak
+                {
+                    puts("You try to run past the dragon as fast as you can, The dragon  notices you as you try to give it a wide berth.\n"
+                         "It is immediately angered and breathes fire at you. You are not faste enough to get out of the way and\n"
+                         "you are consumed");
+                    hp -= 9;
+                    if (hp < 1) {//if you fail and die
+                        puts("You die on the spot, consumed in flames and failure.");
+                        puts("************************************************************************************************************************\n");
+                        return -1;
+                    } else {//if you fail and survive
+                        puts("IT BURNS, but you're still alive. Barely. You sprint for the archway as it charges up another volley of flame.\n"
+                             "Just as you make it through the archway and turn the corner, the wall of flame shoots from the archway narrowly\n"
+                             "missing you. As you look out in front of you, you see an open field. \n"
+                             "You make your way away from the Dungeon and the Dragon. And try to forget about all that as you head for\n"
+                             "the nearest hospital.");
+                        puts("************************************************************************************************************************\n");
+                        return 1;
+                    }
+                    puts("************************************************************************************************************************\n");
+                    return 0;
+                }
             }
             case 3://the rabbit
             {    //use the RNG in this one (Game show? w/ a 1/10 chance of getting out?)
