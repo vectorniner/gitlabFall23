@@ -1,8 +1,15 @@
 //contributors
 //gpoppe room 55
+// colague room 37
 //ctalebi 46
+
+//ogarcia 15
+//declare prototype
+
+
 //Sung Kim room 20
 //Matthew Lira room25
+
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -30,7 +37,10 @@ bool guessGame25(void);
 void FinaleAstralPlane25(void);
 //end of Aether Door Series
 
+void userChoice_door15(void);
+int room37ShowOptions(int chosen);
 int hpUpdate(int hp, int update);
+
 
 int main(int argc, char *argv[])
 {
@@ -126,8 +136,21 @@ int main(int argc, char *argv[])
 			}
 			case 15:
 			{
-				puts("room15");
+				//Author: Omar Garcia
+				//Date: 11/30/23
+				//Purpose: For Final Project!
+				puts("room 15");
+
+				printf("This room is filled with other doors!\n");
+				printf("As you enter the room you gain arcane power.\n");
+				printf("You gain power you've never felt before.\n");
+				printf("You are now ready to face what comes next!\n");
+				printf("Choose a door 1-5 or 9 to return!\n");
+				
+				userChoice_door15();
 				break;
+
+							
 			}
 			case 16:
 			{
@@ -373,7 +396,75 @@ int main(int argc, char *argv[])
 
 			case 37:
 			{
-				puts("room37");
+				// Tracking Variables/Dialogue
+				int chosen = 0;
+				bool userChoices[5] = {0, 0, 0, 0, 0};
+				char items[5][3][13] = {
+					{"Straw Hat",    "Top Hat",     "Wizard Hat"},
+					{"Red Shirt",    "Suit",        "Full Robe"},
+					{"Brown Shorts", "Suit Pants",  "Old Pants"},
+					{"Sandals",      "Dress Shoes", "Worn Boots"},
+					{"Meat Snack",   "Caviar",      "Mushrooms"}
+				};
+
+				// Beginning Dialogue
+				puts("\n\n");
+				puts("You enter room 37.");
+				puts("A mysterious figure approaches you and says:");
+				puts("MAN: You will need equipment for your Adventure, I will gift you with 5\n");
+				puts("The man opens up a box with 5 different types of option.\n");
+
+				// Loop, prompts user for input
+				while (chosen < 5) {
+					// get user input
+					int userChoice = room37ShowOptions(chosen);
+
+					// validate input
+					if (userChoice < 1) {
+						break;
+					} else if (userChoice > 5) {
+						puts("MAN: That is not a valid choice. Try Again.\n");
+						continue;
+					}
+
+					// input paths
+					if (userChoices[userChoice] == 0) {
+						userChoices[userChoice] = 1;
+						puts("\n");
+					} else {
+						puts("MAN: You have already recieved this type of equipment. Try Again.\n");
+						continue;
+					}
+				
+
+					int itemChoice = -1;
+					do {
+						// Print out items
+                                        	puts("Choose an item. (integers only) - zero or negative number to skip option");
+                                        	printf("1. %-15s 2. %-15s 3. %-15s\n", items[userChoice-1][0], items[userChoice-1][1], items[userChoice-1][2]);
+						scanf("%d", &itemChoice);
+
+						// Paths for items: >3(retry), <1(skip selection), else(give item)
+						if (itemChoice > 3) {
+							puts("MAN: There are only 3 options, choose one.\n");
+						} else if (itemChoice < 1) {
+							puts("MAN: Very well, we'll skip this selection.\n");
+							chosen++;
+							break;
+						} else {
+							int r = rand() % 100; // random number to engrave onto item
+							printf("\n\nThe man gives you the %s and engraves the number %d on it.\n\n", items[userChoice-1][itemChoice-1], r);
+							chosen++;
+						}
+
+					} while (itemChoice < 0 || itemChoice > 3);
+				}
+
+				// end dialogue
+				puts("You now feel prepared and ready to leave on your Journey.");
+				puts("MAN: Farewell Adventurer. Good luck.");
+				puts("You begin going through another door and your vision fades... you begin to forget and...\n\n");
+					
 				break;
 			}
 
@@ -482,6 +573,98 @@ int main(int argc, char *argv[])
 	puts("Game Over");
 	return EXIT_SUCCESS;
 }
+ //Method userChoice_door15()
+                                void userChoice_door15(void){
+                                   int options;
+                                   const char* casts[] ={"Fire","Water","Holy","Nature", "Plasma"};
+
+				   //Used to determine the number of elements in an array
+                                   int numCasts = sizeof(casts)/sizeof(casts[-1]);
+
+				   //variable to hold index value
+                                   int randomIndex;
+
+				   
+
+                                   do{
+
+                                   scanf("%d", &options);
+
+                                   switch(options){
+                                        case 1:
+                                                printf("This room reveals a tree ent\n");
+                                                randomIndex = rand() % numCasts;
+
+						//generate random door number
+						int randomDoor1 = (rand() % 5) + 1;
+
+                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                                                printf("You find yourself back in room 15\n");
+                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor1);
+						break;
+                                        case 2:
+                                                printf("This room reveals an undead ghoul!\n");
+                                                randomIndex = rand() % numCasts;
+
+						//generate random door 
+						int randomDoor2 = (rand() % 5) + 1;
+                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+						printf("You find yourself back in room 15\n");
+                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor2);
+                                                break;
+                                        case 3:
+                                                printf("This room reveals a unholy priest!\n");
+                                                randomIndex = rand() % numCasts;
+
+						//generate random door
+						int randomDoor3 = (rand() % 5) + 1;
+                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+						printf("You find yourself back in room 15\n");
+                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor3);
+						break;
+                                        case 4:
+                                                printf("This room reveals a grey alien!\n");
+                                                randomIndex = rand() % numCasts;
+
+						//random door
+						int randomDoor4 = (rand() % 5) + 1;
+                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+						printf("You find yourself back in room 15\n");
+                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor4);
+						break;
+                                        case 5:
+                                                printf("This room reveals a fire elemental monster!\n");
+                                                randomIndex = rand() % numCasts;
+
+						//random door
+						int randomDoor5 = (rand() % 5) + 1;
+                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                                                printf("You find yourself back in room 15\n");
+						printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor5);
+						break;
+                                        case 9:
+                                                printf("Exiting back to room 15\n");
+                                                break;
+                                        default:
+                                                printf("Wrong choice try again!\n");
+
+                                   }
+                                  }//end do loop
+                                   while(options !=9);
+				}
+
+int room37ShowOptions(int chosen) {
+	int choice = 0;
+	
+	// show options and return user choice
+	printf("Choose One (integers only) - %d Options Left or input zero or a negative number to leave\n", 5-chosen);
+	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
+	scanf("%d", &choice);
+
+	return choice;
+}
+
+
 
 int hpUpdate(int hp, int update)
 {
@@ -1206,6 +1389,7 @@ bool guessGame25(void){
     return false;
 
 }//end of guessGame25
+
 
 
 
