@@ -612,6 +612,7 @@ int main(int argc, char *argv[])
 			case 55:
 			{
 				puts("room55");
+				puts("New addition to my room");
 				break;
 			}
 			case 99:
