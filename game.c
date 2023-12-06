@@ -3,6 +3,10 @@
 //gpoppe room 55
 //ctalebi 46
 //Sung Kim room 20
+//ogarcia 15
+//Sung Kim room 20
+
+
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -11,6 +15,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+//declare prototype
+
+int car(int num);
+
+void userChoice_door15(void);
+int room37ShowOptions(int chosen);
+int hpUpdate(int hp, int update);
 
 
 #define BAG_SIZE 5
@@ -39,6 +51,7 @@ int guard(int guardHealth);
 void npcTurn();
 void displayGameOver();
 int hpUpdate(int hp, int update);
+
 
 int main(int argc, char *argv[])
 {
@@ -408,6 +421,51 @@ int main(int argc, char *argv[])
 			case 30:
 			{
 				puts("room30");
+				int num;
+				printf("Now choose a number between 1 - 5:\n");
+				scanf("%d",&num);
+
+				while(num < 1 || num > 5)
+				{
+					printf("Error: Please choose a number between 1 - 5:\n");
+					scanf("%d",&num);
+				}
+
+				if(num == 1)
+				{
+					printf("Now you're in a room full of snakes!\n");
+				}
+
+				if(num == 2)
+				{
+					int clowns[3];
+					clowns[0] = 10;
+					clowns[1] = 5;
+					clowns[2] = 50;
+					clowns[3] = 100;
+					int randClowns = rand() % 3;
+					printf("Now you're in a room full of %d clowns!\n",clowns[randClowns]);
+				}
+
+				if(num == 3)
+				{
+					printf("Now you're in a room full of spiders!\n");
+				}
+
+				if(num == 4)
+				{
+					printf("Now you're in a room full of bunnies\n");
+				}
+
+				if(num == 5)
+				{
+					int money = rand() % 1000000;
+					printf("You won %d dollars!\n",money);
+					car(num);
+	
+				}
+
+
 				break;
 			}
 			case 31:
@@ -754,6 +812,11 @@ void useRations()
     }
 }
 
+int car(int num)
+{
+	printf("And you won a Chevy Stingray!\n");
+}
+
 int useGoldCoin() 
 {
     srand(time(NULL));
@@ -836,49 +899,3 @@ void displayGameOver()
         printf("You defeated the goblin! Congratulations!\n");
     }
 }
-
-int hpUpdate(int hp, int update);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
