@@ -20,12 +20,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <unistd.h>
 
-<<<<<<< HEAD
 //Start of RED Door Series25
 void specialRoom25(void);
 void AetherDoor25(void);
@@ -33,6 +28,7 @@ void RedDoor25(void);
 void miserySorrowDoor25(int Ammo);
 void reflectionDoor25(int Ammo);
 void FinaleLighthouse25(int Ammo);
+void room38Feature();
 //End of RED Door Series
 
 //start of Aether Door Series 25
@@ -59,31 +55,24 @@ int main(int argc, char *argv[])
 {
 	int choice = 0;
 	char name[30] = "bob";
-=======
-// Function prototype
-void separateFunction();
-void room38Feature();
-int main(int argc, char *argv[]) {
-    int choice = 0;
-    char name[30] = "bob";
->>>>>>> 4d4373e (Added Room 38 feature)
 
-    srand(time(NULL));
+	srand(time(NULL));
+	
+	printf("Please enter your name: ");
+	scanf("%s",name);
 
-    printf("Please enter your name: ");
-    scanf("%s", name);
+	printf("Hello %s welcome to the RPG Game!\n",name);
 
-    printf("Hello %s welcome to the RPG Game!\n", name);
+	while(choice != 99)
+	{
+		puts("You find yourself in a dark room and you are not sure how you got here.");
+        	puts("As you look around you see the room has 55 doors, each labeled with a number.");
+        	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
+        	puts("What door do you choose?");
+        	scanf("%d",&choice);
 
-    while (choice != 99) {
-        puts("You find yourself in a dark room and you are not sure how you got here.");
-        puts("As you look around you see the room has 55 doors, each labeled with a number.");
-        puts("The room starts filling with water, and you must choose a door to open or you will likely drown.");
-        puts("You may quit anytime by selecting option 99.");
-        puts("What door do you choose?");
-        scanf("%d", &choice);
-
-        switch (choice) {
+		switch(choice)
+		{
 			case 1:
 			{
 				puts("room1");
@@ -533,12 +522,12 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 
-                        case 38: // Modified for room 38
-                        {
-                               puts("Welcome to room 38!");
-                               room38Feature();
-                               // Additional functionality for room 38
-                               break;
+			case 38:
+			{
+                puts("Welcome to room 38!");
+                room38Feature();
+                // Additional functionality for room 38
+               break;
 			}
 			case 39:
 			{
@@ -578,11 +567,7 @@ int main(int argc, char *argv[]) {
 			case 46: //Ctalebi testing
 			{
 				puts("room46");
-<<<<<<< HEAD
 		puts("hello");
-=======
-                                puts("hello");
->>>>>>> 4d4373e (Added Room 38 feature)
 				break;
 			}
 			case 47:
@@ -630,62 +615,19 @@ int main(int argc, char *argv[]) {
 				puts("room55");
 				break;
 			}
-                        case 99:
-                        {
-                                puts("You have escaped.\n");
-                                break;
-                        }
-                        default:
-                        {
-                                 puts("Invalid choice.\n");
-                        }
-                        }
-                        }
-
-                                puts("Game Over\n");
-                                return EXIT_SUCCESS;
-                        }
-
-
-// Function definition for Room 38 feature
-void room38Feature() {
-    int userChoice;
-    const char *menu[] = {
-        "Explore the mysterious artifact.",
-        "Talk to the ancient wizard.",
-        "Inspect the strange markings on the wall.",
-        "Search for hidden passages.",
-        "Leave the room."
-    };
-
-    do {
-        printf("Room 38 Feature Menu:\n");
-        for (int i = 0; i < 5; ++i) {
-            printf("%d: %s\n", i + 1, menu[i]);
-        }
-        printf("Enter your choice (1-5): ");
-        scanf("%d", &userChoice);
-
-        switch (userChoice) {
-            case 1:
-                printf("You discover a glowing artifact with unknown powers.\n");
-                break;
-            case 2:
-                printf("The ancient wizard reveals secrets of the room's history.\n");
-                break;
-            case 3:
-                printf("Upon closer inspection, the markings seem to be a cryptic message.\n");
-                break;
-            case 4:
-                printf("You search for hidden passages but find none.\n");
-                break;
-            case 5:
-                printf("You decide to leave Room 38.\n");
-                break;
-            default:
-                printf("Invalid choice. Please choose again.\n");
-        }
-    } while (userChoice != 5);
+			case 99:
+			{
+				puts("You have escaped");
+				break;
+			}
+			default:
+			{
+				puts("invalid choice");
+			}
+		}
+	}
+	puts("Game Over");
+	return EXIT_SUCCESS;
 }
  //Method userChoice_door15()
                                 void userChoice_door15(void){
@@ -825,7 +767,7 @@ void specialRoom25(void){
      "\nIt's odd to find doors in a cave of darkness, but I can't afford to question it now. Going back isn't an option, not with the labyrinth of 99 rooms behind me. I have to choose a door and keep moving forward."
      "\nAs I stand there, The Aether door continues to glow, its light pulsating in the darkness. It feels like it's calling out to me, inviting me to step through into the unknown. "
      "\nThe red door remains silent, its stark color a contrast against the cave of darkness walls. It offers no promises, no hints of what lies beyond."
-     "\nI take a deep breath, steeling myself for the decision. I know I can’t stay here, stuck in indecision. I have to choose and face whatever lies beyond. "
+     "\nI take a deep breath, steeling myself for the decision. I know I canâ€™t stay here, stuck in indecision. I have to choose and face whatever lies beyond. "
      "\nBut which door? The inviting Aether door, or the silent red door? ";
 
     int k;
@@ -863,6 +805,46 @@ void specialRoom25(void){
 
 
 }//end of specialRoom25
+// Function definition for Room 38 feature
+void room38Feature() {
+    int userChoice;
+    const char *menu[] = {
+        "Explore the mysterious artifact.",
+        "Talk to the ancient wizard.",
+        "Inspect the strange markings on the wall.",
+        "Search for hidden passages.",
+        "Leave the room."
+    };
+
+    do {
+        printf("Room 38 Feature Menu:\n");
+        for (int i = 0; i < 5; ++i) {
+            printf("%d: %s\n", i + 1, menu[i]);
+        }
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &userChoice);
+
+        switch (userChoice) {
+            case 1:
+                printf("You discover a glowing artifact with unknown powers.\n");
+                break;
+            case 2:
+                printf("The ancient wizard reveals secrets of the room's history.\n");
+                break;
+            case 3:
+                printf("Upon closer inspection, the markings seem to be a cryptic message.\n");
+                break;
+            case 4:
+                printf("You search for hidden passages but find none.\n");
+                break;
+            case 5:
+                printf("You decide to leave Room 38.\n");
+                break;
+            default:
+                printf("Invalid choice. Please choose again.\n");
+        }
+    } while (userChoice != 5);
+}
 
 void RedDoor25(void){
     sleep(2);
@@ -926,7 +908,7 @@ void miserySorrowDoor25(int Ammo){
     char message[] = "\n\nAs I turn the knob, the door swings open with a force that sends it extending far into the distance at an incredible speed. "
      "\nI find myself looking down a long, dark hallway. As I step forward, the hallway seems to darken even more. I flash my light to the left and right, "
      "\nonly to revealed that I was surrounded by the taken.\nMy heart pounds in my chest as I realize the gravity of my situation. I was trapped in a dark hallway with the taken closing in on. "
-     "I have to make a decision quickly: do I run, or do I fight?\nRunning might get myself out of immediate danger, but there’s no guarantee of safety further down the hallway. "
+     "I have to make a decision quickly: do I run, or do I fight?\nRunning might get myself out of immediate danger, but thereâ€™s no guarantee of safety further down the hallway. "
      "Fighting, on the other hand, is risky. I was outnumbered, and I don't know how strong the taken are";
     int i;
     for(i=0; message[i] != '\0'; i++){
@@ -960,10 +942,10 @@ void miserySorrowDoor25(int Ammo){
         char message2[] = "\nI recalled the inscription on the flashlight, \"the weapon of darkness\", I shine it towards the shadow figures. "
          "\nThey stagger, but it doesn't seem to affect them much. I needed to get past them someway, I decide to run, using the light to create an opening. "
          "\nAs I ran, one of the figures slashes my back and I fell to the floor. Their voices grow louder in my mind, and I felt a sense of despair."
-         "\nJust when I thought it’s over, the figure from the previous room appears, shining a bright light that cleanses the hallway of darkness. "
-         "\nThe light seems to heal my pain. The figure tells me, \"Don’t stop now, you need yourself\", before vanishing. "
+         "\nJust when I thought itâ€™s over, the figure from the previous room appears, shining a bright light that cleanses the hallway of darkness. "
+         "\nThe light seems to heal my pain. The figure tells me, \"Donâ€™t stop now, you need yourself\", before vanishing. "
          "\nI wasn't sure what it mean, but as I gotten back on my feet, I had to continue walking stay here for far longer darkness will take over."
-         "\nI reached the door that says \"simply open\". There’s no second door this time. I open the only door and I found myself in a room of reflections as I step into the room of reflections. "
+         "\nI reached the door that says \"simply open\". Thereâ€™s no second door this time. I open the only door and I found myself in a room of reflections as I step into the room of reflections. "
          "\nA signed says \"you might discover something about yourself that you never knew before\"...";
         int j;
         for(j=0; message2[j] != '\0'; j++){
@@ -999,7 +981,7 @@ void reflectionDoor25(int Ammo){
       "\nacting out in ways I now regret. This room, a museum of my past, is a stark reminder that my mind is a fortress from which there is no escape. "
       "\nEach reflection is like a chapter in the book of my life, some filled with happiness, others with regret. "
       "\nIt's like being trapped in a dream, a feverish imagination of what it was like to be awake, having never known sleep. "
-      "\nIt's as if I’m caught in a paradox, yearning for the blissful ignorance of sleep, yet dreading the eternal slumber that awaits us all. This room of reflections is not just a prison, "
+      "\nIt's as if Iâ€™m caught in a paradox, yearning for the blissful ignorance of sleep, yet dreading the eternal slumber that awaits us all. This room of reflections is not just a prison, "
       "\nbut also a teacher. It holds up a mirror to my past, forcing me to confront my actions and learn from them  But rather than being a prison, "
       "\nthis room can also be seen as a catalyst for change. It's a place where I can confront my past, learn from my mistakes, and strive to be a better person. "
       "\nAs I continue walking threw my constant reminder of my past actions, "
@@ -1120,12 +1102,12 @@ void FinaleLighthouse25(int Ammo){
         sleep(3);
         char message3[] = "\n\nI found myself in the cabin, the floor littered with letters that seemed to be manuscripts of events yet to unfold, or perhaps echoes of the past. "
           "\nAs I looked down, I saw a clone of myself being consumed by an encroaching darkness. Suddenly, the sound of televisions turning on filled the room. "
-          "\nI turned to see that I was surrounded by screens, each repeating the same cryptic message, \"It’s not a lake, it’s an ocean\".\nThe words echoed in my mind, breaking my resolve. "
+          "\nI turned to see that I was surrounded by screens, each repeating the same cryptic message, \"Itâ€™s not a lake, itâ€™s an ocean\".\nThe words echoed in my mind, breaking my resolve. "
           "\nI fell to my knees, the darkness swallowing me whole. But then, I woke up. I was myself again, as if nothing had happened. Yet, the manuscripts were still scattered around, "
           "making the experience feel all too real.\nSuddenly, the cabin began to crumble, revealing the true master of the darkness. I tried to fend it off with my flashlight, but it had no effect. "
           "\nI was left dodging objects possessed by the void, unsure of what to do next. Then, I remembered the flare gun. It had damaged the master of darkness before. I knew what I had to do."
           "\nI fired the flare gun repeatedly, evading the flying objects, until a flash of light appeared. I realized then that this was all a dream, operating on shifting logic. "
-          "\n\"It’s a beautiful place\", I told myself. I could rest here, sleep here, and forget about my work. This was my departure.\nBut as I settled into this thought, "
+          "\n\"Itâ€™s a beautiful place\", I told myself. I could rest here, sleep here, and forget about my work. This was my departure.\nBut as I settled into this thought, "
           "I felt a chill run down my spine. The darkness was not yet defeated. The battle was far from over. \nThis was not my departure, but merely the beginning of a new chapter. "
           "A chapter where I would have to face my fears, confront the darkness, and find my way back to the light.\n\n";
         int k;
@@ -1164,8 +1146,8 @@ void FinaleLighthouse25(int Ammo){
 void AetherDoor25(void){
     sleep(2);
     char message[] = "\n\nFeeling an inexplicable pull, I decided to step through the Aether Door. To my surprise, I found myself in an office, seemingly ordinary but eerily deserted. I turned to exit, only to realize that the door was nothing more than a deceptive wallpaper. Confused and slightly upset, I knew I had to figure out where I was."
-         "\nThe office was compact, and soon I found myself standing in front of the Director’s office. With a sense of trepidation, I pushed the door open, hoping to find some answers. Instead, I found a man lying lifeless on the floor. His tag identified him as the Director of this office."
-        "\nSuddenly, a phone rang, breaking the silence. I hesitated, then picked up. The call was from the Board. They informed me that I was now the Director. The Board was under attack, and they needed me to carry out certain tasks. Unsure but determined, I accepted the responsibility. I was given a Director’s gun, which felt strangely familiar in my hands, as if it was meant for me."
+         "\nThe office was compact, and soon I found myself standing in front of the Directorâ€™s office. With a sense of trepidation, I pushed the door open, hoping to find some answers. Instead, I found a man lying lifeless on the floor. His tag identified him as the Director of this office."
+        "\nSuddenly, a phone rang, breaking the silence. I hesitated, then picked up. The call was from the Board. They informed me that I was now the Director. The Board was under attack, and they needed me to carry out certain tasks. Unsure but determined, I accepted the responsibility. I was given a Directorâ€™s gun, which felt strangely familiar in my hands, as if it was meant for me."
         "\nMy first task was to head to maintenance. As I navigated through the shape-shifting building, I came across a sector elevator with two buttons: one for maintenance and the other for the investigation sector. I found myself at a crossroads. Should I explore the unknown before diving into my task, or should I focus on the task at hand and head straight to maintenance?";
     int i;
 
@@ -1201,7 +1183,7 @@ void AetherDoor25(void){
         sleep(3);
         char message2[] = "\n\nI decided to explore the Investigation Sector. I pressed the button and the elevator doors closed, only to open instantly at the location. A sudden headache hit me, and I was flooded with visions of myself battling against shadows from a parallel universe. Shaking off the disorientation, I began to question my decision to be here."
           "\nThe room I entered was a darker, more ominous replica of the previous office. It felt as if the light itself was too afraid to penetrate this darkness. Unseen entities moved around me, their whispers echoing in the silence. Suddenly, I was under attack. Invisible claws slashed at me, leaving me wounded and helpless."
-         "\nAs I lay there, a chilling voice echoed, \"How could you leave us so unexpectedly? We were waiting… we needed you… I needed you…\" The accusation in the voice was palpable.(The darkness had claimed me,and I was no more\"The End\")\n";
+         "\nAs I lay there, a chilling voice echoed, \"How could you leave us so unexpectedly? We were waitingâ€¦ we needed youâ€¦ I needed youâ€¦\" The accusation in the voice was palpable.(The darkness had claimed me,and I was no more\"The End\")\n";
         int j;
 
         for(j=0; message2[j] != '\0'; j++) {
@@ -1218,7 +1200,7 @@ void maintenanceSector25(void){
     sleep(2);
     char message[] = "\n\nDeciding to trust the Board, I pressed the button and the elevator doors closed, whisking me away to my destination. My first task was to restore the generator that kept this unknown threat contained within the building. As I walked, I marveled at the sheer size of the facility, large enough to house a nuclear plant.\n"
                      "\n"
-                     "My journey began with the coolant pumps, which were closer. Oddly, there were no stairs, forcing me to parkour down. Once there, I encountered hissing figures. With the Director’s gun in hand, I discovered its immense power as it easily dispatched these entities. The control systems indicated that the pumps needed cleaning, leading me into the pipes where I faced a gigantic, moving mold. After a relentless onslaught, I eradicated it and returned to activate the pumps.\n"
+                     "My journey began with the coolant pumps, which were closer. Oddly, there were no stairs, forcing me to parkour down. Once there, I encountered hissing figures. With the Directorâ€™s gun in hand, I discovered its immense power as it easily dispatched these entities. The control systems indicated that the pumps needed cleaning, leading me into the pipes where I faced a gigantic, moving mold. After a relentless onslaught, I eradicated it and returned to activate the pumps.\n"
                      "\n"
                      "An elevator nearby opened, allowing me to reach the electrical station. It was in decent condition, only needing a power cell. After retrieving one from the main station and completing the task, I wondered if the Board would contact me again.\n"
                      "\n"
@@ -1279,7 +1261,7 @@ void researchSector25(void){
                          "\n"
                          "The maze was an enigma, a mystery that seemed to have no solution. It was a riddle that would stay with me forever, a constant reminder of my eternal imprisonment. As the walls of my cubic prison closed in, I realized that this was my reality now. This was my eternity.\n"
                          "\n"
-                         "In the silence of the cube, I heard the echo of my own thoughts, \"This is the end…\" A chilling reminder of my predicament. But even in the face of despair, I held on to a glimmer of hope. For every end is a new beginning, and every mystery, an opportunity for discovery.\n ";
+                         "In the silence of the cube, I heard the echo of my own thoughts, \"This is the endâ€¦\" A chilling reminder of my predicament. But even in the face of despair, I held on to a glimmer of hope. For every end is a new beginning, and every mystery, an opportunity for discovery.\n ";
         int j;
 
         for(j=0; message2[j] != '\0'; j++) {
@@ -1301,7 +1283,7 @@ void containmentSector25(void){
                      "\n"
                      "The final level, level six, held a locked room that contained the most dangerous threat. The room was heavily fortified, with multiple security checkpoints leading to the main control room. As I navigated through the security measures, a sense of dread filled me. Peering through the glass of the control room, I was shocked to find my long-lost brother. But he was not the same - his eyes were vacant, his mind corrupted by the hiss. His once familiar features were now foreign, twisted by the dark influence of the hiss. It was a heartbreaking sight,  I had to figure out where it all begin that is when I realized it time to talk to the board. \n"
                      "\n"
-                     "Returning to the director’s office, I picked up the ringing phone. The board spoke in a language I didn't know, yet somehow I understood. They mentioned the astral plane and a projector. Was it the same projector I used in the research sector? The realization hit me like a wave. With no time to waste, I returned to the sector elevator. Two new buttons had appeared the Foundation and the Astral Plane. I could explore a bit more, or I could end this now. ";
+                     "Returning to the directorâ€™s office, I picked up the ringing phone. The board spoke in a language I didn't know, yet somehow I understood. They mentioned the astral plane and a projector. Was it the same projector I used in the research sector? The realization hit me like a wave. With no time to waste, I returned to the sector elevator. Two new buttons had appeared the Foundation and the Astral Plane. I could explore a bit more, or I could end this now. ";
     int i;
 
     for(i=0; message[i] != '\0'; i++) {
@@ -1402,11 +1384,11 @@ void FinaleAstralPlane25(void){
 
         //determines secert ending
         if(searchForMatch) {
-            char message3[] = "\n\nUpon entering the correct combination, the door opened, revealing a giant upside-down pyramid. It seemed to pulsate with energy, and I could hear what sounded like the Board’s voices emanating from within. Suddenly, everything around me shattered like glass, transforming into a red void. I felt myself falling into the unknown. Just when I thought I would be lost forever, I found myself standing before the Board, my brother standing in front of me.\nMy brother, once my closest ally, was now a stranger. The hiss had corrupted him, twisted his mind until he saw me as an enemy. I knew I had to stop him, but the thought of fighting my own brother was unbearable. The room around us shifted, walls moving and reshaping, forming a pyramid pointing towards the projector - the source of all this chaos."
+            char message3[] = "\n\nUpon entering the correct combination, the door opened, revealing a giant upside-down pyramid. It seemed to pulsate with energy, and I could hear what sounded like the Boardâ€™s voices emanating from within. Suddenly, everything around me shattered like glass, transforming into a red void. I felt myself falling into the unknown. Just when I thought I would be lost forever, I found myself standing before the Board, my brother standing in front of me.\nMy brother, once my closest ally, was now a stranger. The hiss had corrupted him, twisted his mind until he saw me as an enemy. I knew I had to stop him, but the thought of fighting my own brother was unbearable. The room around us shifted, walls moving and reshaping, forming a pyramid pointing towards the projector - the source of all this chaos."
              "\nI had to navigate through this shifting maze while fending off the hiss. I moved as quickly as I could, I had to parkour over obstacles while fighting off hiss that tried to slow me down. When I finally reached the top, I found myself face-to-face with my brother."
              "\nHe was yelling, \"I hate you\", over and over again. Each word was a dagger to my heart. I loved him, had always protected him, and now he was lost to me. I dodged his attacks, refusing to fight back. Then, a gunshot echoed through the room. I cleansed the projector, stopping the hiss from entering any further. The red faded away, and my brother collapsed to the ground."
-             "\nI was alone, my heart heavy with grief. I had never expected any of this to happen. I knew I was not going anywhere. I picked up the gun and…"
-             "\nBut instead of ending it all, I found myself walking back to the director’s office. It was where I belonged. It was a place that had shaped me, changed me, made me who I am. The loss of my brother taught me valuable lessons about power, responsibility, and sacrifice. I knew what I had to do next, what changes I needed to make. I didn't feel like going back. I was operating on the shifting logic of a dream, ready to face whatever came next."
+             "\nI was alone, my heart heavy with grief. I had never expected any of this to happen. I knew I was not going anywhere. I picked up the gun andâ€¦"
+             "\nBut instead of ending it all, I found myself walking back to the directorâ€™s office. It was where I belonged. It was a place that had shaped me, changed me, made me who I am. The loss of my brother taught me valuable lessons about power, responsibility, and sacrifice. I knew what I had to do next, what changes I needed to make. I didn't feel like going back. I was operating on the shifting logic of a dream, ready to face whatever came next."
              "\nThis was my story, a tale of love, loss, and sacrifice in the face of an unimaginable threat. It was a journey that took me from the mundane to the extraordinary, from the familiar to the unknown. It was a story of courage and determination, of facing fears and overcoming obstacles. It was a story of a bond between siblings, tested and strained, yet unbroken in spirit."
              "\nIn this story, I was not just a bystander, but an active participant. I was the one who stepped through the Aether Door, who faced the hiss, who navigated the shifting walls of the astral plane. I was the one who fought, who struggled, who persevered. I was the one who loved, who lost, and who ultimately made the ultimate sacrifice."
              "\nBut this was not just my story. It was also the story of my brother, of the Board, of the hiss. It was the story of the astral plane, of the shifting walls and the upside-down pyramid. It was the story of every object of power, every corrupted entity, every challenge I faced."
@@ -1422,7 +1404,7 @@ void FinaleAstralPlane25(void){
 
        return;
         } else {
-            char message4[] = "\n\nUpon entering the correct combination, the door opened, revealing a giant upside-down pyramid. It seemed to pulsate with energy, and I could hear what sounded like the Board’s voices emanating from within. Suddenly, everything around me shattered like glass, transforming into a red void. I felt myself falling into the unknown. Just when I thought I would be lost forever, I found myself standing before the Board, my brother standing in front of me.\n"
+            char message4[] = "\n\nUpon entering the correct combination, the door opened, revealing a giant upside-down pyramid. It seemed to pulsate with energy, and I could hear what sounded like the Boardâ€™s voices emanating from within. Suddenly, everything around me shattered like glass, transforming into a red void. I felt myself falling into the unknown. Just when I thought I would be lost forever, I found myself standing before the Board, my brother standing in front of me.\n"
                              "\n"
                              "My brother, once my closest ally, was now a stranger. The hiss had corrupted him, twisted his mind until he saw me as an enemy. I knew I had to stop him, but the thought of fighting my own brother was unbearable. The room around us shifted, walls moving and reshaping, forming a pyramid pointing towards the projector - the source of all this chaos.\n"
                              "\n"
@@ -1506,43 +1488,6 @@ bool guessGame25(void){
     return false;
 
 }//end of guessGame25
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
