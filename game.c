@@ -6,7 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
-
+//Andrew Lee Room 23
 
 
 #include <stdlib.h>
@@ -71,6 +71,7 @@ int guard(int guardHealth);
 void npcTurn();
 void displayGameOver();
 int hpUpdate(int hp, int update);
+int room23RanSet (int lowerLimit, int upperLimit);
 
 
 int main(int argc, char *argv[])
@@ -344,7 +345,80 @@ int main(int argc, char *argv[])
 			}
 			case 23:
 			{
-				puts("room23");
+				  int b1 = 0;
+				  int b2 = 0;
+				  int b3 = 0;
+				  int b4 = 0;
+				
+				  int total = 0;
+				
+				  int room23choice = 0;
+				
+				  puts ("room23");
+				  puts ("You see a door with 5 buttons,");
+				  puts ("the number 100 on the top");
+				  puts ("and the number 0 on the bottom");
+				
+				  do
+				    {
+				      b1 = room23RanSet (1, 10);
+				      b2 = room23RanSet (2, 10);
+				      b3 = room23RanSet (3, 15);
+				      b4 = room23RanSet (4, 15);
+				
+				      printf ("\nButton 1 has a green %d\n", b1);
+				      printf ("Button 2 has a red %d\n", b2);
+				      printf ("Button 3 has a green %d\n", b3);
+				      printf ("Button 4 has a red %d\n", b4);
+				      printf ("Button 5 says RESET");
+				
+				      printf ("\nWhich button will you press? ");
+				      scanf ("%d", &room23choice);
+				
+				      switch (room23choice)
+				      {
+				          case 1:
+				          {
+				              total = total + b1;
+				              printf ("The bottom number now says %d", total);
+				              break;
+				              
+				          }
+				          case 2:
+				          {
+				              total = total - b2;
+				              printf ("The bottom number now says %d", total);
+				              break;
+				              
+				          }
+				          case 3:
+				          {
+				              total = total + b3;
+				              printf ("The bottom number now says %d", total);
+				              break;
+				              
+				          }
+				          case 4:
+				          {
+				              total = total - b4;
+				              printf ("The bottom number now says %d", total);
+				              break;
+				              
+				          }
+				          case 5:
+				          {
+				              total = 0;
+				              printf ("The bottom number now says %d", total);
+				              break;
+				              
+				          }
+				          
+				      }
+				
+				    } while (total != 100);
+				    
+				    printf ("\nThe door opens and you escape!");
+				    printf ("\n");
 				break;
 			}
 			case 24:
@@ -1732,4 +1806,15 @@ void displayGameOver()
     {
         printf("You defeated the goblin! Congratulations!\n");
     }
+}
+
+int room23RanSet (int lowerLimit, int upperLimit)
+{
+  // Seed the random number generator with the current time
+  srand (time (NULL));
+
+  // Generate a random number within the specified range
+  int randomNum = (rand () % (upperLimit - lowerLimit + 1)) + lowerLimit;
+
+  return randomNum;
 }
