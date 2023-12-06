@@ -11,7 +11,7 @@
 #include <unistd.h>
 
 int room46(char name[]);//used to execute the bulk of room 46's code
-int inputNumber(); //used to ensure only integers are allowed and any others are flushed from the input buffer
+int inputNumber(void); //used to ensure only integers are allowed and any others are flushed from the input buffer
 
 int main(int argc, char *argv[])
 {
@@ -333,7 +333,7 @@ int main(int argc, char *argv[])
 
 
 //**********************************************************************************************************************
-int inputNumber(){
+int inputNumber(void){
     int input;
     char temp[100];
     if (scanf("%d", &input) != 1)
@@ -355,7 +355,7 @@ int room46(char name[]){//Coded by ctalebi
      * Rabbit door
      * snake door
      * Shark door
-     * */
+     *****************************************/
     //variables
     int choice = -1;
     int counter = 0;
@@ -551,14 +551,3 @@ int room46(char name[]){//Coded by ctalebi
     return 0;
 }
 //**********************************************************************************************************************
-/*if (counter == 0){
-        counter++;
-    } else if (counter == 1){
-        counter++;
-    } else if (counter == 2){
-        counter++;
-    } else if (counter == 3){
-        counter++;
-    } else if (counter == 4){
-        return -1;
-    }*/
