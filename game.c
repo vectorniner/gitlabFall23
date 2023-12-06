@@ -720,10 +720,6 @@ int room37ShowOptions(int chosen) {
 	return choice;
 }
 
-int car(int num)
-{
-	printf("And you won a Chevy Stingray!\n");
-}
 
 
 
