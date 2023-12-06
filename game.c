@@ -1,5 +1,6 @@
 //contributors
 //gpoppe room 55
+// colague room 37
 //ctalebi 46
 //Sung Kim room 20
 
@@ -11,7 +12,10 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+
+int room37ShowOptions(int chosen);
 int hpUpdate(int hp, int update);
+
 
 int main(int argc, char *argv[])
 {
@@ -353,7 +357,75 @@ int main(int argc, char *argv[])
 
 			case 37:
 			{
-				puts("room37");
+				// Tracking Variables/Dialogue
+				int chosen = 0;
+				bool userChoices[5] = {0, 0, 0, 0, 0};
+				char items[5][3][13] = {
+					{"Straw Hat",    "Top Hat",     "Wizard Hat"},
+					{"Red Shirt",    "Suit",        "Full Robe"},
+					{"Brown Shorts", "Suit Pants",  "Old Pants"},
+					{"Sandals",      "Dress Shoes", "Worn Boots"},
+					{"Meat Snack",   "Caviar",      "Mushrooms"}
+				};
+
+				// Beginning Dialogue
+				puts("\n\n");
+				puts("You enter room 37.");
+				puts("A mysterious figure approaches you and says:");
+				puts("MAN: You will need equipment for your Adventure, I will gift you with 5\n");
+				puts("The man opens up a box with 5 different types of option.\n");
+
+				// Loop, prompts user for input
+				while (chosen < 5) {
+					// get user input
+					int userChoice = room37ShowOptions(chosen);
+
+					// validate input
+					if (userChoice < 1) {
+						break;
+					} else if (userChoice > 5) {
+						puts("MAN: That is not a valid choice. Try Again.\n");
+						continue;
+					}
+
+					// input paths
+					if (userChoices[userChoice] == 0) {
+						userChoices[userChoice] = 1;
+						puts("\n");
+					} else {
+						puts("MAN: You have already recieved this type of equipment. Try Again.\n");
+						continue;
+					}
+				
+
+					int itemChoice = -1;
+					do {
+						// Print out items
+                                        	puts("Choose an item. (integers only) - zero or negative number to skip option");
+                                        	printf("1. %-15s 2. %-15s 3. %-15s\n", items[userChoice-1][0], items[userChoice-1][1], items[userChoice-1][2]);
+						scanf("%d", &itemChoice);
+
+						// Paths for items: >3(retry), <1(skip selection), else(give item)
+						if (itemChoice > 3) {
+							puts("MAN: There are only 3 options, choose one.\n");
+						} else if (itemChoice < 1) {
+							puts("MAN: Very well, we'll skip this selection.\n");
+							chosen++;
+							break;
+						} else {
+							int r = rand() % 100; // random number to engrave onto item
+							printf("\n\nThe man gives you the %s and engraves the number %d on it.\n\n", items[userChoice-1][itemChoice-1], r);
+							chosen++;
+						}
+
+					} while (itemChoice < 0 || itemChoice > 3);
+				}
+
+				// end dialogue
+				puts("You now feel prepared and ready to leave on your Journey.");
+				puts("MAN: Farewell Adventurer. Good luck.");
+				puts("You begin going through another door and your vision fades... you begin to forget and...\n\n");
+					
 				break;
 			}
 
@@ -463,11 +535,26 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
+
+int room37ShowOptions(int chosen) {
+	int choice = 0;
+	
+	// show options and return user choice
+	printf("Choose One (integers only) - %d Options Left or input zero or a negative number to leave\n", 5-chosen);
+	puts("1. Hat      2. Upper      3. Lower      4. Boots      5. Hunger\n");
+	scanf("%d", &choice);
+
+	return choice;
+}
+
+
+
 int hpUpdate(int hp, int update)
 {
 	hp = hp + update;
 	return hp;
 }
+
 
 
 
