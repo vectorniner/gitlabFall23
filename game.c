@@ -1,6 +1,5 @@
 //contributors
 //
-
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -8,6 +7,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+int car(int num);
 
 int main(int argc, char *argv[])
 {
@@ -180,6 +181,51 @@ int main(int argc, char *argv[])
 			case 30:
 			{
 				puts("room30");
+				int num;
+				printf("Now choose a number between 1 - 5:\n");
+				scanf("%d",&num);
+
+				while(num < 1 || num > 5)
+				{
+					printf("Error: Please choose a number between 1 - 5:\n");
+					scanf("%d",&num);
+				}
+
+				if(num == 1)
+				{
+					printf("Now you're in a room full of snakes!\n");
+				}
+
+				if(num == 2)
+				{
+					int clowns[3];
+					clowns[0] = 10;
+					clowns[1] = 5;
+					clowns[2] = 50;
+					clowns[3] = 100;
+					int randClowns = rand() % 3;
+					printf("Now you're in a room full of %d clowns!\n",clowns[randClowns]);
+				}
+
+				if(num == 3)
+				{
+					printf("Now you're in a room full of spiders!\n");
+				}
+
+				if(num == 4)
+				{
+					printf("Now you're in a room full of bunnies\n");
+				}
+
+				if(num == 5)
+				{
+					int money = rand() % 1000000;
+					printf("You won %d dollars!\n",money);
+					car(num);
+	
+				}
+
+
 				break;
 			}
 			case 31:
@@ -321,7 +367,10 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-
+int car(int num)
+{
+	printf("And you won a Chevy Stingray!\n");
+}
 
 
 
