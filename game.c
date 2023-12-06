@@ -627,79 +627,78 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
  //Method userChoice_door15()
-                                void userChoice_door15(void){
-                                   int options;
-                                   const char* casts[] ={"Fire","Water","Holy","Nature", "Plasma"};
+void userChoice_door15(void){
+	int options;
+        const char* casts[] ={"Fire","Water","Holy","Nature", "Plasma"};
 
-				   //Used to determine the number of elements in an array
-                                   int numCasts = sizeof(casts)/sizeof(casts[-1]);
+	//Used to determine the number of elements in an array
+        int numCasts = sizeof(casts)/sizeof(casts[-1]);
+    
+     	//variable to hold index value
+        int randomIndex;
+   
+        do
+        {
 
-				   //variable to hold index value
-                                   int randomIndex;
+        scanf("%d", &options);
 
-				   
+	switch(options){
+              case 1:
+                    printf("This room reveals a tree ent\n");
+                    randomIndex = rand() % numCasts;
 
-                                   do{
+                    //generate random door number
+		    int randomDoor1 = (rand() % 5) + 1;
 
-                                   scanf("%d", &options);
+                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    printf("You find yourself back in room 15\n");
+                    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor1);
+		 	break;
+              case 2:
+                    printf("This room reveals an undead ghoul!\n");
+                    randomIndex = rand() % numCasts;
+                    
+		    //generate random door 
+		    int randomDoor2 = (rand() % 5) + 1;
+                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+		    printf("You find yourself back in room 15\n");
+                    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor2);
+                        break;
+              case 3:
+                    printf("This room reveals a unholy priest!\n");
+                    randomIndex = rand() % numCasts;
+                   
+		    //generate random door
+		    int randomDoor3 = (rand() % 5) + 1;
+                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+		    printf("You find yourself back in room 15\n");
+                    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor3);
+		 	break;
+              case 4:
+                    printf("This room reveals a grey alien!\n");
+                    randomIndex = rand() % numCasts;
 
-                                   switch(options){
-                                        case 1:
-                                                printf("This room reveals a tree ent\n");
-                                                randomIndex = rand() % numCasts;
+	            //random door
+		    int randomDoor4 = (rand() % 5) + 1;
+                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+		    printf("You find yourself back in room 15\n");
+                    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor4);
+			break;
+               case 5:
+                    printf("This room reveals a fire elemental monster!\n");
+                    randomIndex = rand() % numCasts;
 
-						//generate random door number
-						int randomDoor1 = (rand() % 5) + 1;
-
-                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
-                                                printf("You find yourself back in room 15\n");
-                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor1);
-						break;
-                                        case 2:
-                                                printf("This room reveals an undead ghoul!\n");
-                                                randomIndex = rand() % numCasts;
-
-						//generate random door 
-						int randomDoor2 = (rand() % 5) + 1;
-                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
-						printf("You find yourself back in room 15\n");
-                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor2);
-                                                break;
-                                        case 3:
-                                                printf("This room reveals a unholy priest!\n");
-                                                randomIndex = rand() % numCasts;
-
-						//generate random door
-						int randomDoor3 = (rand() % 5) + 1;
-                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
-						printf("You find yourself back in room 15\n");
-                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor3);
-						break;
-                                        case 4:
-                                                printf("This room reveals a grey alien!\n");
-                                                randomIndex = rand() % numCasts;
-
-						//random door
-						int randomDoor4 = (rand() % 5) + 1;
-                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
-						printf("You find yourself back in room 15\n");
-                                                printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor4);
-						break;
-                                        case 5:
-                                                printf("This room reveals a fire elemental monster!\n");
-                                                randomIndex = rand() % numCasts;
-
-						//random door
-						int randomDoor5 = (rand() % 5) + 1;
-                                                printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
-                                                printf("You find yourself back in room 15\n");
-						printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor5);
-						break;
-                                        case 9:
-                                                printf("Exiting back to room 15\n");
-                                                break;
-                                        default:
-                                                printf("Wrong choice try again!\n");
+		    //random door
+		    int randomDoor5 = (rand() % 5) + 1;
+                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    printf("You find yourself back in room 15\n");
+		    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor5);
+			break;
+                case 9:
+                    printf("Exiting back to room 15\n");
+                        break;
+                 default:
+                        printf("Wrong choice try again!\n");
 
                                    }
                                   }//end do loop
