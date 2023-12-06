@@ -568,16 +568,16 @@ int main(int argc, char *argv[])
 				break;
 			}
 			case 46: //Ctalebi **************************************
-	            	{
-		                puts("You choose door 46.");
-		                int result = 0;
-		                result = room46(name);
-		                if (result == -1 && name[26] == '\0')// If player dies and name[] has room,
-		                    strcat(name, " Jr."); //their kin takes their place
-		                else if (result == 1) //Successful escape
-		                    return EXIT_SUCCESS; //TODO Is this allowed?
-		                break;
-	            	}//******************************************************
+	  {
+    puts("You choose door 46.");
+    int result = 0;
+    result = room46(name);
+    if (result == -1 && name[26] == '\0')// If player dies and name[] has room,
+	    strcat(name, " Jr."); //their kin takes their place
+    else if (result == 1) //Successful escape
+	    return EXIT_SUCCESS; //TODO Is this allowed?
+    break;
+	  }//******************************************************
 			case 47:
 			{
 				puts("room47");
