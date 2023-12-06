@@ -6,6 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
+//Priscilla Vera room 50
 
 
 
@@ -16,6 +17,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+
+
+void handleRoom50(const char *name);
 
 //Start of RED Door Series25
 void specialRoom25(void);
@@ -586,7 +591,58 @@ int main(int argc, char *argv[])
 			}
 			case 50:
 			{
-				puts("room50");
+				int horrorChoice = 0;
+				puts("Welcome to Room 50, the Horror room!");
+      				puts("You find yourself in  a dark room, facing a choice that will determine your fate.");
+				
+				while (horrorChoice != 7) {
+					puts("1. Open the creaky door");
+					puts("2. Explore the room to the north");
+				       	puts("3. Investigate the eerie sound to the east");
+					puts("4. Move cautiously to the south");
+					puts("5. Examine a mysterious object to the west");
+				       	puts("6. Listen for whispers");
+					puts("7. Declare completion of the horror adventure");
+				 	puts("What would you dare to choose?");
+				     
+					scanf("%d", &horrorChoice);
+				       
+					switch (horrorChoice) {
+						case 1:
+					      		puts("You open the creaky door and reveal a dimly lit corridor.");
+							puts("As you step in, you notice flickering candles and a shadowy figure at the end of the hallway.");
+							break;
+						case 2:
+							puts("You explore the room to the north and find an old chest.");
+							puts("Opening it reveals ancient artifacts, but you sense a malevolent presence.");
+							break;
+						case 3:
+							puts("You investigate the eerie sound to the east and discover a hidden passage.");
+							puts("As you enter, the walls seem to close in, and unsettling whispers surround you.");
+							break;
+					      	case 4:
+							puts("You move cautiously to the south, and the room transforms into a dark forest.");
+							puts("Strange creatures lurk in the shadows, and a distant howl sends chills down your spine.");
+							break;
+						case 5:
+						  	puts("You examine a mysterious object to the west and find an enchanted mirror.");
+						       	puts("Your reflection shows a distorted version of reality, hinting at a dark future.");
+							break;
+					       	case 6:
+							puts("You listen for whispers and hear ghostly voices guiding you.");
+						       	puts("The voices offer you the cryptic number 7 to enter on the creaky door ahead.");
+						       	break;
+						case 7:
+							puts("Congratulations! You have completed the horror adventure.");
+							break;
+					       
+						default:
+							puts("Invalid choice");
+						       	break;
+				       	}
+			       	}
+			       
+				puts("You have escaped Room 50 and returned to the main menu.");
 				break;
 			}
 			case 51:
