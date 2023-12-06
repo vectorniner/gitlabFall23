@@ -6,7 +6,6 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
-//Jjaye room 8
 
 
 
@@ -17,8 +16,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
-
-void loadRoom8(void);
 
 //Start of RED Door Series25
 void specialRoom25(void);
@@ -136,7 +133,6 @@ int main(int argc, char *argv[])
 			case 8:
 			{
 				puts("room8");
-				loadRoom8();
 				break;
 			}
 			case 9:
@@ -634,43 +630,6 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-
-void loadRoom8(void) 
-{
-  int maxChoices = 5; 
-  int choicesMade = 0;
-  
-  char* actions[] = {
-    "A book with a shimmering cover catches your eye. Open it?\n(1. Yes, 2. No)",
-    "You notice a dusty tome emitting a faint glow. Approach it? \n(1. Approach, 2. Ignore)",
-    "A talking book offers you information but demands a riddle in return. Accept? \n(1. Accept, 2. Decline)",
-    "A mysterious book whispers your name. Will you listen? \n(1. Listen, 2. Walk away)",
-    "You find a magical pop-up book. Open it to reveal a hidden world. \n(1. Open, 2. Keep closed)"
-};
-
-      while (choicesMade < maxChoices) {
-          int actionIndex = rand() % 5;
-          printf("You find yourself in an enchanted library. What would you like to do?\n");
-          printf("%s\n", actions[actionIndex]);
-
-          int userChoice;
-          printf("Enter your choice: ");
-          scanf("%d", &userChoice);
-
-          printf("You chose: %d\n", userChoice);
-
-          choicesMade++;
-
-          printf("Do you want to continue exploring the library?\n(1. Yes, 2. No): ");
-          scanf("%d", &userChoice);
-
-          if (userChoice != 1) {
-              break; 
-          }
-      }
-      printf("Teleporting you back to the flooded room...\n");
-  }
-
  //Method userChoice_door15()
 void userChoice_door15(void){
 	int options;
@@ -765,6 +724,7 @@ int car(int num)
 {
 	printf("And you won a Chevy Stingray!\n");
 }
+
 
 
 int hpUpdate(int hp, int update)
