@@ -351,6 +351,10 @@ int room46(char name[]){//Coded by ctalebi
      * array,                                   //ask if editing the original name counts?
      * RNG                                      //
      * pull request before end of last class    //done?
+     * Personal to do's *********************************************
+     * Rabbit door
+     * snake door
+     * Shark door
      * */
     //variables
     int choice = -1;
