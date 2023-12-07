@@ -1,5 +1,5 @@
 //contributors
-//gpoppe room 55
+//Christopher Martinez room 28
 //ctalebi 46
 
 #include <stdlib.h>
@@ -9,6 +9,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+ 
+//Prototypes
+void myRoom28(void);
+void fightSkeletons(void);
+void runToSwitch(void);
 
 int main(int argc, char *argv[])
 {
@@ -170,6 +175,7 @@ int main(int argc, char *argv[])
 			case 28:
 			{
 				puts("room28");
+				myRoom28();
 				break;
 			}
 
@@ -323,9 +329,43 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
+//Function defenitions
+void myRoom28(){
+	puts("You have entered a dark room and the door seals behind you.");
+	puts("You notice there is a lever on the far side of the room. ");
+	puts("The enterance behind you has sealed and your visibility is   ");
+	puts("Out of nowhere ancient skeletons start to reanimate from the ground. ");
+	puts("Your choices are to:");
+	puts("Choice 1: Try to run outrun skeletons to the lever");
+	puts("Choice 2: Fight the Skeletons");
+	puts("Choice 3: Try to pry the door open");
+	
+	int userChoice;
+	scanf("%d" , &userChoice);
+	switch (userChoice){
+		case 1:
+		      runToSwitch();
+		      break;		      
+		case 2:
+		      fightSkeletons();
+		      break;
+		case 3:
+			puts("You tried to pry open the door. It did not budge. The skeletons attacked while you had you back towards them. You were able to escape but are very injured and lost all your items.");
+			break;
 
+		default: 
+		puts("Choice Invalid. Please enter a choice between 1 - 3");
+	}
+}
 
+void fightSkeletons(){
+	puts("You chose to fight the skeletons.");
+	int myRandomNumber = rand() % 10
 
+}
+void runToSwitch(){
+	puts("You chose to outrun the skeletons.");
+}
 
 
 
