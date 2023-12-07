@@ -6,7 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
-
+//diana lopez room 26
 
 
 #include <stdlib.h>
@@ -34,6 +34,15 @@ void containmentSector25(void);
 bool guessGame25(void);
 void FinaleAstralPlane25(void);
 //end of Aether Door Series
+
+
+//room 26
+void initializeGame(void);
+void startAdventure(void);
+void exploreRoom(void);
+void fightWitch(void);
+void openSuitCase(void);
+void endGame(void);
 
 
 //declare prototype
@@ -92,6 +101,11 @@ int main(int argc, char *argv[])
         	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
         	puts("What door do you choose?");
         	scanf("%d",&choice);
+
+	
+	}
+}	
+
 
 		switch(choice)
 		{
@@ -361,8 +375,71 @@ int main(int argc, char *argv[])
 			case 26:
 			{
 				puts("room26");
-				break;
-			}
+				void initializeGame(void) {
+                          	printf("Welcome to my adventure game");
+                            	printf("\n");
+				printf("you enter a dark room with a witch lurking in the darkness");
+   	                        printf("\n");
+}
+
+                             void startAdventure(void) {
+                             printf("1.Explore the room");
+                             printf("\n");
+                             printf("2.Leave the room");
+                             printf("\n");
+                             printf("Enter your choice: ");
+
+                              int choice;
+                             scanf("%d", &choice);
+
+			     switch(choice) 
+			     {
+                             case 1:
+                             exploreRoom();
+                             break;
+                             case 2:
+                             endGame();
+                             break;
+                             default:
+                             printf("Try again.");
+                             startAdventure();
+                             break;
+   }
+}
+
+                         void exploreRoom(void) {
+			 printf("You start exploring the room and find a suitcase. What will you do?");
+                   	 printf("\n");
+                   	 printf("1. Open the suitcase");
+                   	printf("\n");
+                   	printf("2. Fight the witch");
+                   	printf("\n");
+                   	printf("3. Go back");
+                   	printf("\n");
+                   	printf("Enter your choice: ");
+
+                   	int choice;
+                  	scanf("%d", &choice);
+
+			switch(choice) 
+			{
+                  	case 1:
+                	openSuitCase();
+                 	break;
+                 	case 2:
+                	fightWitch();
+                	break;
+                	case 3:
+               	startAdventure();
+                	break;
+               		 default:
+                	printf("Try again.");
+               		 exploreRoom();
+                	 break;
+  }
+}
+
+		
 			case 27:
 			{
 				puts("room27"); 
@@ -1732,4 +1809,48 @@ void displayGameOver()
     {
         printf("You defeated the goblin! Congratulations!\n");
     }
+}
+
+// room 26
+
+void fightWitch(void) {
+   printf("You find a witch hiding in the dark room!");
+   printf("\n");
+   printf("The fight begins");
+   printf("\n");
+   printf("You killed the witch, what is your next move?");
+   printf("\n");
+   printf("1. Open the case");
+   printf("\n");
+   printf("2. Go back");
+   printf("\n");
+   printf("Enter your choice: ");
+
+   int choice;
+   scanf("%d", &choice);
+
+   switch(choice) 
+   {
+       case 1:
+           openSuitCase();
+           break;
+       case 2:
+           exploreRoom();
+           break;
+       default:
+           printf("Try again.");
+           fightWitch();
+           break;
+   }
+}
+
+void openSuitCase(void) {
+   printf("You open the case and find money!");
+   printf("\n");
+   printf("Winner winner chicken dinner!");
+   endGame();
+}
+
+void endGame(void) {
+   printf("\nThank you for playing my Adventure Game!");
 }
