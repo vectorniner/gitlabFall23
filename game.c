@@ -1,5 +1,5 @@
 //contributors
-//Christopher Martinez room 28
+//Christopher Martinez Room 28
 //ctalebi 46
 
 #include <stdlib.h>
@@ -11,9 +11,9 @@
 #include <unistd.h>
  
 //Prototypes
-void myRoom28(void);
-void fightSkeletons(void);
-void runToSwitch(void);
+void myRoom_28(void);
+void fightSkeleton_R28(void);
+void runToSwitch_R28(void);
 
 int main(int argc, char *argv[])
 {
@@ -175,7 +175,7 @@ int main(int argc, char *argv[])
 			case 28:
 			{
 				puts("room28");
-				myRoom28();
+				myRoom_28();
 				break;
 			}
 
@@ -330,27 +330,36 @@ int main(int argc, char *argv[])
 }
 
 //Function defenitions
-void myRoom28(){
+void myRoom_28(){
 	puts("You have entered a dark room and the door seals behind you.");
 	puts("You notice there is a lever on the far side of the room. ");
-	puts("The enterance behind you has sealed and your visibility is   ");
-	puts("Out of nowhere ancient skeletons start to reanimate from the ground. ");
+	puts("The enterance behind you has sealed and visibility is very minimal  ");
+	puts("Out of nowhere a giant ancient skeleton starts to reanimate from the ground. ");
 	puts("Your choices are to:");
-	puts("Choice 1: Try to run outrun skeletons to the lever");
-	puts("Choice 2: Fight the Skeletons");
+	puts("Choice 1: Try to run outrun skeleton to the lever");
+	puts("Choice 2: Fight the Skeleton");
 	puts("Choice 3: Try to pry the door open");
-	
+	puts("Choice 4: Hide from the skeleton");
+	puts("Choice 5: Try to talk to the skeleton");
+	puts("");	
 	int userChoice;
 	scanf("%d" , &userChoice);
 	switch (userChoice){
 		case 1:
-		      runToSwitch();
+		      runToSwitch_R28();
 		      break;		      
 		case 2:
-		      fightSkeletons();
+		      fightSkeleton_R28();
 		      break;
 		case 3:
-			puts("You tried to pry open the door. It did not budge. The skeletons attacked while you had you back towards them. You were able to escape but are very injured and lost all your items.");
+		      printf("You tried to pry open the door. It did not budge. The skeleton attacked while you had you back towards them. He takes all your items and kicks the door open and chucks you into the hallway. He slams the door shut behind you. You were able to escape but are very injured and lost all your items.\n\n");
+			break;
+		case 4:
+			printf("You hid from the skeleton in a dard corner of the room. He was unable to find you and went back to being dormant after 20 minutes. You go and pull the lever and quickly leave the room before the skeleton is able to notice you were ever there. \n\n");
+			break;
+		case 5:
+			printf("The skeleton fully animates infront of you. You try and talk to him but he obvoiusly can't speak english. Now your forced to fight him. \n\n");
+			fightSkeleton_R28();
 			break;
 
 		default: 
@@ -358,13 +367,109 @@ void myRoom28(){
 	}
 }
 
-void fightSkeletons(){
-	puts("You chose to fight the skeletons.");
-	int myRandomNumber = rand() % 10
+void fightSkeleton_R28(){
+	puts("You and the giant skeleton enter a battle.");
+	
+	int action = 1;
+	int hp[] = {9, 25}; // player and enemy health pool
+	int rng;
 
+	while ( hp[0] > 0 & hp[1] > 0){
+	printf("\n\nYour hp is %d and The skeletons hp is %d. \n",hp[0], hp[1]);
+	puts("Choose and action: 1-Heal( 1/3 odds to heal 6hp)   2-Attack(3/4 odds to deal 5 damage to the skeleton)   3-Run(1/5 chance to succeed)");
+	scanf("%d", &action);
+	while (action < 0 || action > 3){	
+	puts("invalid input");
+	puts("Choose and action: 1-Heal( 1/3 odds to heal 6hp)   2-Attack(3/4 odds to deal 5 damage to the skeleton)   3-Run(1/5 chance to succeed)");
+	scanf("%d", &action);
+	}
+	
+	if (action == 1) {
+	puts("Heal chosen");
+	rng = rand() % 3;
+		if (rng == 0){
+		hp[0] = hp[0] + 6;
+		printf("Heal successful, your health is now at %d\n", hp[0]);
+		}
+		else{
+		puts("Heal has failed.");
+
+		}
+
+
+	}
+
+	if (action == 2) {
+	rng = rand() % 4;
+		if (rng == 0){
+		puts("Your attack has failed");
+			}
+
+		else{
+		hp[1] = hp[1] - 5;
+		printf("The attack is successful. Skeleton's hp is now at %d\n", hp[1]);
+			
+		}
+	}
+
+	if (action == 3){
+	puts("You chose to run");
+	rng = rand() % 5;
+	
+		if (rng == 0){
+		puts("You have ran away unscathed. The door shuts behind you and you kept all your items.\n\n");
+		break;
+		}
+		else{
+		puts("You were able to barely make it out of the room. You droppeed all your items in a panic to get the door open.. \n\n");
+		break;
+		}
+
+		}
+	//Skeleton attacks
+	
+	rng = rand() % 2;
+	if (rng == 0){
+	puts("The skeleton attacks but you evaded");
+	}
+	else{
+	hp[0] = hp[0] - 3;
+	printf("The skeleton attacks you with his hammer. You health is lowered to %d \n",hp[0]);
+	}
+
+	}
+	if (action !=3 ){
+	if (hp[0] > 0) {	
+	puts("Congratulations, you have defeated the giant skeleton and where able to search the room for loot.");
+	printf("After rummaging through everything you pull the lever and exit back to the dark hallway. :D  \n\n");
+	}
+
+	else{
+	printf("The skeleton has bested you. Luckily it just ransacked you for all you had and did not finish you off. He throws you back into the dark hallway and shuts the door behind you.  :p  \n\n");
+	}
+	
+	
+	}
+
+	
 }
-void runToSwitch(){
-	puts("You chose to outrun the skeletons.");
+
+void runToSwitch_R28(){
+	printf("You chose to outrun the skeleton.\n You make it to the switch before the skeleton is fully formed and are able to pull it.\n You turn around and the door to the hallway reopens but a Giant skeleton Stands in your way.\n\n Your left with the choice to: [1] go under the skeleton  or [2] try to run around him.\n");
+	int option;
+	scanf("%d", &option);
+	while (option > 2 && option < 0){
+	printf("Invalid input. Enter [1] to go under the skeleton or [2] to run around.\n");
+	scanf("%d", &option);
+	}
+	if (option == 1){
+	printf("You choose to go under the skeleton. He is unable to grab you and falls forwards onto his stomache. You exit back into the hallway unscathed but leave with no loot. :p\n\n");
+	}
+	else{
+	printf("You choose to go around the skeleton. He swings and knocks you to the ground. He then grabs you and takes all items that you have in your inventory. He then lobs you like a baseball into the hallway and the door shuts behind you.  :p \n\n");
+	}
+
+
 }
 
 
