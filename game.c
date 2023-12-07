@@ -6,7 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
-
+//Sai Teja Aratikatla Room#7
 
 
 #include <stdlib.h>
@@ -72,6 +72,31 @@ void npcTurn();
 void displayGameOver();
 int hpUpdate(int hp, int update);
 
+// Function prototype for the new puzzle room
+void puzzleRoom();
+
+// Definition of the new puzzle room function
+void puzzleRoom() {
+    int userGuess, correctNumber;
+    correctNumber = rand() % 10 + 1; // Random number between 1 and 10
+
+    printf("\nWelcome to the Puzzle Room!\n");
+    printf("Guess the correct number between 1 and 10 to win.\n");
+
+    for (int attempts = 0; attempts < 5; attempts++) {
+        printf("Enter your guess (Attempt %d of 5): ", attempts + 1);
+        scanf("%d", &userGuess);
+
+        if (userGuess == correctNumber) {
+            printf("Congratulations! You guessed the correct number.\n");
+            return;
+        } else {
+            printf("Wrong guess. %d attempts remaining.\n", 4 - attempts);
+        }
+    }
+
+    printf("You failed to guess the number. The correct number was %d.\n", correctNumber);
+}
 
 int main(int argc, char *argv[])
 {
@@ -128,6 +153,7 @@ int main(int argc, char *argv[])
 			case 7:
 			{
 				puts("room7");
+                puzzleRoom();
 				break;
 			}
 			case 8:
@@ -1733,3 +1759,4 @@ void displayGameOver()
         printf("You defeated the goblin! Congratulations!\n");
     }
 }
+
