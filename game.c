@@ -210,7 +210,7 @@ int main(int argc, char *argv[])
 				if (pineapples == 21) {
 				    puts("whew, that is great to hear, almost thought you were going to put pineapples on your pizza...");
 				    printf("Anway, I'd highly recommend getting the %s pizza, that way you can customize it. I'm going for the %s pizza\n", pizzaoptions[2], pizzaoptions[1]);
-				    puts("Great work pal! That marks the end of the day!\n");
+				    puts("Great work! That marks the end of the day!\n");
 				    break;
 				}
 
