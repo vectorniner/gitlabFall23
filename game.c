@@ -6,7 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
-
+//Haylee Allen Room #4
 
 
 #include <stdlib.h>
@@ -71,7 +71,7 @@ int guard(int guardHealth);
 void npcTurn();
 void displayGameOver();
 int hpUpdate(int hp, int update);
-
+float speedofHonda(float hnd, float tme);
 
 int main(int argc, char *argv[])
 {
@@ -113,6 +113,109 @@ int main(int argc, char *argv[])
 			case 4:
 			{
 				puts("room4");
+				float hnd = 10;
+				float tme = 2.5;
+				float totalTmeSpeed = speedofHonda(hnd, tme);
+				int chooseVehicle;
+				int chooseTactic;
+				int choosePancakes;
+				int pineapples;
+				int bluberries = 0;
+				char* pizzaoptions[3];
+				pizzaoptions[0] = "pepperoni";
+				pizzaoptions[1] = "chili verde";
+				pizzaoptions[2] = "build-your-own";
+
+				puts("Welcome aboard cadet! You are about to embark on a totally normal, super important mission... aht aht ask questions later!");
+				puts("No time to waste, We just got a call from HQ, we need to head down to Apple Pie Avenue, something big is happening!");
+				puts("We gotta go quick! How are we going to get there? Enter 1 for the Tank or 2 for the Honda.\n");
+				scanf("%d", &chooseVehicle);
+
+				while ((chooseVehicle != 1) && (chooseVehicle != 2)) {
+				    puts("HEY! Time is of the essence here, let's try this again. Enter 1 to choose the Tank or 2 to choose the Honda?!\n");
+				    scanf("%d", &chooseVehicle);
+				}
+
+				if (chooseVehicle == 1) {
+				    puts("A tank... really???? It's going to take foreverrr to get there. Oh well, LET'S GO!");
+				    puts("After a grueling 2 hour drive, we made it! And...there's an Apple Pie monster throwing *gasp* cherry pies at the whole block!");
+				    puts("The horror, I mean cherry pies, that's just terrible. Who even eats cherry pie??");
+				    puts("Welp we can do two things, we can fight or go get pizza. Enter 5 to Fight or 10 to go get Pizza?\n");
+				    scanf("%d", &chooseTactic);
+				}
+
+				if (chooseVehicle == 2) {
+				    printf("Well it took a total of %.2f minutes to get here, and I see nothing. So let's call it a day. Good work!\n", totalTmeSpeed);
+				    break;
+				}
+
+				while ((chooseTactic != 5) && (chooseTactic != 10)) {
+				    puts("The choice is simple, try AGAIN! Enter 5 to Fight or 10 for the Pizza...\n");
+				    scanf("%d", &chooseTactic);
+				}
+
+				while (chooseTactic == 5) {
+				    puts("oh, so we're actually going to fight an Apple Pie Monster?? If you say so.");
+				    puts("Well, we are in a tank so might as well use it. With the power of this Grade A Military Vehicle we'll save the town from the apple pie....");
+				    printf("After a total of %d shots, the apple pie is cooked!\n", rand());
+				    puts("Yay! We totally saved the day, okay, now it's time to celebrate!");
+				    puts("I'm thinking Pancakes, so we're going to head over to Pip's Pancakes, best pancakes in town!");
+				    puts("Okay, I'm going for the Chocolate Chip Pancakes, are you going for the the #2 Buttermilk Pancakes or the #12 Blueberry Pancakes?\n");
+				    scanf("%d", &choosePancakes);
+
+				    while ((choosePancakes != 2) && (choosePancakes != 12)) {
+				    puts("I'm starvinnng, order quick! Enter 2 for the Buttermilk or 12 for the Blueberry\n");
+				    scanf("%d", &choosePancakes);
+				}
+
+				if (choosePancakes == 2) {
+				    puts("Great choice, can't go wrong with the classic stack of Buttermilk Pancakes! Cheers to us!");
+				    puts("And that's how we saved the town from the APPLE PIE MONSTER... who happened to be throwing cherry pies...");
+				    puts("THE END!\n");
+				    break;
+				}
+
+				if (choosePancakes == 12) {
+				    do {
+				        printf("Bluberries? Blueberries?? BLUEBERRIES???\n");
+				        bluberries++;
+				    }
+
+				    while (bluberries < 4);
+
+				    puts("Sorry, I thought I heard you say blueberry pancakes...oh you actually did");
+				    puts("Oh my, the horror...well we saved the day so I'll let it slide...for now.");
+				    puts("THE END\n");
+				    break;
+				}
+
+				}
+
+				while (chooseTactic == 10) {
+				    puts("I personally think Pizza is a GREAT choice, I mean its a pie monster, I'm sure the sun will melt it.");
+				    puts("We can go to Pete's Pizzaria, best pizza in town! Now for the most important question.");
+				    puts("Are you going to get pineapples on your pizza? Enter 7 for yes or 21 for no");
+				    scanf("%d", &pineapples);
+
+				    while ((pineapples != 7) && (pineapples != 21)) {
+				    puts("No wrong answers...maybe... Enter 7 for yes to the pineapples, of 21 for no to the pineapples\n");
+				    scanf("%d", &pineapples);
+				}
+
+				if (pineapples == 7) {
+				    puts("..................no comment\n");
+				    break;
+				}
+
+				if (pineapples == 21) {
+				    puts("whew, that is great to hear, almost thought you were going to put pineapples on your pizza...");
+				    printf("Anway, I'd highly recommend getting the %s pizza, that way you can customize it. I'm going for the %s pizza\n", pizzaoptions[2], pizzaoptions[1]);
+				    puts("Great work pal! That marks the end of the day!\n");
+				    break;
+				}
+
+				}
+
 				break;
 			}
 			case 5:
@@ -628,6 +731,12 @@ int main(int argc, char *argv[])
 	}
 	puts("Game Over");
 	return EXIT_SUCCESS;
+}
+
+//Door #4 Function
+float speedofHonda(float hnd, float tme)
+{
+    return hnd * tme;
 }
 
  //Method userChoice_door15()
