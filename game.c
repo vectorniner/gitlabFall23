@@ -39,6 +39,7 @@ void FinaleAstralPlane25(void);
 //declare prototype
 int car(int num);
 
+//Prototype Room 15
 void userChoice_door15(void);
 
 int room37ShowOptions(int chosen);
@@ -167,7 +168,18 @@ int main(int argc, char *argv[])
 			}
 			case 15:
 			{
-				puts("room15");
+				//Author: Omar Garcia
+				//Date: 11/30/23
+				//Purpose: For Final Project
+				
+				puts("room 15");
+				printf("This room is filled with other doors!\n");
+			   	printf("As you enter the room you gain arcane power.\n");
+				printf("You gain power you've never felt before.\n");
+				printf("You are now ready to face what comes next!\n");
+				printf("Choose a door 1-5 or 9 to return!\n");
+
+				userChoice_door15();
 				break;
 			}
 			case 16:
@@ -664,7 +676,8 @@ void userChoice_door15(void){
                     
 		    //generate random door 
 		    int randomDoor2 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor2);
                         break;
@@ -674,7 +687,8 @@ void userChoice_door15(void){
                    
 		    //generate random door
 		    int randomDoor3 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor3);
 		 	break;
@@ -684,7 +698,8 @@ void userChoice_door15(void){
 
 	            //random door
 		    int randomDoor4 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor4);
 			break;
@@ -694,20 +709,21 @@ void userChoice_door15(void){
 
 		    //random door
 		    int randomDoor5 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
                     printf("You find yourself back in room 15\n");
 		    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor5);
 			break;
                 case 9:
-                    printf("Exiting back to room 15\n");
+                    printf("Exiting back to the first room you found yourself in!\n");
                         break;
                  default:
                         printf("Wrong choice try again!\n");
 
-                                   }
-                                  }//end do loop
-                                   while(options !=9);
-				}
+          }
+	}//end do loop
+                while(options !=9);
+       }//end userChoice_door15 method
 
 int room37ShowOptions(int chosen) {
 	int choice = 0;
