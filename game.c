@@ -53,6 +53,7 @@ int bagCounts[BAG_SIZE] = {5, 5, 5, 5, 5}; // Initial counts for each item in th
 int userHealth = 100; // Initial health of the user
 int npcHealth = 100;  // Initial health of the computer NPC
 
+int chosenBoons[3]; 
 // Function prototypes
 void printMenu();
 int getUserChoice();
@@ -72,6 +73,10 @@ void npcTurn();
 void displayGameOver();
 int hpUpdate(int hp, int update);
 
+void choose_gods(int *choices, int maxChoices);
+void apply_boons(int *choices, int numChoices);
+void random_event(int godChoice);
+void room47_conclusion();
 
 int main(int argc, char *argv[])
 {
@@ -572,6 +577,10 @@ int main(int argc, char *argv[])
 			case 47:
 			{
 				puts("room47");
+				puts("You enter Room 47 and find yourself before an altar dedicated to Greek gods. You may choose up to 3 boons.\n");
+		                choose_gods(chosenBoons, 3);
+		                apply_boons(chosenBoons, 3);
+		                room47_conclusion();
 				break;
 			}
 			case 48:
@@ -1732,4 +1741,47 @@ void displayGameOver()
     {
         printf("You defeated the goblin! Congratulations!\n");
     }
+}
+
+void choose_gods(int *choices, int maxChoices) {
+    printf("Choose your gods for their boons:\n1. Zeus\n2. Poseidon\n3. Athena\n4. Ares\n5. Apollo\n");
+
+    int choiceCount = 0;
+
+    while(choiceCount < maxChoices) {
+        printf("Choice %d: ", choiceCount + 1);
+        scanf("%d", &choices[choiceCount]);
+
+        if(choices[choiceCount] < 1 || choices[choiceCount] > 5) {
+            printf("Invalid choice. Please select a number between 1 and 5.\n");
+            continue; 
+        }
+
+        choiceCount++; 
+    }
+}
+
+void apply_boons(int *choices, int numChoices) {
+    for(int i = 0; i < numChoices; i++) {
+        if(choices[i] >=1 && choices[i] <= 5){
+            random_event(choices[i]);
+        } 
+    }
+}
+
+void random_event(int godChoice) {
+    const char *gods[6] = {"none", "Zeus", "Poseidon", "Athena", "Ares", "Hermes"};
+    printf("You received a boon from %s.\n", gods[godChoice]);
+
+    switch(godChoice) {
+        case 1: printf("All your damage causes chain lightening.\n"); break;
+        case 2: printf("Your attacks knockback enemies with tidal effect.\n"); break;
+        case 3: printf("A holy sheild will protect you.\n");break;
+        case 4: printf("Your damaged has spiked with a blade rift.\n");break;
+        case 5: printf("You can now dash twice with the wind of Hermes.\n");break;
+    }
+}
+
+void room47_conclusion() {
+    printf("Empowered by the gods' boons, you feel ready for new adventures. As you exit Room 47 ...\n");
 }
