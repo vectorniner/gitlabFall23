@@ -6,6 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
+//Zahra Iranmanesh room 17
 
 
 
@@ -16,6 +17,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+//Start of Room 17
+void showDish(int choice)
+void orderDish(int choice)
+void cancelOrder(void)
+//End of room 17
+
 
 //Start of RED Door Series25
 void specialRoom25(void);
@@ -178,6 +186,39 @@ int main(int argc, char *argv[])
 			case 17:
 			{
 				puts("room17");
+				puts("Lets have a little break form the game. In this room you can order five different yumy Persian food. You won;t know what you are ordering untill you choose the box. After the box has choosen you will be asked if you want to order or not. Since the food's name are spelled in Farsi, you wont know exactly what is your food made of. Once you order and confirme then you will see the ingredients. Ready to order!!! ");
+
+				int choice, box;
+ 				int exitChoice = 99;
+
+    				printf("Choose a box from 1 to 5: ");
+    				scanf("%d", &box);
+
+    			while(1) {
+        		if (box == exitChoice) {
+           			printf("Thank you for visiting the room. Have fun visiting other rooms!!\n");
+            			break;
+        		} else if (box >= 1 && box <= 5) {
+            showDish(box - 1);
+
+            		printf("Do you want to order this dish? Enter 1 for Yes, Enter 0 for no. ");
+            		scanf("%d", &choice);
+
+            		if (choice == 1) {
+                	orderDish(box - 1);
+            		} else {
+                		cancelOrder();
+            }
+        		} else {
+            		printf("Invalid choice. Please try again.\n");
+        }	
+
+        printf("\nChoose another box from 1 to 5 or enter 99 to leave: ");
+        scanf("%d", &box);
+    }
+
+    				return 0;	
+			}		
 				break;
 			}
 			case 18:
@@ -1732,4 +1773,44 @@ void displayGameOver()
     {
         printf("You defeated the goblin! Congratulations!\n");
     }
+}
+
+// Show the chosen dish
+void showDish(int choice) {
+    if (choice >= 0 && choice < 5) {
+        printf("Your order is %s.\n", dishes[choice]);
+    } else {
+        printf("Invalid choice.\n");
+    }
+}
+
+// Order the dish and show ingredients
+void orderDish(int choice) {
+    printf("Your order has been placed. The ingredients are:\n");
+    switch(choice) {
+        case 0:
+            printf("Herbs, kidney beans, lamb, and dried lime.\n");
+            break;
+        case 1:
+            printf("lamb, chickpeas, white beans, onion, potatoes, tomatoes, turmeric, and dried lime.\n");
+            break;
+        case 2:
+            printf("Rice, yogurt, saffron, and chicken.\n");
+            break;
+        case 3:
+            printf("Persian noodle, beans and lentils, herbs, onions, garlic, turmeric, chicken broth.\n");
+            break;
+        case 4:
+            printf("Barberries, saffron, and rice.\n");
+            break;
+        default:
+            printf("Invalid choice.\n");
+    }
+}
+
+// Cancel the order
+void cancelOrder(void) {
+    printf("Your order has been cancelled.\n");
+
+}
 }
