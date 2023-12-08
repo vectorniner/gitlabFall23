@@ -14,10 +14,12 @@
 //Jonathan Carpena room9
 
 
+
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
 
+//Jung Min Cho room 11
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -288,9 +290,162 @@ int main(int argc, char *argv[])
 			}
 			case 11:
 			{
-				puts("room11");
-				break;
-			}
+                char riddle[7] = { 'n','o','t','h','i','n','g', '\0' };
+                char guess[7];
+                int math = 8;
+                char* ptr;
+                ptr = riddle;
+
+
+
+                while (choice != 99)
+                {
+                    puts("You entered Room 11");
+                    puts("you are now entering The Corrida Colosseum, Where you can see the Watcher telling you to step into the middle.");
+                    puts("You can see three shadows walking to you, the Watcher askes you to choose one of the to fight them.");
+                    puts(" What will you do?");
+                    puts("1. Fight one of the Shadows");
+                    puts("2. Try and talk to the Watcher");
+                    puts("3. Search the Arena for clues");
+                    puts("4. Try and run for your life")
+                        scanf("%d", &choice);
+
+
+                    switch (choice)
+                    {
+                    case 1:
+                        puts("You chose to fight one of the shadows. Now chose with whom you will fight");
+                        puts("1. shadow #1");
+                        puts("2. shadow #2");
+                        puts("3. shadow #3");
+                        scanf("%d", &choice);
+
+                        if (choice == 1)
+                        {
+                            puts(" You Chose Shadow 1, Shadow 1 is Bill Gates");
+                            puts("You are in front of Gates stonished that you forgot ur fighting him.");
+                            puts("Gates: Instead of fighting with your hands lets fight with our brains. You need to solve this problem to beat me.");
+                            problem1(math);
+                            return EXIT_SUCCESS;
+                            break;
+
+                        }
+
+                        if (choice == 2)
+                        {
+                            puts(" You Chose to fight Shadow #2.");
+                            puts(" Shadow #2 is Reacher.");
+                            puts(" You: Who?? ");
+                            puts(" Now you have done it. It's your time to try and fight the most powerful major in the US Army's military police. You are thinking 'how can i defeat this 6 foot 4 giant?'");
+                            puts(" A mysterious Person appers and tosses you a flask and tells you to drink it......");
+                            puts("Will you drink it????");
+                            puts(".......");
+                            puts(".....");
+                            puts("...");
+                            puts("It was water it didnt do much for you.....  ");
+                            puts("You died");
+                            return EXIT_SUCCESS;
+                            break;
+                        }
+
+                        if (choice == 3)
+                        {
+                            puts("You chose to fight Shadow #3");
+                            puts("Shadow #3 is Yoda.");
+                            puts(" Star wars Theme starts to play in the background");
+                            puts(" before the fight starts Yoda speaks.");
+                            puts("Yoda: In trouble you are, May the force be with you");
+                            puts(" flip a coin we will, to see the force with whom it is.");
+                            flip();
+
+                            if (flip() == 0)
+                            {
+                                puts("Win the game I did, die you will");
+                                return EXIT_SUCCESS;
+                                break;
+                            }
+                            else
+                            {
+                                puts("Lose the game i did, reward you will get now.");
+                                return EXIT_SUCCESS;
+                                break;
+                            }
+
+                            break;
+
+                        }
+
+                        else
+                        {
+                            puts("Please try again");
+
+                            break;
+                        }
+
+
+                    case 2:
+                        puts("You tried to talk to the Watcher");
+                        puts("He only wants entertainment and He tells you that if you solve this riddle you are free to go but if you fail you are dead.");
+                        puts(" Poor people have it. Rich people need it. If you eat it you die. What is it?");
+                        problem2(ptr);
+                        return EXIT_SUCCESS;
+                        break;
+
+
+
+                    case 3:
+                        puts("You begin searching the Arena");
+                        puts("You found 2 chests. What will you choose option 1 or option 2? ");
+                        puts("Choose Chest 1 or Chest 2");
+                        scanf("%d", &choice);
+
+                        if (choice == 1)
+                        {
+                            puts("You found the Mera Mera No Mi fruit. One piece? will you be the next Pirate King?");
+                            puts("You know have D. Ace's abilities. and challenge the Watcher.");
+                            puts("But you fail, and die. ");
+                            return EXIT_SUCCESS;
+                            break;
+                        }
+                        if (choice == 2)
+                        {
+                            puts("Found a Escape rope.");
+                            puts(" You use the item. You are teleported outside and ran as far as you could from the cave to never return....");
+                            return EXIT_SUCCESS;
+                            break;
+                        }
+                        else
+                            puts("please try again");
+
+                        break;
+
+
+                    }
+            case 4:
+                puts("You try to run");
+                puts("You start to run to the arc you came in once inside you lock the doorbehind you,after taking your breath back you notice that there are two alley ways and you dont remember which path you took.");
+                puts("Choose path 1 or path 2");
+                scanf("%d", &choice);
+
+                if (choice == 1)
+                {
+                    puts("You chose poorly and got caught by the guards and they killed you.");
+                    return EXIT_SUCCESS;
+                    break;
+                }
+                if (choice == 2)
+                {
+                    puts("A strange flying light guided you throughout the passage and you are now outside the cave");
+                    puts(" You are outside and ran as far as you could from the cave to never return....");
+                    return EXIT_SUCCESS;
+                    break;
+                }
+                else
+                    puts("please try again");
+
+                }
+
+                break;
 			case 12:
 			{
 				int userInput, guess, randy, randomNum, questionNum, result;
@@ -3324,4 +3479,78 @@ void searchForTheOnePiece(void)
 		} else {
 			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
 		}
+}
+
+void problem1(int math)
+{
+
+    int guess;
+
+
+
+    printf("What is x in this equation? \n");
+
+    printf("7x - 14 = 3x + 46 \n");
+    puts("X is?");
+    scanf("%d", &guess);
+    if (guess == math)
+    {
+        puts("You are correct!");
+        puts("You win the challenge against Gates, now you can ask the Watcher to let you go.");
+
+    }
+
+    else
+    {
+        puts("Your answer was wrong, better luck next time");
+
+    }
+}
+
+void problem2(char* ptr)
+{
+    int size = 30;
+    char prob[size];
+    char guess[size];
+
+
+    strcpy(prob, ptr);
+
+
+    puts("Your Guess is?");
+
+    scanf("%s", guess);
+
+    for (int i = 0; i < 0; i++)
+    {
+        if (isupper(guess[i]))
+        {
+            guess[i] = tolower(guess[i]);
+        }
+    }
+
+
+    if (!strcmp(prob, guess))
+    {
+        puts(" Congratulations you have guessed Correctly");
+
+    }
+    else
+    {
+        puts("Awwwwww You guessed Poorly");
+        puts("As promised Its time to die");
+    }
+
+
+}
+
+
+int flip()
+{
+    int i = rand() % 2;
+
+    if (i == 0)
+        return 0;
+    else
+        return 1;
 }
