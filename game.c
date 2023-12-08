@@ -31,7 +31,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-
+void spookyEncounter();
 void handleRoom50(const char *name);
 
 void myRoomThirtyOne(int num);
@@ -1390,9 +1390,33 @@ int main(int argc, char *argv[])
 			}
 			case 49:
 			{
-				puts("room49");
-				break;
+				puts("Entering room49");
+				int uchoice=0;
+				printf("\nwelcome to the spooky game!\n");
+				do{
+					printf("\n Make a choice:\n");
+					printf("1. Explore a spooky room\n");
+					printf("2. Go on a mysterious path\n");	
+					printf("3. Investigate a dark alley\n");
+					printf("4. Face a haunted mirror\n");
+					printf("5. Exit the game\n");
+					scanf("%d", &uchoice);
+					switch (uchoice){
+						case 1:	
+						case 2:
+						case 3:
+						case 4:	
+							spookyEncounter();
+							break;
+						case 5:	
+							printf(" Thanks for playing!\n");
+							break;	
+						default:
+							puts("Invalid choice!\n");
+					}
+				} while( uchoice !=5);																						break;
 			}
+			
 			case 50:
 			{
 				int horrorChoice = 0;
@@ -3459,4 +3483,12 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+
+}
+void spookyEncounter(int *mainChoice){
+	char *spookyMessage[]={
+		"A ghostly figure appears sending shivers down your spine!", "Strange whispers surround you, making your heart race", "You feel a cold breeze, even though theres no wind.", "Creepy footsteps echo behind you, but you see no one", "A mysterious shadow following you, filling the air with suspense"};
+	int randomIndex= rand() % 5;
+	printf("\n%s\n", spookyMessage[randomIndex]);
+	*mainChoice=99;
 }
