@@ -12,7 +12,7 @@
 //Haylee Allen Room 4
 //Paolo Santos room 44
 //Jonathan Carpena room9
-
+//Fernando Jimenez room 18
 
 //Priscilla Vera room 50
 
@@ -108,6 +108,8 @@ void separator(void);//P Santos
 
 void printMessage(int result); // Room 12
 
+void monkeyChoice();
+void findingArtifact();
 
 int main(int argc, char *argv[])
 {
@@ -645,6 +647,58 @@ int main(int argc, char *argv[])
 			case 18:
 			{
 				puts("room18");
+				printf("You encounter yourself in an enchanted forest, in search of the ancient dark mystery. You will now have the task of finding the mystery artifact across your journey in the forest. Are you ready? You're on a stroll across the forest and choose a path in which three weapons randomly appear in front of you and you decide to pick one as it may become useful. Which one will you pick?\n");
+
+
+                                char* weaponChoice [] = {"Rock", "Sword", "No weapon"};
+                                int wChoice;
+                                int gemsChoice;
+                                int attackDragonChoice;
+
+                                for(int i = 0; i < 3; ++i){
+                                       printf("%d. %s\n", i + 1, weaponChoice[i]);
+                                }
+                                printf("What weapon do you pick?");
+                                scanf("%d", &wChoice);
+
+                                if(wChoice == 1){
+                                        printf("You now have a rock as your weapon and you store it in your pocket. ");
+                                }else if(wChoice == 2){
+                                        printf("Good Choice! You now have a sword to defend you! ");
+                                }else if(wChoice == 3){
+                                        printf("Good luck on your journey hopefully you survive. ");
+                                }else{
+                                        printf("Try again and enter a valid input or enter 99 to return to main. \n");
+                                        scanf("%d", &wChoice);
+                                }
+                                puts("Okay now that you have your weapon, you encounter a monkey who wants to accompany you and help you on your quest.\n");
+                                monkeyChoice();
+
+                                puts("You're on a stroll across the forest and choose a path which leads you to encountering a mythical three headed dragon. Using your previously selected weapon try to slay the dragon or you do wish to retreat. 1 for Yes, 0 for No");
+                                scanf("%d", &attackDragonChoice);
+                                while(attackDragonChoice != 0){
+                                        if(wChoice == 1){
+                                                printf("You had selected rock as your weapon and you throw it and shockngly stuns the dragon for a second but the dragon has attacked you and you are now seriously injured but will survive enough to continue. \n");
+                                        }else if(wChoice == 2){
+                                                printf("Your sword came in very handy as you have defeated the dragon and suffered no injuries! You may now continue your journey. \n");
+                                        }else if(wChoice == 3){
+                                                printf("Unfortunately as you selected no weapon, you did not survive from the dragon.\n");
+                                                break;
+                                        }
+                                        break;
+                                }
+
+                                printf("You just found 10000 gems laying on the ground next to the dragon and some first aid if needed! Do you pick them up and take them? 1 for Yes, 0 for No\n");
+                                scanf("%d", &gemsChoice);
+                                if(gemsChoice == 1){
+                                        printf("You now have 10000 gems!\n");
+                                }else{
+                                        printf("You did not pick up any gems or necessary first aid.\n");
+                                }
+                                printf("The monkey has now led you to a surrounding where the artifact is located at but isn't telling you exactly where but gives you three selections of where it could possibly be. Be very careful selecting your option.\n");
+                                findingArtifact();
+
+                                puts("\nYou have now finished your journey well played!");
 				break;
 			}
 			case 19:
@@ -3324,4 +3378,38 @@ void searchForTheOnePiece(void)
 		} else {
 			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
 		}
+}
+void monkeyChoice(void){
+        int answer;
+        printf("Will you let the monkey accompany you? 1 for Yes, 0 for No\n");
+        scanf("%d", &answer);
+
+        if (answer== 1){
+                printf("This monkey is now your friend and will give you hints along your journey.\n");
+        }else{
+                printf("You chose not to befriend the monkey, and your journey may become more challenging as you as you now proceed.\n");
+        }
+
+}
+void findingArtifact(void){
+        puts("Your three options are: ");
+        char* hiddenSpots [] = {"Under the whispering tree", "Inside a mysterious house", "Inside a moonlit pond"};
+        int chosenSpot;
+
+        for(int i = 0; i < 3; ++i){
+                printf("%d. %s\n", i + 1, hiddenSpots[i]);
+        }
+        printf("Where will you search for the artifact?\n");
+        scanf("%d", &chosenSpot);
+
+        if(chosenSpot == 1){
+                printf("Thankfully, you have a shovel inside your backpack which will help you try to find the artifact but unfortunately as you dig you find there is nothing here. Bummer. ");
+        }else if(chosenSpot == 2){
+                printf("You now enter the house and search through everything turning the house upside down but no artifact was found. ");
+        }else if(chosenSpot == 3){
+                printf("You end up having to take a short dive with your goggles inside your backpack and at first you seem to find nothing but then you see a glow at the very end and you go look at it and you realize it is the artifact! You have found the artifact!");
+        }else{
+                printf("Input a correct option or 99 to exit.");
+                scanf("%d", &chosenSpot);
+        }
 }
