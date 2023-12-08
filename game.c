@@ -623,6 +623,71 @@ int main(int argc, char *argv[])
 			case 54:
 			{
 				puts("room54");
+				printf("You hastily close the door behind you, water crashing against the door.\n"
+				"A breath of relief escapes from your lips before you notice an eerie silence.\n"
+				"A slow breathy turn reveales a large silhouette, seemingly kneeled down as if paying respect to a fallen king.\n"
+				"The only source of light is a gentle flame, steadily burning in the far corner of the room.\n"
+				"You slowly step to the right, making sure to stay close to the wall and keeping pace with your steady breathes, making your way to the flame.\n"
+				"As you inch closer to the flame, the silence of the room accentuates your breathing, its cadence mimicking that of a trotting horse.\n"
+				"You reach the flame and pause for moment, comtemplating your next choice.\n");
+				int printAndGetSelection() {
+				 printf("Please input a number 1-5 to choose\n"
+				"Choices:\n"
+				"1. Use Bandages\n"
+				"2. Use Rations \n"
+				"3. Attack the silhouette\n"
+				"4. Check your bag\n"
+				"5. Sit down and cry for awhile\n");
+				return  getUserChoice();   
+				}
+				int keepChoosingOrLeave() {
+				    printf("Would you like to keep choosing from the options or leave the room?\n (Choose or Leave)");
+				    char choice[10];
+				    scanf("%s", choice);
+				    if (strcmp(choice,"choose")==0||strcmp(choice,"Choose")==0){
+				        return printAndGetSelection();
+				    }
+				    else if (strcmp(choice,"leave")==0||strcmp(choice,"Leave")==0) {
+				        printf("You leave the room, hoping the hallway is flushed out now.");
+				        return 0;
+				    }
+				}
+				int choice = printAndGetSelection();
+				while(choice !=0 ) {
+				    
+				    switch(choice){
+				        case 1: 
+				            printf("You pull out bandages from your bag\n");
+				            choice = keepChoosingOrLeave();
+				            break;
+				        case 2:
+				            char itemsToUse[5][200] = {"The animal meat was filling.","The concotion whispered \"I hate you\" when opend and tasted foul.","The bread tastes like sand.", "Tastes earthy with a hint of acidity","The fresh berries are a tasty reminder that you need to escape."} ;
+				            printf("You use rations from your limited supply\n What do you decide to eat?\n");
+				            printf("Please input a number 1-5 to choose\n"
+                				"Choices:\n"
+                				"1. Dry animal meat\n"
+                				"2. A concotion from your Mother in Law, who does not like you. \n"
+                				"3. A piece of stale bread that smells of feet\n"
+                				"4. A mushroom you found on the journey to this wretched place\n"
+                				"5. Some berries from your garden\n");
+                			printf("%s", itemsToUse[getUserChoice()]);
+                			choice = keepChoosingOrLeave();
+				            break;
+				        case 3:
+				            printf("Your swing pushed through the silhouette; it disappears into the room, leaving you worried.");
+                			choice = keepChoosingOrLeave();
+				            break;
+				        case 4:
+				            checkBag();
+				            choice = keepChoosingOrLeave();
+				            break;
+				        case 5: 
+				            int randomWaitTime = rand() % 10;
+				            printf("You wait for %d seconds before making another choice.", randomWaitTime);
+				            choice = keepChoosingOrLeave();
+				            break;
+				    }
+				}
 				break;
 			}
 			case 55:
