@@ -9,7 +9,7 @@
 //jaye room 8
 //Edvin Monzon room 31
 //Thisara Perera Room 41
-
+//Hrithik Dayal Singh room 47
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -83,7 +83,11 @@ int room23RanSet (int lowerLimit, int upperLimit);
 int room46(char name[]);//used to execute the bulk of room 46's code
 int inputNumber(void); //used to ensure only integers are allowed and any others are flushed from the input buffer, returns 0 if invalid input
 
-
+int chosenBoons[3];
+void choose_gods(int *choices, int maxChoices);
+void apply_boons(int *choices, int numChoices);
+void random_event(int godChoice);
+void room47_conclusion();
 
 int main(int argc, char *argv[])
 {
@@ -824,6 +828,10 @@ int main(int argc, char *argv[])
 			case 47:
 			{
 				puts("room47");
+				puts("You enter Room 47 and find yourself before an altar dedicated to Greek gods. You may choose up to 3 boons.\n");
+		                choose_gods(chosenBoons, 3);
+		                apply_boons(chosenBoons, 3);
+		                room47_conclusion();
 				break;
 			}
 			case 48:
@@ -2473,4 +2481,55 @@ int giftSel(int c)
                 return -1;
         }
 
+}
+
+void choose_gods(int *choices, int maxChoices) {
+    printf("Choose your gods for their boons:\n1. Zeus\n2. Poseidon\n3. Athena\n4. Ares\n5. Apollo\n");
+
+    int choiceCount = 0;
+
+    while(choiceCount < maxChoices) {
+        printf("Choice %d: ", choiceCount + 1);
+        scanf("%d", &choices[choiceCount]);
+
+        if(choices[choiceCount] < 1 || choices[choiceCount] > 5) {
+            printf("Invalid choice. Please select a number between 1 and 5.\n");
+            continue; 
+        }
+
+        choiceCount++; 
+    }
+}
+
+void apply_boons(int *choices, int numChoices) {
+    for(int i = 0; i < numChoices; i++) {
+        if(choices[i] >=1 && choices[i] <= 5){
+            random_event(choices[i]);
+        } 
+    }
+}
+
+void random_event(int godChoice) {
+    // Seed the random number generator with the current time
+	int x = rand() % 10 + 1;
+
+    const char *gods[6] = {"none", "Zeus", "Poseidon", "Athena", "Ares", "Hermes"};
+    printf("You received a boon from %s.\n", gods[godChoice]);
+
+    switch(x) {
+        case 1: printf("All your damage causes chain lightning.\n"); break;
+        case 2: printf("Your attacks knockback enemies with a tidal effect.\n"); break;
+        case 3: printf("A holy shield will protect you.\n"); break;
+        case 4: printf("Your damage has spiked with a blade rift.\n"); break;
+        case 5: printf("You can now dash twice with the wind of Hermes.\n"); break;
+		case 6: printf("Your dash makes you sturdy and invunerable.\n"); break;
+		case 7: printf("The god punishes you with bleed effect for choosing the wrong path.\n"); break;
+		case 8: printf("You deal more damage but also take a small portion of the damage.\n"); break;
+		case 9: printf("Your dash deals CRITICAL DAMAGE.\n"); break;
+		case 10: printf("This god dislikes you, you don't get any boon.\n"); break;
+    }
+}
+
+void room47_conclusion() {
+    printf("Empowered by the gods' boons, you feel ready for new adventures. As you exit Room 47 ...\n");
 }
