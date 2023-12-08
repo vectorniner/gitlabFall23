@@ -12,6 +12,7 @@
 //Hrithik Dayal Singh room 47
 //Haylee Allen Room 4
 //Paolo Santos room 44
+//Jonathan Carpena room9
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -84,6 +85,9 @@ int room23RanSet (int lowerLimit, int upperLimit);
 float speedofHonda(float hnd, float tme);
 int room46(char name[]);//used to execute the bulk of room 46's code
 int inputNumber(void); //used to ensure only integers are allowed and any others are flushed from the input buffer, returns 0 if invalid input
+void loadRoom9(void); // Room9
+void joinCrew(void); // Room9
+void searchForTheOnePiece(void); // Room9
 
 int chosenBoons[3];
 void choose_gods(int *choices, int maxChoices);
@@ -262,8 +266,10 @@ int main(int argc, char *argv[])
 			}
 			case 9:
 			{
-				puts("room9");
-				break;
+	
+puts("room9");
+loadRoom9();
+break;
 			}
 			case 10:
 			{
@@ -2812,4 +2818,111 @@ void room44(void){
 }
 void separator(void){
         printf("===================================================================================================================================\n");
+}
+
+void loadRoom9() 
+{
+	printf("Welcome to the Grand Line, adventurer! Your quest is to find the legendary treasure, One Piece. Are you ready for the adventure?\n");
+
+	char* weaponOptions[] = {"Devil Fruit", "Enma Sword", "No Weapon"};
+	int weaponChoice;
+	int berryChoice;
+	int faceSeaKingChoice;
+	
+
+	do {
+		for (int i = 0; i < 3; ++i) {
+			printf("%d. %s\n", i + 1, weaponOptions[i]);
+		}
+		printf("Choose your weapon for the journey:\n");
+		scanf("%d", &weaponChoice);
+
+		if (weaponChoice >= 1 && weaponChoice <= 3) {
+			break;
+		} else {
+			printf("Invalid choice. Please enter a number between 1 and 3");
+		}
+	} while(1);
+
+	if(weaponChoice == 1) {
+		printf("You now have a Devil Fruit power!");
+	} else if (weaponChoice == 2) {
+		printf("Can you handle it? You wield the Enma Sword.");
+	} else if (weaponChoice == 3) {
+		printf("May luck be on your side as you go on with no weapons.");
+	}
+
+	printf("\nAlright, now that you have selected your weapon, you encounter a friendly raccoon dog named Chopper who wants to join you on your quest.\n");
+	joinCrew();
+	
+	printf("\nAs you wander through the Grand Line, you come across a ferocious Sea King, With your chosen weapon, attempt to defeat the Sea King or choose to retreat. 1 for Yes, 0 for No\n");
+	scanf("%d", &faceSeaKingChoice);
+
+	while (faceSeaKingChoice != 0) {
+		if (weaponChoice == 1) {
+			printf("You eat your Devil Fruit and find out that you ate the Buffalo Zoan Type fruit. You manage to fight back however, the Sea King did not take much damage. You are seriously injured but will survive enought to continue.\n");
+		} else if (weaponChoice == 2) {
+			printf("You manage to wield the Enma sword despite how much strain it places on your body. You slice the Sea King and suffer no injuries! Your journey continues.\n");
+		} else if (weaponChoice == 3) {
+			printf("You have no weapons. You run as fast you can dodging the Sea King. Fortunately, you survive and continue. \n");
+		}
+		break;
+	}
+
+	printf("\nYou stumble upon a chest of 10,000 Berries next to the Sea King and some medical supplies! Do you pick them up? 1 for Yes, 0 for No\n");
+	scanf("%d", &berryChoice);
+
+	if(berryChoice == 1) {
+		printf("You aquired 10,000 Berries and the medical supplies!\n");
+	} else {
+		printf("You decide to leave the treasure and medical supplies behind.\n");
+	}
+
+	printf("\nChopper has led you to a mysterious location where the One Piece treasure might be hidden. Choose carefully where to search.\n");
+	searchForTheOnePiece();
+
+	printf("\nCongratulations, adventurer! You've completed you journey in the Grand Line. May your tale be sung across the seas!\n");
+}
+
+
+void joinCrew() 
+{
+	int answer;
+	printf("Will you let Chopper join your crew? 1 for Yes, 0 for No\n");
+	scanf("%d", &answer);
+
+	if (answer == 1) {
+		printf("Chopper is now your trusted crewmate and medic. Together, you set sail for the One Piece!\n");
+	} else {
+		printf("You choose not to have Chopper in your crew, but Chopper fights his way to be by your side. You continue with him by your side, but can you trust him?\n");
+	}
+
+}
+
+void searchForTheOnePiece() 
+{
+	puts("You have three options: ");
+	char* possibleLocations[] = {"Laugh Tale", "Alabasta", "Skypiea"};
+
+	int chosenLocation;
+
+	do {
+		for (int i = 0; i < 3; ++i) {
+			printf("%d. %s\n", i + 1, possibleLocations[i]);
+		}
+		printf("Where will you search for the One Piece?\n");
+		scanf("%d", &chosenLocation);
+
+		if (chosenLocation >= 1 && chosenLocation <= 3) {
+			break;
+		}
+	} while (1);
+
+		if (chosenLocation == 1) {
+			printf("Armed with your weapon, you enter the final island of the Grand Line. You discover what the One Piece is. You Laugh.\n");
+		} else if (chosenLocation == 2) {
+			printf("Embracing the desert heat of Alabasta and you discover that there is nothing to be found but sand.\n");
+		} else {
+			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
+		}
 }
