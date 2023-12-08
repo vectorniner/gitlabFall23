@@ -118,6 +118,8 @@ void findingArtifact();
 
 void selection(char *teamOptions[], int option);
 
+// Function prototype for dragon's attack room 6
+void dAttack(int *playerHP);
 
 int main(int argc, char *argv[])
 {
@@ -271,8 +273,64 @@ int main(int argc, char *argv[])
 			}
 			case 6:
 			{
-				puts("room6");
-				break;
+				int hp[2] = {120, 300}; // [0] for player, [1] for dragon
+                int attackChoice;
+                bool dragonDefeated = false;
+
+                puts("====================================================================================================================================================================================\n");
+                puts("\nYou are in a new world and you found yourself in a suit of armor with a magical sword in one hand and a spell book in the other. It seems you are a holy knight.\n");
+                puts("You notice your in a castle and a princess is behind a gate asking for help. But suddenly... A fiery dragon appears and lets out a loud screech.\n");
+                puts("The dragon begins burning down parts of the castle. You must quickly slay the dragon in order to save the princess.");
+                puts("\n====================================================================================================================================================================================\n");
+                
+                // loops until dragon 
+                while (!dragonDefeated && hp[0] > 0) {
+                    puts("1. Strike with sword\n2. Infuse ice magic to sword and strike\n3. Cry\n4. Use Blizzard magic\n5. Run");
+                    scanf("%d", &attackChoice);
+
+                    // player switch case scenario. 
+                    switch(attackChoice) {
+                        case 1:
+                            hp[1] -= 50;
+                            printf("You did 50 damage. The dragon has %d hp left\n", hp[1]);
+                            break;
+                        case 2:
+                            hp[1] -= 150;
+                            printf("Critical hit! You did 150 damage. The dragon has %d hp left\n", hp[1]);
+                            break;
+                        case 3:
+                            printf("Crying is not gonna help! You lose a turn.");
+                            break;
+                        case 4:
+                            hp[1] -= 100;
+                            printf("You cast Blizzard. You did 100 damage. The dragon has %d hp left\n", hp[1]);
+                            break;
+                        case 5:
+                            puts("There's no escape! You lose a turn.");
+                            break;
+                        default:
+                            puts("Invalid choice, try again.");
+                            continue;
+                    }
+
+                    if (hp[1] <= 0) {
+                        puts("You did it, you received a kiss from the princess and you are now able to leave the room.");
+                        dragonDefeated = true;
+                        break;
+                    }
+
+                    dAttack(hp);
+
+                    if (hp[0] <= 0) {
+                        puts("You died, try again (A to try again or Q to quit the room and pick another room)");
+                        char decision;
+                        scanf(" %c", &decision);
+                        if (toupper(decision) == 'Q') {
+                            break;
+                        }
+                    }
+                }
+                break;
 			}
 			case 7:
 			{
@@ -3459,4 +3517,17 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+
+// dragon attack function, generates a random attack which will differentiate how much damage delt to user Room 6
+void dAttack(int *playerHP) {
+    int attackType = rand() % 2; // 0 for claw, 1 for fire breath
+    if (attackType == 0) {
+        *playerHP -= 20;
+        puts("The dragon claws at you! You take 10 damage.");
+    } else {
+        *playerHP -= 35;
+        puts("The dragon breathes fire! You take 20 damage.");
+    }
+    printf("You have %d HP left.\n", *playerHP);
 }
