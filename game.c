@@ -6,6 +6,7 @@
 //ogarcia 15
 //Sung Kim room 20
 //Matthew Lira room25
+//Roy Murillo Room 10
 
 
 
@@ -142,8 +143,92 @@ int main(int argc, char *argv[])
 			}
 			case 10:
 			{
-				puts("room10");
-				break;
+				
+				      puts("Welcome to the Riddle Room!\n");
+				      puts("You will be given 5 riddles and you must answer 4 of them "
+				           "correctly to escape the room peacefully.");
+				      puts("If you answer more than 1 incorrectly, there will be "
+				           "consequences.\n");
+				
+				      char riddles[5][100] = {
+				          "I speak without a mouth and hear without ears. I have no body, but "
+				          "I come alive with the wind. What am I?",
+				          "What has keys but can't open locks?",
+				          "The more you take, the more you leave behind. What am I?",
+				          "What has a head, a tail, is brown, and has no legs?",
+				          "I am taken from a mine and shut up in a wooden case from which I am "
+				          "never released, and yet I am used by almost every person. What am "
+				          "I?",
+				      };
+				
+				      char answers[5][30] = {"echo", "keyboard", "footsteps", "penny",
+				                             "pencil"};
+				
+				      int correctAnswers = 0;
+				      int incorrectAnswers = 0;
+				      int punishmentChoice;
+				
+				      for (int i = 0; i < 5; i++) {
+				        printf("\nRiddle %d: %s\nYour answer: ", i + 1, riddles[i]);
+				
+				        char userAnswer[30];
+				        scanf("%s", userAnswer);
+				
+				        // Convert user input to lowercase
+				        for (int j = 0; userAnswer[j]; j++) {
+				          userAnswer[j] = tolower(userAnswer[j]);
+				        }
+				
+				        // Check if the answer is correct
+				        if (strcmp(userAnswer, answers[i]) == 0) {
+				          printf("Correct!\n");
+				          correctAnswers++;
+				        } else {
+				          printf("Incorrect!\n");
+				          incorrectAnswers++;
+				        }
+				
+				        printf("You have answered %d riddles correctly and %d incorrectly.\n",
+				               correctAnswers, incorrectAnswers);
+				
+				        if (incorrectAnswers >= 2) {
+				          printf("You have answered 2 riddles incorrectly. Choose a "
+				                 "punishment:\n");
+				          printf("1. Have your chats between friends exposed to everyone.\n");
+				          printf("2. Run through the city naked.\n");
+				          printf("3. Make a choreography to a Britney Spears song.\n");
+				          printf("Enter your choice (1-3): ");
+				          scanf("%d", &punishmentChoice);
+				
+				          switch (punishmentChoice) {
+				          case 1:
+				            printf("You're cancelled\n");
+				            break;
+				          case 2:
+				            printf("Good luck, its cold outside\n");
+				            break;
+				          case 3:
+				            printf("Better get to work chop chop\n");
+				            break;
+				          default:
+				            printf("Invalid choice!\n");
+				            break;
+				          }
+				          return 0;
+				        }
+				      }
+				
+				      if (correctAnswers >= 4) {
+				        printf("\nCongratulations! You have guessed 4 riddles correctly and "
+				               "escaped!\n");
+				        puts("Have a good one and thank you for playing!");
+				      } else {
+				        puts(".");
+				      }
+				
+				      return 0;
+				     break;
+								
 			}
 			case 11:
 			{
