@@ -21,6 +21,7 @@
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
+//jmunoz222 Room 33
 
 
 #include <stdlib.h>
@@ -117,6 +118,7 @@ void monkeyChoice();
 void findingArtifact();
 
 void selection(char *teamOptions[], int option);
+void restartGame();
 
 
 int main(int argc, char *argv[])
@@ -1149,8 +1151,35 @@ int main(int argc, char *argv[])
 
 			case 33:
 			{
-				puts("room33");
-				break;
+						
+                puts("room33");
+                printf("You are in room 33. You see a lever with a red #1 on it. You also see a lever waith a blue #2. Which lever do you choose to pull?\n"); 
+                int leverNumber = 0; 
+                scanf("%d", &leverNumber); 
+                if(leverNumber == 1)
+                    {
+                        printf("You pulled the red lever with #1 on it. After you pulled it the room around you begins to shake.\n");
+                        printf("A giant boulder lands on top of you and you die\n"); 
+                        restartGame();
+                        break;
+                    }
+                else if(leverNumber == 2)
+                    printf("A trap door opens below you and you land on some mattresses\n");
+                    printf("You feel tired. You take a nap\n"); 
+                    int sleepNumber = 1; 
+                    while (sleepNumber != 2)
+                    {
+                        printf("You wake up. Do you take another nap? 1 for yes. 2 for no.\n");
+                        scanf("%d", &sleepNumber);
+
+                    }
+                printf("The floor below you crumbles away. You land into some water and the current pushes you into an island\n");
+                    printf("On the island you see a talking cat. The cat says that they are giving you a random familar\n");
+                    char familar[4][10] = {"cat", "dog", "goldfish", "rabbit"}; 
+                    int familarNumber = rand()%4;
+                    printf("You are given a %s and spend the rest of your life on the island\n", familar[familarNumber]);
+                    restartGame();
+                    break; 
 			}
 			case 34:
 			{
@@ -3459,4 +3488,8 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+void restartGame()
+{
+    printf("The game is over. You are now brought back to the begining\n");
 }
