@@ -586,7 +586,7 @@ int main(int argc, char *argv[])
                                 puts("\nAlright another task done");
 
                                 char toy1[30]="train";
-                                puts("Now Adam's indecisive, he can't pick between a train set or a toy guitar.(Choose t for train or g for guitar): ");
+                                puts("Now Adam's indecisive, he can't pick between a train set or a toy guitar.(Choose train or guitar): ");
                                 scanf("%s",toy1);
                                 if(strcmp(toy1,"guitar")==0)
                                 {
