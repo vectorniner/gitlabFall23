@@ -17,7 +17,7 @@
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
-
+//Erik Serrano 45
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -1258,7 +1258,7 @@ int main(int argc, char *argv[])
 			}
 			case 45:
 			{
-				puts("room45");
+				Room45();
 				break;
 			}
 			case 46: //Ctalebi **************************************
@@ -3324,4 +3324,94 @@ void searchForTheOnePiece(void)
 		} else {
 			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
 		}
+}
+int Room45(void)
+{
+  char words[11][20] = {"school","computer","building","apple","jynx","light","water","escape","money","game","donor"};
+  srand(time(NULL));
+  int randy = rand();
+
+  puts("You are in room 45");
+  puts("You've entered a room and a goblin blocks your path");
+  puts("He says he'll let you pass if you can beat his game");
+  puts("                         =——------———=");
+  puts("");
+  puts("             __ ___-/   \\            /   \\-_____");
+  puts("                 —__|   0            0   |__—");
+  puts("                     \\         W        /");
+  puts("                      -                -");
+  puts("                 /    |                 |    \\");
+  puts("                 \\    |                 |    /");
+  puts("                  \\   |     ___o___     |   /");
+  puts("                    ( |                 | )");
+  puts("He says 'You shall be playing Hangman!'");
+  puts("You have 20 health to guess the word, for each wrong guess you will take 1 point of damage.");
+  char *randomWord = words[randy % 11];
+  int guessCorrectly = strlen(randomWord);
+  int strlength = strlen(randomWord);
+  int *guessed = (int *)malloc(strlength * sizeof(int));
+  memset(guessed,0, strlength *sizeof(int));
+  int attempts = 20;
+  while(attempts>0)
+  {
+    for(int i=0;randomWord[i] != '\0';i++){
+      if(guessed[i]==1)
+      {
+        printf( "%c",randomWord[i]);
+      }
+      else
+      {
+        printf("_");
+      }
+    }
+    printf("\n");
+    char guess;
+    printf("Guess a letter: ");
+    scanf(" %c",&guess);
+    int found =0;
+    for(int i=0;i<strlength;i++)
+    {
+      if(randomWord[i]==guess)
+      {
+        puts("    _\n\\<{^o^}>/\n  [ . ] \n   | |");
+        guessed[i]=1;
+        found=1;
+      }
+    }
+    if(!found){
+      puts("   _\n<{*~*}>\n/[ . ]\\ \n  | |");
+      attempts--;
+    }
+    int allGuessed = 1;
+    for(int i=0; i<strlength;i++)
+    {
+      if(guessed[i]==0)
+      {
+        allGuessed=0;
+        break;
+      }
+    }
+    puts("Health:");
+    for(int i=0;i<attempts;i++){
+      printf("O");
+    }
+    for(int i=0;i<(20-attempts);i++){
+      printf("X");
+    }
+    puts("");
+    if(allGuessed)
+    {
+      printf("Yippee! You have passed! You may proceed to the next room. The word was %s\n",randomWord);
+      if(attempts==20){
+        puts("WOAH YOU MADE NO MISTAKES! GREAT JOB!");
+      }
+      break;
+    }
+  }
+  if(attempts==0)
+  {
+    printf("Uh oh! You have failed! The word was %s\n",randomWord);
+  }
+  return EXIT_SUCCESS;
+
 }
