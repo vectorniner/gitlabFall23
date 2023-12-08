@@ -41,6 +41,14 @@ void loadRoom9(void); // Room9
 void joinCrew(void); // Room9
 void searchForTheOnePiece(void); // Room9
 
+
+// Fuction Prototype
+int budgetCalculator(int budget, int input);
+int starterMenu(int budget);
+int beverageMenu(int budget);
+int mainCourseMenu(int budget);
+int dessertMenu(int budget);
+
 //Start of RED Door Series25
 void specialRoom25(void);
 void AetherDoor25(void);
@@ -615,6 +623,20 @@ int main(int argc, char *argv[])
 			case 13:
 			{
 				puts("room13");
+                puts("Excellent choice. Behind this door lies unlimited food supplies.");
+                puts("In a quiet yet busy restaurant, you are handed a very detailed manu with numerous cuisines and options");
+				printf("WELCOME TO EL SABOR, %s - an iPad on the table reads \n", name);
+				puts("Please enter your budget for the meal tonight");
+
+                int newbudget;
+                scanf("%d", &newbudget);
+
+                while (newbudget > 0)
+                {
+                    newbudget = starterMenu(newbudget);
+                    newbudget = beverageMenu(newbudget);
+                    newbudget = mainCourseMenu(newbudget);
+                    newbudget = dessertMenu(newbudget);
 				break;
 			}
 			case 14:
@@ -3369,4 +3391,250 @@ void searchForTheOnePiece(void)
 		} else {
 			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
 		}
+}
+
+// Function to calculate the remaining budget
+int budgetCalculator(int budget, int input) 
+{
+    budget -= input;
+
+    if(budget < 0) {
+        printf("Sorry, this item cannot be purchased since you have exhausted all your money. \n");
+        exit(EXIT_FAILURE);
+    }
+    return budget;
+}
+
+// function to display the Starters menu
+int starterMenu(int budget)
+{
+    printf("What is your choice of starter? \n");
+    printf(" 1. Garlic Bread \n 2. Cheese nuggets \n 3. Fries \n 4. Skip the starters \n");
+    usleep(2000);
+    printf("Enter your choice(number): ");
+    usleep(3000);
+
+    int option1;
+    scanf(" %d", &option1);
+    usleep(3000);
+
+    // choices[Index++] = option1;  // Store the choice in the array
+
+	switch (option1)
+    {
+        case 1: budget = budgetCalculator(budget, 7);
+                printf("Balance = %d\n", budget);
+                strcpy(choices[Index++], "Garlic Bread \n");
+                break;
+
+        case 2: budget = budgetCalculator(budget, 10);
+                printf("Balance = %d\n", budget);
+                strcpy(choices[Index++], "Cheese nuggets \n");
+                break;
+
+        case 3: budget = budgetCalculator(budget, 5);
+                printf("Balance = %d\n", budget);
+                strcpy(choices[Index++], "Fries \n");
+                break;
+
+        case 4: printf("Skipping starters. Balance = %d\n", budget);
+                break;
+                
+        default: budget = budgetCalculator(budget, 0);
+                printf("Balance = %d\n", budget);
+                break;
+    }
+
+    return budget;
+}
+
+// Function to display the Beverage menu
+int beverageMenu(int budget)
+{
+    printf("What is your choice of drink for the evening? \n");
+    printf(" 1. Hot beverages \n 2. Iced beverages \n 3. Skip the drink \n");
+    usleep(2000);
+    printf("Enter your choice(number): ");
+    int option2;
+    scanf(" %d", &option2);
+    usleep(3000);
+
+    if(option2 == 1) {
+        printf("Here are some of the hot beverages available tonight: \n");
+        printf(" 1. Drip Coffee \n 2. Chamomile tea \n 3. Hot Cocoa \n");
+        usleep(2000);
+        printf("Enter your choice(number): ");
+        int option3;
+        scanf(" %d", &option3);
+        usleep(3000);
+
+        // choices[Index++] = option3;  // Store the choice in the array
+
+        switch (option3)
+        {
+            case 1: budget = budgetCalculator(budget, 2);
+                    printf("Balance = %d \n", budget);  
+                    strcpy(choices[Index++], "Drip Coffee \n");   
+                    break;
+
+            case 2: budget = budgetCalculator(budget, 3);
+                    printf("Balance = %d \n", budget); 
+                    strcpy(choices[Index++], "Chamomile tea \n");    
+                    break;
+
+            case 3: budget = budgetCalculator(budget, 4);
+                    printf("Balance = %d \n", budget); 
+                    strcpy(choices[Index++], "Hot Cocoa \n");    
+                    break;
+                    
+            default:budget = budgetCalculator(budget, 0);
+                    printf("Balance = %d\n", budget);
+                    break;
+        }
+    }
+    else if(option2 == 2) {
+        printf("Here are some of the cold beverages available tonight: \n");
+        printf(" 1. Iced coffee \n 2. Wine \n 3. Coke \n 4. Lemonade \n");
+        usleep(3000);
+        printf("Enter your choice(number): ");
+        int option4;
+        scanf(" %d", &option4);
+        usleep(3000);
+
+        // choices[Index++] = option4;  // Store the choice in the array
+
+        switch (option4)
+        {
+            case 1: budget = budgetCalculator(budget, 2);
+                    printf("Balance = %d \n", budget);
+                    strcpy(choices[Index++], "Iced coffee \n");     
+                    break;
+
+            case 2: budget = budgetCalculator(budget, 10);
+                    printf("Balance = %d \n", budget);   
+                    strcpy(choices[Index++], "Wine \n");  
+                    break;
+
+            case 3: budget = budgetCalculator(budget, 5);
+                    printf("Balance = %d \n", budget);
+                    strcpy(choices[Index++], "Coke \n");     
+                    break;
+
+            case 4: budget = budgetCalculator(budget, 4);
+                    printf("Balance = %d \n", budget);  
+                    strcpy(choices[Index++], "Lemonade \n");   
+                    break;
+                    
+            default:budget = budgetCalculator(budget, 0);
+                    printf("Balance = %d\n", budget);
+                    break;
+        }
+    }
+    else
+        printf("Let's just go ahead with water then. Balance = %d\n", budget);
+
+    return budget;
+}
+
+// Funtion to display the Main course menu
+int mainCourseMenu(int budget)
+{
+    printf("What would you like to eat? \n");
+    printf(" 1. Cheeseburgers \n 2. Alfredo Pasta \n 3. Salad \n 4. Rice bowl \n 5. Skip to the Dessert \n");
+    usleep(2000);
+    printf("Enter your choice(number): ");
+    int option5;
+    scanf(" %d", &option5);
+    usleep(3000);
+
+    // choices[Index++] = option5;  // Store the choice in the array
+
+    switch (option5)
+        {
+            case 1: budget = budgetCalculator(budget, 10);
+                    printf("Balance = %d \n", budget); 
+                    strcpy(choices[Index++], "Cheeseburgers \n");    
+                    break;
+
+            case 2: budget = budgetCalculator(budget, 12);
+                    printf("Balance = %d \n", budget);  
+                    strcpy(choices[Index++], "Alfredo Pasta \n");   
+                    break;
+
+            case 3: budget = budgetCalculator(budget, 5);
+                    printf("Balance = %d \n", budget); 
+                    strcpy(choices[Index++], "Salad \n");    
+                    break;
+
+            case 4: budget = budgetCalculator(budget, 10);
+                    printf("Balance = %d \n", budget); 
+                    strcpy(choices[Index++], "Rice Bowl \n");    
+                    break;
+
+            case 5: // Skip option, do nothing
+                    printf("Skipping main course. Balance = %d\n", budget);
+                    break;
+                    
+            default:budget = budgetCalculator(budget, 0);
+                    printf("Balance = %d\n", budget);
+                    break;
+        }
+
+    return budget;
+}
+
+// Function to display dessert menu
+int dessertMenu(int budget)
+{
+    printf("What would you like to eat? \n");
+    printf(" 1. Pumpkin pie \n 2. Apple pie \n 3. Brownie \n 4. End the meal \n");
+    usleep(2000);
+    printf("Enter your choice(number): ");
+    int option6;
+    scanf(" %d", &option6);
+    usleep(3000);
+
+    // choices[Index++] = option6;  // Store the choice in the array
+
+    switch (option6)
+        {
+            case 1: budget = budgetCalculator(budget, 5);
+                    printf("Balance = %d \n", budget);  
+                    strcpy(choices[Index++], "Pumpkin pie \n");   
+                    break;
+
+            case 2: budget = budgetCalculator(budget, 5);
+                    printf("Balance = %d \n", budget);   
+                    strcpy(choices[Index++], "Apple pie \n");  
+                    break;
+
+            case 3: budget = budgetCalculator(budget, 5);
+                    printf("Balance = %d \n", budget);  
+                    strcpy(choices[Index++], "Brownie \n");   
+                    break;
+
+            case 4: // Skip option, do nothing
+                    printf("Skipping dessert. Balance = %d\n", budget);
+                    break;
+                    
+            default:budget = budgetCalculator(budget, 0);
+                    printf("Balance = %d\n", budget);
+                    break;
+        }
+
+    printf("Would you like to add another drink? \n");
+    printf(" 1. Yes \t 2. No \n");
+    usleep(2000);
+    printf("Enter your choice(number): \n");
+    int option7;
+    scanf(" %d", &option7);
+    usleep(3000);
+
+    if(option7 == 1) {
+        budget = beverageMenu(budget);
+    }
+    else
+        printf("Enjoy your meal \n");
+
+    return budget;
 }
