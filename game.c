@@ -7,7 +7,7 @@
 //Sung Kim room 20
 //Matthew Lira room25
 //jaye room 8
-
+//Edvin Monzon room 31
 
 
 #include <stdlib.h>
@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+void myRoomThirtyOne(int num);
 
 void loadRoom8(void);
 
@@ -507,6 +509,17 @@ int main(int argc, char *argv[])
 			}
 			case 31:
 			{
+				int arr[] = {1,2,3,4,5};
+  for(int i = 0; i < 5; i++)
+  {
+   printf("%d\n",arr[i]);
+   }
+
+   int num;
+   printf("Please choose 1 of the 5 gates to continue: \n");
+   scanf("%d",&num);
+
+   myRoomThirtyOne(num);
 				puts("room31");
 				break;
 			}
@@ -1791,3 +1804,28 @@ void loadRoom8(void)
       printf("Teleporting you back to the flooded room...\n");
     }
 
+
+void myRoomThirtyOne(int num)
+{
+   if(num == 1)
+{
+   printf("You enter the first gate which you find it leading you into a dark forest were you encounter elves\n");
+}
+   else if(num == 2)
+ {
+    int roomRandomNumber = rand() ;
+    printf("You enter the second gate were it leads you into a cave were you find  %d  pieces of gold\n", rand());
+  }
+    else if(num == 3)
+ {
+     printf("You entered the third gate were you encounter a portal that transports you into another world\n");
+  }
+      else if(num == 4)
+  {
+      printf("You entered the fourth gate were it takes you down a room and you find found a hoard of orcs\n");
+   }
+      else
+   {
+      printf("You entered the fifth gate were you find yourself into a battle between orcs and elves\n");
+   }
+}
