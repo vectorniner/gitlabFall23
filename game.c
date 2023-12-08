@@ -11,7 +11,11 @@
 //Hrithik Dayal Singh room 47
 //Haylee Allen Room 4
 //Paolo Santos room 44
+
 //Priscilla Vera room 50
+
+// Christian A. Contreras Room 12
+
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -96,6 +100,9 @@ void room47_conclusion();
 
 void room44(void);//P Santos
 void separator(void);//P Santos
+
+void printMessage(int result); // Room 12
+
 
 int main(int argc, char *argv[])
 {
@@ -280,7 +287,317 @@ int main(int argc, char *argv[])
 			}
 			case 12:
 			{
-				puts("room12");
+				int userInput, guess, randy, randomNum, questionNum, result;
+				
+				puts(".");
+				puts("Welcome to Room12!");
+				puts("Please enter a number (1 though 5): ");
+				scanf("%d", &userInput);
+
+				switch(userInput)
+				{
+					case 1:
+						// Random
+						puts(".");
+						puts("You have chosen Game 1!");
+						puts("In order to win, you must guess the correct number (1 through 10)");
+						puts("Please enter your guess: ");
+						scanf("%d", &guess);
+
+						randy = rand() % 10;
+						randomNum = randy + 1;
+
+						if(guess == randomNum)
+						{
+							puts(".");
+							result = 1;
+							printMessage(result);
+						}
+
+						else
+						{
+							result = 0;
+							puts(".");
+                                                	printf("The correct number was: %d\n\n", randomNum);
+							printMessage(result);
+						}
+
+						break;
+
+
+					case 2:
+                                                puts(".");
+                                                puts("You have chosen Game 2!");
+						puts("TRIVIA! In order to win, you must correctly answer the following question:\n");
+						
+						randy = rand() % 3;
+						questionNum = randy + 1;
+
+
+						switch(questionNum)
+						{
+							case 1:
+								puts("What device(phone) was announced in 2007 w/ the solgan ''This is only the beginning''?");
+								puts("1. iPhone");
+								puts("2. Galaxy");
+								puts("3. Razor\n");
+								puts("Please enter the number that corresponds to your answer: ");
+								scanf("%d", &guess);
+
+								if(guess == 1)
+								{
+									result = 1;
+									puts(".");
+									printMessage(result);
+								}
+
+								else
+								{
+									puts(".");
+									puts("The correct answer was: 1. iPhone\n");
+									result = 0;
+									printMessage(result);
+								}
+
+								break;
+
+							case 2:
+								puts("The ''Big Four'' consists of Google, Apple, Meta, and Amazon.");
+								puts("What software company is sometimes added to make The ''Big Five''?");
+								puts("1. Oracle");
+								puts("2. Microsoft");
+								puts("3. IBM\n");
+								puts("Please enter the number that corresponds to your answer: ");
+                                                                scanf("%d", &guess);
+
+								if(guess == 2)
+								{
+									result = 1;
+									puts(".");
+									printMessage(result);
+								}
+
+								else
+								{
+									puts(".");
+									puts("The correct answer was: 2. Microsoft\n");
+									result = 0;
+									printMessage(result);
+								}
+
+								break;
+
+							case 3:
+								puts("Which smartphone game had millions of players days after its release in 2016?");
+								puts("1. Clash of Clans");
+								puts("2. Candy Crush");
+								puts("3. Pokemon Go\n");
+								puts("Please enter the number that corresponds to your answer: ");
+								scanf("%d", &guess);
+
+								if(guess == 3)
+                                                                {
+                                                                        result = 1;
+									puts(".");
+                                                                        printMessage(result);
+                                                                }
+
+                                                                else
+                                                                {
+									puts(".");
+									puts("The correct answer was: 3. Pokemon Go\n");
+                                                                        result = 0;
+                                                                        printMessage(result);
+                                                                }
+
+								break;
+						}
+
+                                                break;
+
+
+					case 3:
+						// Loop
+                                                puts(".");
+                                                puts("You have chosen Game 3!");
+						puts("In order to win, you have 3 tries to guess the correct number (1 through 25)");
+
+						randy = rand() % 25;
+						randomNum = randy + 1; 
+						int i = 0;
+
+						while(i < 3)
+						{
+							puts("Please enter your guess: ");
+							scanf("%d", &guess);
+
+							if(guess != randomNum)
+							{
+								puts("Incorrect...");
+								result = 0;
+								i++;
+
+								if(i > 2)
+								{
+									puts(".");
+									printf("The correct number was %d\n\n", randomNum);
+									printMessage(result);
+									break;
+								}
+							}
+
+							else
+							{
+								puts("Correct!");
+								result = 1;
+								puts(".");
+								printMessage(result);
+								break;
+							}
+						}
+
+                                                break;
+
+
+					case 4:
+                                                puts(".");
+                                                puts("You have chosen Game 4!");
+						puts("TRIVIA! In order to win, you must get the correct answer to the following question:\n");
+						
+                                                randy = rand() % 3;
+                                                questionNum = randy + 1;
+
+                                                switch(questionNum)
+                                                {
+                                                        case 1:
+                                                                puts("Which programming language is named after a type of Indonesian coffee?");
+                                                                puts("1. Java");
+                                                                puts("2. C++");
+                                                                puts("3. Python\n");
+                                                                puts("Please enter the number that corresponds to your answer: ");
+                                                                scanf("%d", &guess);
+
+                                                                if(guess == 1)
+                                                                {
+                                                                        result = 1;
+									puts(".");
+                                                                        printMessage(result);
+                                                                }
+
+                                                                else
+                                                                {
+									puts(".");
+									puts("The correct answer was: 1. Java\n");
+                                                                        result = 0;
+                                                                        printMessage(result);
+                                                                }
+
+								break;
+
+                                                        case 2:
+                                                                puts("Which college did Bill Gates graduate from?");
+                                                                puts("1. Harvard");
+                                                                puts("2. None");
+                                                                puts("3. Yale\n");
+                                                                puts("Please enter the number that corresponds to your answer: ");
+                                                                scanf("%d", &guess);
+
+                                                                if(guess == 2)
+                                                                {
+                                                                        result = 1;
+									puts(".");
+                                                                        printMessage(result);
+                                                                }
+
+                                                                else
+                                                                {
+									puts(".");
+									puts("The correct answer was: 2. None\n");
+                                                                        result = 0;
+                                                                        printMessage(result);
+								}
+
+								break;
+
+							 case 3:
+                                                                puts("Which product did Amazon first sell?");
+                                                                puts("1. Computers");
+                                                                puts("2. Printers");
+                                                                puts("3. Books\n");
+                                                                puts("Please enter the number that corresponds to your answer: ");
+                                                                scanf("%d", &guess);
+
+                                                                if(guess == 3)
+                                                                {
+                                                                        result = 1;
+									puts(".");
+                                                                        printMessage(result);
+                                                                }
+
+                                                                else
+                                                                {
+									puts(".");
+									puts("The correct answer was: 3. Books\n");
+                                                                        result = 0;
+                                                                        printMessage(result);
+                                                                }
+
+								break;
+                                                }
+
+                                                break;
+
+
+					case 5:
+						// Array
+						puts(".");
+						puts("You have chosen Game 5!");
+						puts("There are 3 hats and a ball...");
+						puts("In order to win, you must guess which number hat the ball is under");
+						puts("Please enter which number hat the ball is under (1, 2, or 3): ");
+						scanf("%d", &guess);
+						
+
+						randy = rand() % 3;
+						randomNum = randy + 1;
+						
+						int correctHat;
+						int hats[3] = {0, 0, 0};
+						hats[randomNum] = 7;
+						
+						puts(".");
+						for(int i = 0; i < 3; i++)
+						{
+							if(hats[i] != 0)
+							{
+								correctHat = i;
+								printf("The ball was under hat #%d\n\n", i);
+								break;
+							}
+						}
+
+
+						if(guess != correctHat)
+						{
+							result = 0;
+							printMessage(result);
+						}
+
+						else
+						{
+							result = 1;
+							printMessage(result);
+						}
+
+						break;
+
+
+					default:
+						puts("\n");
+						puts("Invalid entry...");
+						break;
+				}
+
 				break;
 			}
 			case 13:
@@ -2869,4 +3186,29 @@ void room44(void){
 }
 void separator(void){
         printf("===================================================================================================================================\n");
+}
+
+// Room 12 Function
+void printMessage(int result)
+{
+	switch(result)
+	{
+		case 0:
+			puts("You lose...");
+			puts("You are now being returned to the dark room... Goodbye!");
+			puts(".");
+			puts(".");
+			puts(".");
+			puts(" ");
+			break;
+
+		case 1:
+			puts("You win!");
+			puts("You are now being returned to the dark room... Goodbye!");
+			puts(".");
+                        puts(".");
+                        puts(".");
+			puts(" ");
+			break;
+	}
 }
