@@ -1770,15 +1770,23 @@ void apply_boons(int *choices, int numChoices) {
 }
 
 void random_event(int godChoice) {
+    // random number generator
+	int x = rand() % 10 + 1;
+
     const char *gods[6] = {"none", "Zeus", "Poseidon", "Athena", "Ares", "Hermes"};
     printf("You received a boon from %s.\n", gods[godChoice]);
 
-    switch(godChoice) {
-        case 1: printf("All your damage causes chain lightening.\n"); break;
-        case 2: printf("Your attacks knockback enemies with tidal effect.\n"); break;
-        case 3: printf("A holy sheild will protect you.\n");break;
-        case 4: printf("Your damaged has spiked with a blade rift.\n");break;
-        case 5: printf("You can now dash twice with the wind of Hermes.\n");break;
+    switch(x) {
+        case 1: printf("All your damage causes chain lightning.\n"); break;
+        case 2: printf("Your attacks knockback enemies with a tidal effect.\n"); break;
+        case 3: printf("A holy shield will protect you.\n"); break;
+        case 4: printf("Your damage has spiked with a blade rift.\n"); break;
+        case 5: printf("You can now dash twice with the wind of Hermes.\n"); break;
+	case 6: printf("Your dash makes you sturdy and invunerable.\n"); break;
+	case 7: printf("The god punishes you with bleed effect for choosing the wrong path.\n"); break;
+	case 8: printf("You deal more damage but also take a small portion of the damage.\n"); break;
+	case 9: printf("Your dash deals CRITICAL DAMAGE.\n"); break;
+	case 10: printf("This god dislikes you, you don't get any boon.\n"); break;
     }
 }
 
