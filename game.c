@@ -117,7 +117,7 @@ void monkeyChoice();
 void findingArtifact();
 
 void selection(char *teamOptions[], int option);
-
+int room36function(int userChoice); //room 36
 
 int main(int argc, char *argv[])
 {
@@ -1161,6 +1161,15 @@ int main(int argc, char *argv[])
 			case 36:
 			{
 				puts("room36");
+
+				int userChoice;
+                                puts("Welcome to the Jungle");
+                                puts("Choose a door to go into to see animals");
+                                puts("Enter a number between 1-5");
+                                scanf("%d", &userChoice);
+
+                                room36function(userChoice);
+
 				break;
 			}
 
@@ -3459,4 +3468,24 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+
 }
+
+int room36function(int userChoice)
+{
+        switch(userChoice)
+        {
+                case 1: puts("You enter a room with tigers in it");
+                        break;
+                case 2: puts("Three elephants are in this room");
+                        break;
+                case 3: puts("10 monkeys playing in this room");
+                        break;
+                case 4: puts("Let's play with horses");
+                        break;
+                case 5: puts("Time to feed the zebras");
+                        break;
+                default: puts("Try again");
+        }
+}
+
