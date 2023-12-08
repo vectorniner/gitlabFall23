@@ -7,6 +7,7 @@
 //Sung Kim room 20
 //Matthew Lira room25
 //Sahana Deepak Room 13
+//jaye room 8
 
 
 
@@ -17,6 +18,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+void loadRoom8(void);
 
 //Start of RED Door Series25
 void specialRoom25(void);
@@ -40,6 +43,7 @@ void FinaleAstralPlane25(void);
 //declare prototype
 int car(int num);
 
+//Prototype Room 15
 void userChoice_door15(void);
 
 int room37ShowOptions(int chosen);
@@ -144,6 +148,7 @@ int main(int argc, char *argv[])
 			case 8:
 			{
 				puts("room8");
+				loadRoom8();
 				break;
 			}
 			case 9:
@@ -205,7 +210,18 @@ int main(int argc, char *argv[])
 			}
 			case 15:
 			{
-				puts("room15");
+				//Author: Omar Garcia
+				//Date: 11/30/23
+				//Purpose: For Final Project
+				
+				puts("room 15");
+				printf("This room is filled with other doors!\n");
+			   	printf("As you enter the room you gain arcane power.\n");
+				printf("You gain power you've never felt before.\n");
+				printf("You are now ready to face what comes next!\n");
+				printf("Choose a door 1-5 or 9 to return!\n");
+
+				userChoice_door15();
 				break;
 			}
 			case 16:
@@ -645,6 +661,71 @@ int main(int argc, char *argv[])
 			case 54:
 			{
 				puts("room54");
+				printf("You hastily close the door behind you, water crashing against the door.\n"
+				"A breath of relief escapes from your lips before you notice an eerie silence.\n"
+				"A slow breathy turn reveales a large silhouette, seemingly kneeled down as if paying respect to a fallen king.\n"
+				"The only source of light is a gentle flame, steadily burning in the far corner of the room.\n"
+				"You slowly step to the right, making sure to stay close to the wall and keeping pace with your steady breathes, making your way to the flame.\n"
+				"As you inch closer to the flame, the silence of the room accentuates your breathing, its cadence mimicking that of a trotting horse.\n"
+				"You reach the flame and pause for moment, comtemplating your next choice.\n");
+				int printAndGetSelection() {
+				 printf("Please input a number 1-5 to choose\n"
+				"Choices:\n"
+				"1. Use Bandages\n"
+				"2. Use Rations \n"
+				"3. Attack the silhouette\n"
+				"4. Check your bag\n"
+				"5. Sit down and cry for awhile\n");
+				return  getUserChoice();   
+				}
+				int keepChoosingOrLeave() {
+				    printf("Would you like to keep choosing from the options or leave the room?\n (Choose or Leave)");
+				    char choice[10];
+				    scanf("%s", choice);
+				    if (strcmp(choice,"choose")==0||strcmp(choice,"Choose")==0){
+				        return printAndGetSelection();
+				    }
+				    else if (strcmp(choice,"leave")==0||strcmp(choice,"Leave")==0) {
+				        printf("You leave the room, hoping the hallway is flushed out now.");
+				        return 0;
+				    }
+				}
+				int choice = printAndGetSelection();
+				while(choice !=0 ) {
+				    
+				    switch(choice){
+				        case 1: 
+				            printf("You pull out bandages from your bag\n");
+				            choice = keepChoosingOrLeave();
+				            break;
+				        case 2:
+				            char itemsToUse[5][200] = {"The animal meat was filling.","The concotion whispered \"I hate you\" when opend and tasted foul.","The bread tastes like sand.", "Tastes earthy with a hint of acidity","The fresh berries are a tasty reminder that you need to escape."} ;
+				            printf("You use rations from your limited supply\n What do you decide to eat?\n");
+				            printf("Please input a number 1-5 to choose\n"
+                				"Choices:\n"
+                				"1. Dry animal meat\n"
+                				"2. A concotion from your Mother in Law, who does not like you. \n"
+                				"3. A piece of stale bread that smells of feet\n"
+                				"4. A mushroom you found on the journey to this wretched place\n"
+                				"5. Some berries from your garden\n");
+                			printf("%s", itemsToUse[getUserChoice()]);
+                			choice = keepChoosingOrLeave();
+				            break;
+				        case 3:
+				            printf("Your swing pushed through the silhouette; it disappears into the room, leaving you worried.");
+                			choice = keepChoosingOrLeave();
+				            break;
+				        case 4:
+				            checkBag();
+				            choice = keepChoosingOrLeave();
+				            break;
+				        case 5: 
+				            int randomWaitTime = rand() % 10;
+				            printf("You wait for %d seconds before making another choice.", randomWaitTime);
+				            choice = keepChoosingOrLeave();
+				            break;
+				    }
+				}
 				break;
 			}
 			case 55:
@@ -702,7 +783,8 @@ void userChoice_door15(void){
                     
 		    //generate random door 
 		    int randomDoor2 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor2);
                         break;
@@ -712,7 +794,8 @@ void userChoice_door15(void){
                    
 		    //generate random door
 		    int randomDoor3 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor3);
 		 	break;
@@ -722,7 +805,8 @@ void userChoice_door15(void){
 
 	            //random door
 		    int randomDoor4 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
 		    printf("You find yourself back in room 15\n");
                     printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor4);
 			break;
@@ -732,20 +816,21 @@ void userChoice_door15(void){
 
 		    //random door
 		    int randomDoor5 = (rand() % 5) + 1;
-                    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
+                    
+		    printf("You cast a %s attack defeating the foe!\n", casts[randomIndex]);
                     printf("You find yourself back in room 15\n");
 		    printf("Try your luck with a random door try door #%d\nOr exit press 9\n", randomDoor5);
 			break;
                 case 9:
-                    printf("Exiting back to room 15\n");
+                    printf("Exiting back to the first room you found yourself in!\n");
                         break;
                  default:
                         printf("Wrong choice try again!\n");
 
-                                   }
-                                  }//end do loop
-                                   while(options !=9);
-				}
+          }
+	}//end do loop
+                while(options !=9);
+       }//end userChoice_door15 method
 
 int room37ShowOptions(int chosen) {
 	int choice = 0;
@@ -1771,6 +1856,44 @@ void displayGameOver()
         printf("You defeated the goblin! Congratulations!\n");
     }
 }
+
+void loadRoom8(void)
+{
+  int maxChoices = 5; 
+  int choicesMade = 0;
+  
+  char* actions[] = 
+  {
+    "A book with a shimmering cover catches your eye. Open it?\n(1. Yes, 2. No)",
+    "You notice a dusty tome emitting a faint glow. Approach it? \n(1. Approach, 2. Ignore)",
+    "A talking book offers you information but demands a riddle in return. Accept? \n(1. Accept, 2. Decline)",
+    "A mysterious book whispers your name. Will you listen? \n(1. Listen, 2. Walk away)",
+    "You find a magical pop-up book. Open it to reveal a hidden world. \n(1. Open, 2. Keep closed)"
+  };
+
+      while (choicesMade < maxChoices) {
+          int actionIndex = rand() % 5;
+          printf("You find yourself in an enchanted library. What would you like to do?\n");
+          printf("%s\n", actions[actionIndex]);
+
+          int userChoice;
+          printf("Enter your choice: ");
+          scanf("%d", &userChoice);
+
+          printf("You chose: %d\n", userChoice);
+
+          choicesMade++;
+
+          printf("Do you want to continue exploring the library?\n(1. Yes, 2. No): ");
+          scanf("%d", &userChoice);
+
+          if (userChoice != 1) {
+              break; 
+          }
+      }
+      printf("Teleporting you back to the flooded room...\n");
+    }
+
 
 // Function to calculate the remaining budget
 int budgetCalculator(int budget, int input) 
