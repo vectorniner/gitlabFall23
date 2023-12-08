@@ -8,6 +8,7 @@
 //Matthew Lira room25
 //jaye room 8
 //Edvin Monzon room 31
+//Thisara Perera Room 41
 
 
 #include <stdlib.h>
@@ -19,7 +20,7 @@
 #include <unistd.h>
 
 void myRoomThirtyOne(int num);
-
+int giftSel(int c);
 void loadRoom8(void);
 
 //Start of RED Door Series25
@@ -648,6 +649,144 @@ int main(int argc, char *argv[])
 			case 41:
 			{
 				puts("room41");
+				puts("\nWelcome to Santa's WORKshop");
+                                puts("A magical place that grants children's wishes come true-- but not for you");
+                                puts("That's right-- You're one of Santa's elves");
+                                puts("You've been assigned a few tasks that you need to complete before Santa personally throws coal at you");
+                                puts("NOW GET TO IT BEFORE YOU GO DOWN IN HISTORY AS THE ELF WHO RUINED CHRISTMAS!\n");
+
+
+                                puts("Those were the wishlists of the kids entrusted to you-- not random sheets of paper we hand out for fun");
+                                puts("We do enough damage with the amount of wrapping paper we use each December\n");
+
+                                int g,n;
+
+                                puts("\nOkay, now Alice is up first. She didn't say how many Barbie dolls she'd like. How many should we gift her? ");
+                                scanf("%d",&n);
+                                while(n>3||n<=0)
+                                {
+                                        if(n>3)
+                                        {
+                                                puts("Oooh Santa's wallet won't be too happy. Let's not be too ambitious, go lower: ");
+                                                scanf("%d",&n);
+                                        }
+                                        if (n<=0)
+                                        {
+                                                puts("Alright let's not be too stingy, aim higher: ");
+                                                scanf("%d",&n);
+                                        }
+
+                                }
+                                printf("\nAwesome, I'll send %d dolls over to the packaging station\n",n);
+
+
+
+                                puts("Alright Jax is up next, let's test your memory from the tour before you met me");
+                                puts("How many racecars did he want? (It's less than 6) ");
+                                scanf("%d",&g);
+                                int num= rand()%5+1;
+                                while(g!=num)
+                                {
+                                        puts("Jax would be very disappointed in you. Try again: ");
+                                        scanf("%d",&g);
+                                }
+                                puts("\nAlright another task done");
+
+                                char toy1[30]="train";
+                                puts("Now Adam's indecisive, he can't pick between a train set or a toy guitar.(Choose train or guitar): ");
+                                scanf("%s",toy1);
+                                if(strcmp(toy1,"guitar")==0)
+                                {
+                                        puts("Nice! We got a rockstar in the making. I'll put in a couple of earplugs for the parents");
+                                }
+                                else
+                                {
+                                        puts("All aboard Adam's Express. Prayers to the parents's feet for they will be run over");
+                                }
+
+                                char toy2[20]="p";
+                                puts("\nOkay now Liz is 5 and loves princesses, but is deadly afraid of dragons");
+                                puts("Should we help her face her fears or take the safe route? (enter p or d): ");
+                                scanf("%s",toy2);
+                                if(strcmp(toy2,"p")==0)
+                                {
+                                        puts("I think that's a wise choice");
+                                }
+                                else
+                                {
+                                        puts("Liz and her parents hate you. You caused a lot of waterworks. Liz hopes you get eaten by dinosaurs");
+                                }
+
+                                char toy3[20]="t";
+                                puts("\nOkay now Milo is 4 and quite the hyperactive soul");
+                                puts("Should we gift him a trampoline or a book on relaxation techniques? (enter t or b): ");
+                                scanf("%s",toy3);
+                                if(strcmp(toy3,"t")==0)
+                                {
+                                        puts("You're a savior to his parents. They just toss him in and he tires himself out and sleeps through the night");
+
+                                }
+                                else
+                                {
+                                        puts("What are you doing? The child can barely read?!");
+                                }
+
+                                char toy4[20]="p";
+                                puts("\nOkay now Angie is 11 and she's quite the artsy type");
+                                puts("Should we gift her a fingerpaint set or a nice wooden easle? (p for paint, e for easle): ");
+                                scanf("%s",toy4);
+                                if(strcmp(toy4,"p")==0)
+                                {
+                                        puts("Way to go! You ruined her art career! SHE'S 11! NOT A TODDLER!");
+                                }
+                                else
+                                {
+                                        puts("She loved it! A Picasso in the making! I'm sure she'll credit you when she's famous");
+                                }
+
+                                puts("\nCongrats! You're done with the wishlists! I'm sure it gave you headaches and joy!");
+                                puts("\nBefore you go, we have a little surprise for you");
+                                puts("\nSanta can't let his little helper go back empty-handed so he has a little gift prepared for you too!");
+
+                                int c=0;
+                                char ans[10]="y";
+
+                                char gifts[5][40]={
+                                        "Trip to Dubai",
+                                        "A used toothbrush",
+                                        "A slimy toad",
+                                        "Giant Teddy Bear",
+                                        "$500 gift voucher to Costco"
+                                };
+
+                                puts("I will say that Santa is a little prankster so do you want to test your luck? (y or n): ");
+                                scanf("%s",ans);
+                                if(strcmp(ans,"y")==0)
+                                {
+                                        puts("\nPick a number from 1-5: ");
+                                        scanf("%d",&c);
+                                        int index=giftSel(c);
+                                        if(c==-1)
+                                        {
+                                                puts("Pick a number from 1-5: ");
+                                                scanf("%d",&c);
+                                                index=giftSel(c);
+                                        }
+                                        printf("%s\n",gifts[index]);
+
+                                        if (strcmp(gifts[index],"A used toothbrush")==0)
+                                        {
+                                                puts("That's plain nasty ewww!\n");
+                                        }
+                                        if (strcmp(gifts[index],"A slimy toad")==0)
+                                        {
+                                                puts("I mean... if you kiss it, it might turn into a prince. If not, Disney lied I guess\n");
+                                        }
+                                        puts("Enjoy your gift... or not\n");
+                                }
+                                puts("Hope you enjoyed putting smiles on the kids's faces or ripping their hearts out");
+                                puts("If any complaints come up, I'm sending the letters straight to you!\n");
+
 				break;
 			}
 			case 42:
@@ -2321,4 +2460,17 @@ void myRoomThirtyOne(int num)
    {
       printf("You entered the fifth gate were you find yourself into a battle between orcs and elves\n");
    }
+}
+int giftSel(int c)
+{
+        //adjusts the index to get the right gift
+        if(c>=1 && c<=5)
+        {
+                return c-1;
+        }
+        else
+        {
+                return -1;
+        }
+
 }
