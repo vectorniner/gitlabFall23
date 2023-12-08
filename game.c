@@ -11,7 +11,7 @@
 //Hrithik Dayal Singh room 47
 //Haylee Allen Room 4
 //Paolo Santos room 44
-
+//mviloria room 51
 //Muhammad Mustafa Imtiazuddin 16
 
 //Jonathan Carpena room9
@@ -117,6 +117,34 @@ void monkeyChoice();
 void findingArtifact();
 
 void selection(char *teamOptions[], int option);
+
+//room51 player status
+struct R51Player
+{
+    char name[30];
+    bool hasMetElf;
+    bool isWithElf;
+    bool hasGivenName;
+    bool isUnconscious;
+    bool hasMoney;
+    bool hasItems;
+    bool hasRoom;
+    int fieldCount;
+    int items[10];
+};
+//room 51 functions
+int room51(char name[]);
+int r51MeetElf(struct R51Player *player);
+int r51GoToTown(struct R51Player *player);
+int r51EnterBattle(struct R51Player *player);
+int r51ExploreField(struct R51Player *player);
+int r51GoToMarket(struct R51Player *player);
+int r51GoToInn(struct R51Player *player);
+int r51GoToField(struct R51Player *player);
+int r51FillItemBox(int items[]);
+int r51DisplayItems(int items[]);
+int r51CheckInput(int paths);
+int r51PageBreak(void);
 
 
 int main(int argc, char *argv[])
@@ -1452,9 +1480,10 @@ int main(int argc, char *argv[])
               puts("You have escaped Room 50 and returned to the main menu.");
           break;
 			}
-			case 51:
+			case 51: //mviloria
 			{
-				puts("room51");
+				puts("\nroom51");
+				room51(name);
 				break;
 			}
 			case 52:
@@ -3459,4 +3488,512 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+
+int room51(char name[])
+{
+ 	int choice = 0;
+ 	srand(time(NULL));
+	
+	//initializing player status
+	struct R51Player player = {"", false, false, false, false, false, false, false, 0, {0}};
+	strcpy(player.name, name);
+	
+    r51PageBreak();
+	puts("\nYou hurriedly open the door to room 51.");
+
+	puts("\nImmediately, you are met with a sweet scent and a bright light.");
+	puts("Once your eyes adjust, you find yourself in a large field of white flowers. Overhead is a vast, open sky.");
+
+	puts("\nSome water from the other room rushes in past you, wetting the flowers around your feet, and instinctively, you move to shut the door.");
+	puts("As you turn around and grab its handle, you notice this door appears to be attached to nothing at all! It's just a door in the middle of an open field.");
+	
+	puts("\n1 - How does this thing work? (Investigate)");
+	puts("2 - Weird but whatever. I'd like to not be drenched in water. (Close the door)");
+	choice = r51CheckInput(2);
+	
+	if (choice == 1)
+	{
+	    puts("\nYou release the door handle and begin to inspect the door itself. It seems normal enough at first glance--just a slate grey, metal door.");
+	    puts("\nMeanwhile, more and more water continues to pour in from the still open door. They really weren't kidding about trying to drown you in there. Regardless, you pay no mind to it and continue your investigation of the door.");
+	    puts("\nSuddenly, the door closes with a slam. As soon as it shuts, it begins to collapse in on itself like it's being sucked through a straw from the other side. In no time at all, it has vanished right before your eyes, leaving no trace of its existence...except for the whole pool of water at your feet.");
+	    puts("\nYou look around for what could have caused it when you hear a voice coming from behind you.");
+	    puts("\"What is wrong with you?! You should know better than to just leave a dimension door open like that. We're lucky only a bunch of water came through.\"");
+	    puts("\nYou turn around to see a girl running up to you. She looks...strange. She's got bright green hair, long, pointy ears, and is carrying a long wooden staff. If this were a video game, you'd guess she's some kind of elf mage. Good thing this isn't a video game.");
+	    puts("\nYou take a little too long to respond to the girl. She continues speaking with a sigh, \"I guess this must be your first time in a new world. I'm Syrene.\"");
+	    
+	    r51MeetElf(&player);
+	}
+	else
+	{
+	    puts("\nYou immediately shut the door before more water can get through. You and the flowers at your feet are bit damp, but you'll live.");
+	    puts("\nAs soon as you let go of the door handle, however, it quickly starts to collapse in on itself as if being sucked through a straw on the other side before eventually vanishing before your eyes.");
+	    puts("\nLooks like you're very much stuck wherever it left you.");
+	    puts("\nYou try to take stock of your immediate surroundings and see a town in the distance. Maybe you can find some help there?");
+	    
+	    puts("\n1 - Go to Town");
+	    puts("2 - Explore the Field");
+	    choice = r51CheckInput(2);
+	    
+	    if(choice == 1)
+	    {
+	        r51GoToTown(&player);
+	    }
+	    else
+	    {
+	        puts("\nOr maybe you should continue looking around here.");
+	        r51ExploreField(&player);
+	    }
+	}
+	
+	return EXIT_SUCCESS;
+}
+
+int r51MeetElf(struct R51Player *player)
+{
+    player->hasMetElf = true;
+    
+    //choice to give name
+    puts("\n1 - Introduce Yourself");
+    puts("2 - Respond Without Giving Your Name");
+    int choice = r51CheckInput(2);
+    
+    if (choice == 1)
+    {
+        player->hasGivenName = true;
+        puts("\nYou introduce yourself. She responds with a smile.");
+        printf("\n\"Good to meet you, %s. You're probably looking for the way to town if you've gone through the trouble to travel all the way here. I was actually on my way back when I ran into you, so if you'd like, we can head there together.\"\n", player->name);
+    }
+    else
+    {
+        puts("\nYou respond to her greeting but don't give your name. She seems suspicious, but doesn't comment on it.");
+        puts("\n\"Well, since you're here, I'm guessing you're not looking to just sit around in a field. I'm actually heading back to town right now. If you want, I can show you the way there.\"");
+    }
+    
+    //choice to travel with Syrene
+    puts("\n1 - Go to Town with Syrene");
+    puts("2 - Stay and Explore the field");
+    choice = r51CheckInput(2);
+    
+    if (choice == 1)
+    {
+        player->isWithElf = true;
+        r51GoToTown(player);
+    }
+    else
+    {
+        puts("\n\"Fair enough. Well, if you'd like to go later, you can actually see it from here.\"");
+        puts("\nShe points in a direction somewhere behind you, and sure enough, you can see the town's not far from here. \"Just head straight for it from here, and you'll see a path that's gonna take you right to town. I've gotta head off now. It was nice meeting you!\"");
+        
+        r51ExploreField(player);
+    }
+    
+    return EXIT_SUCCESS;
+}
+
+int r51GoToTown(struct R51Player *player)
+{
+    //on the road to town
+    if (player->isWithElf)
+    {
+        puts("\nYou and Syrene arrive at the town without much hassle.");
+    }
+    else
+    {
+        puts("\nYou head to town.");
+        r51EnterBattle(player);
+        if (player->isUnconscious)
+        {
+            return EXIT_SUCCESS;
+        }
+    }
+    
+    //at town
+    puts("\nSoon, you can see guards standing by a tall gate. The town is bigger than you expected.");
+    puts("\nThe gates open up to a bustling plaza. There are stands all around with people selling various goods. Seems to be a MARKETPLACE.");
+    
+    if (player->isWithElf)
+    {
+        puts("\n\"Well, here we are! I'm actually meeting someone in a bit, so I've gotta run. If you need a place to stay, the INN's over there.\"");
+        puts("She points at a building near the back of the plaza.");
+        printf("\n\"See you around");
+        if (player->hasGivenName)
+        {
+            printf(", %s", player->name);
+        }
+        printf("!\"\n");
+        puts("With that, she waves goodbye and hurries off.");
+        player->isWithElf = false;
+    }
+    else
+    {
+        puts("\nThere's also a building near the back of the plaza that seems to have a sign indicating it as an INN. Good thing this place uses a language you can read.");
+    }
+    
+    puts("\n1 - Go to the Marketplace");
+    puts("2 - Go to the Inn");
+    puts("3 - Go to the Field");
+    int choice = r51CheckInput(3);
+    
+    if (choice == 1)
+    {
+        r51GoToMarket(player);
+    }
+    else if (choice == 2)
+    {
+        r51GoToInn(player);
+    }
+    else
+    {
+        r51GoToField(player);
+    }
+    return EXIT_SUCCESS;
+}
+
+int r51EnterBattle(struct R51Player *player)
+{
+    puts("\nOn the way there, you are accosted by a bandit. Maybe you can make a run for it and get where you're going before they can catch up. You're not exactly armed for combat at the moment.");
+    
+    puts("\n1 - Fight (66\% success)");
+    puts("2 - Run");
+    int choice = r51CheckInput(2);
+    
+    if (choice == 1)
+    {
+        int randomNum = rand() % 3;
+        if (randomNum != 0)
+        {
+            puts("\nYou decide to give it a go anyway and somehow succeed in knocking them out.");
+            
+            puts("\n1 - Loot the Bandit");
+            puts("2 - Leave");
+            choice = r51CheckInput(2);
+            
+            if (choice == 1)
+            {
+                puts("\nYou check the bandit for anything useful and find a bag of coins. Now you've got money. Though you're not sure how much, the bag's pretty heavy.");
+                player->hasMoney = true;
+            }
+            puts("\nRelieved, you turn and continue on your way.");
+        }
+        else if (player->hasItems)
+        {
+            puts("\nYou've sucessfully defended yourself against one of these bandits before though, and you're sure you can do it again.");
+            puts("It is with this thought that you confidently charge into battle. This bandit, however, is stronger than the last one.");
+            puts("\nYou are handily defeated.");
+            if (player->hasMoney)
+            {
+                puts("As you lay on the ground, you watch as the bandit makes off with your money.");
+                player->hasMoney = false;
+            }
+            puts("\nYour consciousness is quickly fading. But before your body fully gives out, you feel a warm light emanating from somewhere on your person. It's the box of items you got earlier!");
+            puts("Could this be the work of that shiny item in the box?");
+            puts("\nAfter a few moments, you feel your body slowly regain its strength. Once you're able to stand, you pull out the box and check inside of it.");
+            puts("The box is now empty. Well, at least you're alive.");
+            puts("\n...");
+            player->hasItems = false;
+        }
+        else
+        {
+            puts("\nYou try to defend yourself but are easily overpowered by the bandit.");
+            puts("You've lost. Your vision slowly fades to black...\n\n");
+            player->isUnconscious = true;
+        }
+    }
+    else
+    {
+        puts("\nYou turn tail and run as fast as you can.");
+    }
+    
+    return EXIT_SUCCESS;
+}
+
+int r51ExploreField(struct R51Player *player)
+{
+    int choice;
+    player->fieldCount++;
+    if (player->fieldCount < 2)
+    {
+        puts("\nYou decide to take a closer look at the flowers. They're white with thin, pointed petals and kind of on the large side as far as flowers go. The air around smells sweet from what you assume is the flowers. You can't really glean much else since you're not well-versed horticulture.");
+        
+        puts("\n1 - Go to Town");
+        puts("2 - Continue Exploring");
+        choice = r51CheckInput(2);
+        
+        if (choice == 1)
+        {
+            puts("\nMaybe it's time to head to town.");
+            r51GoToTown(player);
+        }
+        else
+        {
+            puts("\nYou decide to continue looking around.");
+            r51ExploreField(player);
+        }
+    }
+    else
+    {
+        puts("\nIt's pretty relaxing in this field. Maybe you could stay for awhile. There's no rush to get anywhere.");
+        puts("\nYou move away from the damp part of the field you started at and come across a small clearing in the flowers. Again, there isn't much here, but you're a bit tired, so you take a seat in the middle of the clearing.");
+        
+        puts("\n1 - Go to Town");
+        puts("2 - Take a Nap");
+        choice = r51CheckInput(2);
+        
+        if (choice == 1)
+        {
+            puts("\nYou've spent enough time in this field.");
+            r51GoToTown(player);
+        }
+        else
+        {
+            puts("\nYou get sleepy just lounging around in the field and decide to close your eyes and rest for awhile.");
+            puts("\nSoon, you fall into a deep slumber...\n\n");
+        }
+    }
+    
+    return EXIT_SUCCESS;
+}
+
+int r51GoToMarket(struct R51Player *player)
+{
+    int choice;
+    
+    puts("\nYou approach one of the stands. It's got several little boxes lined up next to each other.");
+    puts("\n\"Welcome traveler! I've got an assortment of goods here--an array of items, if you will.\"");
+    
+    if (player->hasItems)
+    {
+        puts("\n\"...Oh! Looks like you've got a box already. Sorry, but you can only have one at a time.\"");
+        puts("\nYou're not sure how the merchant could tell that you already have a box of items on you. It's a strange world you've landed yourself in.");
+    }
+    else
+    {
+        puts("\nThe merchant holds up one of the boxes.");
+        puts("\"This one here's got 10 items in it. You're guaranteed one special item per box. How 'bout it? We've even got a limited time discount of 5 silver. These are usually 8 silver, so act fast!\"");
+        
+        if (player->hasMoney)
+        {
+            puts("\n1 - Buy the Box");
+            puts("2 - Don't Buy the Box");
+            choice = r51CheckInput(2);
+            
+            if (choice == 1)
+            {
+                puts("\nYou decide to try your luck on the box. Who knows--maybe you'll get a super rare item!");
+                r51FillItemBox(player->items);
+                player->hasItems = true;
+                
+                puts("\nWith bated breath, you open the box.");
+                r51DisplayItems(player->items);
+                
+                puts("\n\nThere...sure are items in here. You don't know what any of them are if you're honest, but there is one item that looks shinier than the rest.");
+                puts("That's gotta mean something right?");
+            }
+            else
+            {
+                puts("\nSounds like a waste of money. You're not even sure what items could be considered valuable in this world.");
+            }
+        }
+        else
+        {
+            puts("\nYou don't have money.");
+        }
+    }
+    
+    puts("\nFinding nothing else interesting at the market, you decide to head somewhere else.");
+    
+    puts("\n1 - Go to the Inn");
+    puts("2 - Go to the Field");
+    choice = r51CheckInput(2);
+    
+    if (choice == 1)
+        r51GoToInn(player);
+    else
+        r51GoToField(player);
+    
+    return EXIT_SUCCESS;
+}
+
+int r51GoToInn(struct R51Player *player)
+{
+    int choice;
+    
+    puts("\nThe inn is busy, full of people milling about in the lounge as well as travelers heading to and from their rooms.");
+    
+    if (player->hasRoom)
+    {
+        puts("\nYou head to your room.");
+        
+        puts("\n1 - Sleep");
+        puts("2 - Go to the Marketplace");
+        puts("3 - Go to the Field");
+        choice = r51CheckInput(3);
+        
+        if (choice == 1)
+        {
+            puts("\nIt's been a long day. Maybe it's time for a rest. You lie down on your bed.");
+            puts("\nIn no time at all, you fall into a deep slumber...\n\n");
+        }
+        else if (choice == 2)
+        {
+            puts("\nYou decide to head to the marketplace.");
+            r51GoToMarket(player);
+        }
+        else
+        {
+            r51GoToField(player);
+        }
+    }
+    else
+    {
+        puts("\nYou approach the front desk.");
+        puts("\"Welcome! Are you looking to book a room? We've got a few open starting at 20 silver.\"");
+        
+        if (player->hasMoney)
+        {
+            puts("\n1 - Book a Room");
+            puts("2 - Leave");
+            choice = r51CheckInput(2);
+            
+            if (choice == 1)
+            {
+                puts("\nYou hand over the money.");
+                puts("\n\"Great! You're in room 11. Enjoy your stay!\"");
+                player->hasRoom = true;
+            }
+            else
+            {
+                puts("\nYou try to find somewhere else to stay.");
+            }
+        }
+        else
+        {
+            puts("\nYou don't have any money.");
+            
+            puts("\n1 - Lie for a Free Room (33\% success)");
+            puts("2 - Explain Your Situation");
+            puts("3 - Leave");
+            choice = r51CheckInput(3);
+            
+            if (choice == 1)
+            {
+                puts("\nYou tell a sob story in the hopes they'll pity you enough to give you a room.");
+                int randomNum = rand() % 3;
+                if (randomNum == 0)
+                {
+                    puts("\nThe innkeeper completely buys it. They are in tears by the end and tell you you're free to stay as long as you like.");
+                    player->hasRoom = true;
+                }
+                else
+                {
+                    puts("\nThe innkeeper calls you out on your bluff and kicks you out of the inn.");
+                }
+            }
+            else if (choice == 2)
+            {
+                puts("\nYou tell them the truth and explain your situation.");
+                puts("\nThe innkeeper is understanding and offers you one night free.");
+                player->hasRoom = true;
+            }
+            else
+            {
+                puts("\nYou decide to come back after finding money.");
+            }
+        }
+        puts("\n1 - Go to the Marketplace");
+        puts("2 - Go to the Field");
+        choice = r51CheckInput(2);
+        
+        if (choice == 1)
+        {
+            puts("\nYou decide to head to the marketplace.");
+            r51GoToMarket(player);
+        }
+        else
+        {
+            r51GoToField(player);
+        }
+    }
+}
+
+int r51GoToField(struct R51Player *player)
+{
+    puts("\nYou decide to leave town and head back to the field.");
+    r51EnterBattle(player);
+    if (player->isUnconscious)
+    {
+        return EXIT_SUCCESS;
+    }
+    else
+    {
+        puts("\nYou make it back to the field unscathed.");
+        r51ExploreField(player);
+    }
+    return EXIT_SUCCESS;
+}
+
+int r51FillItemBox(int items[])
+{
+    int i;
+    int randomNum;
+    bool gotRareItem = false;
+    for(i = 0; i < 10; i++)
+    {
+        randomNum = rand() % 100 + 1;
+        if (randomNum == 1)
+        {
+            items[i] = rand() % 11 + 90;
+            gotRareItem = true;
+        }
+        else if (randomNum <= 5)
+        {
+            items[i] = rand() % 36 + 65;
+            gotRareItem = true;
+        }
+        else
+            items[i] = rand() % 64 + 1;
+    }
+    if (!gotRareItem)
+    {
+        items[9] = rand() % 36 + 65;
+    }
+    
+    return EXIT_SUCCESS;
+}
+
+int r51DisplayItems(int items[])
+{
+    int i;
+    for(i = 0; i < 10; i++)
+    {
+        printf("\nitem %d value: %d", i + 1, items[i]);
+        if (items[i] >= 90)
+            printf(" - !!ULTRA RARE!! -");
+        else if (items[i] >= 65)
+            printf("  - !SUPER RARE! -");
+    }
+    
+    return EXIT_SUCCESS;
+}
+
+int r51CheckInput(int paths)
+{
+    int choice;
+    
+    printf("\nMake a choice: ");
+    
+    while (scanf("%d", &choice) != 1 || choice > paths || choice < 1)
+    {
+        printf("That's not an option. Try a number between 1 and %d.\n", paths);
+        printf("\nMake a choice: ");
+    }
+    r51PageBreak();
+    return choice;
+}
+
+int r51PageBreak(void)
+{
+    puts("\n----------");
+    return EXIT_SUCCESS;
 }
