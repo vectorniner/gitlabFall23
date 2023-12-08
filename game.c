@@ -11,7 +11,7 @@
 //Hrithik Dayal Singh room 47
 //Haylee Allen Room 4
 //Paolo Santos room 44
-
+//Muhammad Mustafa Imtiazuddin 16
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
@@ -102,6 +102,8 @@ void room44(void);//P Santos
 void separator(void);//P Santos
 
 void printMessage(int result); // Room 12
+
+void selection(char *teamOptions[], int option);
 
 
 int main(int argc, char *argv[])
@@ -629,6 +631,45 @@ int main(int argc, char *argv[])
 			case 16:
 			{
 				puts("room16");
+				
+				char name[15];
+                                char sport[15];
+                                int jersey;
+                                char *teamOptions[15] = {"lakers", "bulls", "heat"};
+                                int option;
+                                int age;
+
+                                printf("Welcome to room 16, you are given the role to create a new player for your favorite sport. First, please enter the name of your player: ");
+                                scanf("%s", name);
+                                printf("Enter the sport you want your player to be part of: ");
+                                scanf("%s", sport);
+
+                                printf("please enter your players age: ");
+                                scanf("%d", &age);
+
+                                printf("Between 1 and 50, enter a jersey number you would like to assign your player: ");
+                                scanf("%d", &jersey);
+                                        for(int i = 0; i < 1; i++)
+                                                jersey +=1;
+                                printf("That number is taken, you are assigned jersey number %d\n", jersey);
+
+                                printf("Now, select a team you want your player to play on:\n");
+                                printf("1 %s\n", teamOptions[0]);
+                                printf("2 %s\n", teamOptions[1]);
+                                printf("3 %s\n", teamOptions[2]);
+
+
+                                selection;
+
+				scanf("%d", &option);
+
+                                printf("Hello %s\n", name);
+                                printf("your favorite sport is %s\n", sport);
+                                printf("your players age is %d\n,", age);
+                                printf("your jersey number is %d\n", jersey);
+                                printf("you will play for %s\n", *teamOptions);
+
+				
 				break;
 			}
 			case 17:
