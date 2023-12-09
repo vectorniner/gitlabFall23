@@ -144,6 +144,7 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+				puts("hello wassup")
 				break;
 			}
 			case 2:
