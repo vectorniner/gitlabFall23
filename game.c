@@ -85,6 +85,11 @@ int attackRandomizer(int defenderHealth);
 int getBaseDamage();
 void changeWeapon();
 int checkBag();
+void room_menu();
+void puzzle_room();
+void dark_room();
+void treasure_room();
+void trap_room();
 int useItem(int index);
 void useHealthPotion();
 void useBandages();
@@ -898,6 +903,116 @@ int main(int argc, char *argv[])
 			case 21:
 			{
 				puts("room21");
+				
+int main() {
+    while (1) {
+        room_menu();
+    }
+
+    return 0;
+}
+
+// Function for displaying the room menu
+void room_menu() {
+    int choice;
+
+    printf("\nWelcome to the Escape the Room Game!\n");
+    printf("Choose a room to explore:\n");
+    printf("1. Puzzle Room\n");
+    printf("2. Dark Room\n");
+    printf("3. Treasure Room\n");
+    printf("4. Trap Room\n");
+    printf("5. Exit\n");
+
+    printf("Enter the room number (1-5): ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            puzzle_room();
+            break;
+        case 2:
+            dark_room();
+            break;
+        case 3:
+            treasure_room();
+            break;
+        case 4:
+            trap_room();
+            break;
+        case 5:
+            printf("Thanks for playing! Goodbye.\n");
+            exit(0);
+        default:
+            printf("Invalid choice. Please enter a number between 1 and 5.\n");
+    }
+}
+
+// Function for Puzzle Room
+void puzzle_room() {
+    printf("\nYou enter the Puzzle Room. Solve the puzzle to escape!\n");
+
+    // Sample puzzle
+    char correct_answer[] = "open sesame";
+    char user_guess[50];
+    int attempts = 3;
+
+    while (attempts > 0) {
+        printf("Enter your guess (%d attempts left): ", attempts);
+        scanf(" %[^\n]", user_guess);
+
+        if (strcasecmp(user_guess, correct_answer) == 0) {
+            printf("Congratulations! You solved the puzzle. Room cleared.\n");
+            break;
+        } else {
+            printf("Incorrect guess. Try again.\n");
+            attempts--;
+        }
+    }
+
+    if (attempts == 0) {
+        printf("Out of attempts. Game over!\n");
+    }
+}
+
+// Function for Dark Room
+void dark_room() {
+    printf("\nYou enter the Dark Room. Find the light switch to escape!\n");
+
+    // Simulate random chance of finding the light switch
+    int light_switch_found = rand() % 2;  // 0 or 1
+
+    if (light_switch_found) {
+        printf("You found the light switch! Room cleared.\n");
+    } else {
+        printf("You stumble in the dark. Game over!\n");
+    }
+}
+
+// Function for Treasure Room
+void treasure_room() {
+    printf("\nYou enter the Treasure Room. Collect as much treasure as you can!\n");
+
+    // Simulate random amount of treasure
+    int treasure_amount = rand() % 100 + 1;  // 1 to 100
+    printf("Congratulations! You found %d gold coins. Room cleared.\n", treasure_amount);
+}
+
+// Function for Trap Room
+void trap_room() {
+    printf("\nYou enter the Trap Room. Watch out for hidden traps!\n");
+
+    // Simulate random chance of encountering a trap
+    int trap_encountered = rand() % 2;  // 0 or 1
+
+    if (trap_encountered) {
+        printf("Oh no! You triggered a trap. Game over!\n");
+        exit(0);
+    } else {
+        printf("Phew! You safely navigated the Trap Room. Room cleared.\n");
+    }
+}
+
 				break;
 			}
 			case 22:
