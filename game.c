@@ -1,4 +1,5 @@
 //contributors
+//Sourabh Room43
 //Marcos Marquez Room#27
 //gpoppe room 55
 //ctalebi 46
@@ -30,6 +31,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+
+void room43(void);
 
 
 void handleRoom50(const char *name);
@@ -1336,6 +1339,7 @@ int main(int argc, char *argv[])
 			case 43:
 			{
 				puts("room43");
+				room43();
 				break;
 			}
 			case 44:
@@ -3459,4 +3463,231 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+
+void room43(void)
+{
+    char *room43Choices[] = {
+        "Board games night",
+        "Movie Marathon",
+        "Karaoke Party",
+        "Cooking or Baking Challenge",
+        "Try to escape from this room"
+    };
+
+    puts("Hey there! welcome to my room, The Room43.");
+    puts("Don't worry the door in this room is strong enough to hold the water, you not gonna drown.");
+    puts("So what do wanna do today?");
+    puts("You can choose any of these fun activities:");
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d. %s\n", i + 1, room43Choices[i]);
+    }
+
+    int myroom43Choice;
+
+    puts("Have you decided yet?");
+    printf("No worries! You can choose an option when you ready: ");
+    scanf("%d", &myroom43Choice);
+
+    if (myroom43Choice >= 1 && myroom43Choice <= 5)
+    {
+        printf("Oh nice! I like your choice: %s\n", room43Choices[myroom43Choice - 1]);
+
+
+        switch (myroom43Choice)
+        {
+        case 1:
+            {
+                char boardChoice[20];
+                puts("Good choice! So what do you wanna play tonight?");
+                puts("Monopoly");
+                puts("Scrabble");
+
+                printf("Enter your choice: ");
+                scanf("%s", boardChoice);
+
+                if (strcmp(boardChoice, "Monopoly") == 0)
+                {
+                    puts("Monopoly is a real estate trading and development game where the goal is to bankrupt opponents by owning and developing properties");
+                    puts("Rules:");
+                    puts("Players move around the board, buying and trading properties.");
+                    puts("Rent is collected when opponents land on owned properties.");
+                    puts("Properties can be developed with houses and hotels to increase rent.");
+                    puts("The game includes Chance and Community Chest cards that provide various opportunities or challenges.");
+                    puts("The goal is to bankrupt opponents by acquiring their properties and forcing them to pay high rents.");
+                }
+                else if (strcmp(boardChoice, "Scrabble") == 0)
+                {
+                    puts("Let me give you some information about Scrabble, in case you don't know ");
+                    puts("Rules:");
+                    puts("Players draw tiles from a bag to form their initial hand.");
+                    puts("On each turn, players use their tiles to create words on the board. Words must connect to existing words on the board.");
+                    puts("The points earned are based on the letters' values and any bonus squares on the board.");
+                    puts("After forming a word, players draw new tiles to replenish their racks.");
+                    puts("The game continues until all tiles are drawn, and one player uses their last tile, or no more legal moves are possible.");
+                }
+                else
+                {
+                    puts("You pushed a wrong botton!");
+                }
+            }
+            break;
+
+        case 2:
+            {
+                int movieChoice;
+                puts("So what do you wanna watch tonight?");
+                puts("1.The Lord of the Rings");
+                puts("2.The Dark Knight");
+
+                printf("Enter your choice: ");
+                scanf("%d", &movieChoice);
+
+                switch (movieChoice)
+                {
+                case 1:
+                    puts("Great choice!");
+                    puts("But do you know these facts?");
+                    puts("This epic fantasy adventure was directed by Peter Jackson");
+                    puts("Frodo Baggins and his companions as they journey through the enchanting and perilous world of Middle-earth to destroy the One Ring");
+                    break;
+                case 2:
+                    puts("Great choice!");
+                    puts("But do you know these facts?");
+                    puts("This epic fantasy adventure was directed by Christopher Nolan");
+                    puts("This trilogy offers a gritty and realistic take on the iconic superhero, Batman.");
+                    puts("Enjoy Christian Bale's portrayal of Bruce Wayne/Batman as he battles crime, corruption, and his own inner demons.");
+                    break;
+                default:
+                    puts("You pushed a wrong botton You're dead!");
+                }
+            }
+            break;
+
+        case 3:
+            {
+                char karaokeChoice[20];
+                puts("Oh nice! but before you start singing I'd like to share something.");
+                puts("Do you wanna know about its");
+                puts("Origin");
+                puts("Phenomenon");
+
+                printf("Enter your choice: ");
+                scanf("%s", karaokeChoice);
+
+                if (strcmp(karaokeChoice, "Origin") == 0)
+                {
+                    puts("The concept of karaoke originated in Japan.");
+                    puts("The term karaoke is a combination of two Japanese words:");
+                    puts("kara meaning empty and okesutora a transliteration of the English word orchestra");
+                    puts("The invention is credited to Daisuke Inoue, who created the first karaoke machine in 1971.");
+                    puts("Karaoke quickly gained popularity in Japan before spreading globally.");
+                }
+                else if (strcmp(karaokeChoice, "Phenomenon") == 0)
+                {
+                    puts("Karaoke is dedicated karaoke bars and venues found in many countries around the world. ");
+                    puts("Not only bars people to enjoy singing with friends and family in the comfort of their homes.");
+                    puts("Additionally, the popularity of karaoke has led to the creation of karaoke-themed events, competitions, and even television shows.");
+                }
+                else
+                {
+                    puts("You pushed a wrong botton!");
+                }
+            }
+            break;
+
+        case 4:
+            {
+                char cookingChoice[20];
+                puts("Great! we're gonna have some nice meal tonight.");
+                puts("Do you wanna cook or bake?");
+                puts("Cook");
+                puts("Bake");
+
+                printf("Choice is your's: ");
+                scanf("%s", cookingChoice);
+
+                if (strcmp(cookingChoice, "Cook") == 0)
+                {
+                    puts("Befor you start I'd like to say that:");
+                    puts("Cooking is the art and science of preparing food for consumption.");
+                    puts("It involves a wide range of techniques, ingredients, and methods to create diverse and delicious dishes.");
+                   
+                    puts("Cooking can be done through various methods such as boiling, frying, roasting, grilling, steaming, and more.");
+                }
+                else if (strcmp(cookingChoice, "Bake") == 0)
+                {
+                    puts("Do you know that. ");
+                    puts("Baking is a specific subset of cooking that focuses on using dry heat to transform raw ingredients into a wide array of baked goods.");
+                    puts("This includes bread, cakes, cookies, pastries, and more.");
+                    puts("Baking involves precise measurements, combining ingredients in specific orders, and paying attention to temperatures and baking times.");
+                }
+                else
+                {
+                    puts("You pushed a wrong botton!");
+                }
+            }
+            break;
+
+        case 5:
+            {
+                int secretDoorszs;
+                puts("If you wanna escape early from this room");
+                puts("Go to the left corner of the room");
+                puts("Try to find The secret golden key");
+                puts("Now you have two choices:");
+                puts("1. Press escape botton on the wall");
+                puts("2. Find the little hole on the right wall to put the key in");
+
+                printf("Pick your poison! ");
+                scanf("%d", &secretDoorszs);
+
+                switch (secretDoorszs)
+                {
+                case 1:
+                    puts("Oh no what have you done?");
+                    break;
+                case 2:
+                    puts("No you fell into a trap!");
+                    break;
+                default:
+                    puts("You pushed a wrong botton You're dead!");
+                }
+            }
+            break;
+
+        default:
+            puts("You pushed a wrong botton You're dead!");
+        }
+
+        int outcome = rand() % 3;
+
+        if (outcome == 0)
+        {
+            puts("Cracking noise!! Oh my god! the door is broken.");
+            puts("Get out!! or you gonna die!");
+            puts("The water label is too high, you're drowing!!");
+            puts("You are dead!");
+        }
+        else if (outcome == 1)
+        {
+            puts("Cracking noise!! Oh my god! the door is broken.");
+            puts("Get out!! or you gonna die!");
+            puts("The water label is too high, you're drowing!!");
+            puts("You are dead!");
+        }
+        else
+        {
+            puts("Cracking noise!! Oh my god! the door is broken.");
+            puts("Get out!! or you gonna die!");
+            puts("The water label is too high, you're drowing!!");
+            puts("You are dead!");
+        }
+    }
+    else
+    {
+        puts("You pushed a wrong botton You're dead!");
+    }
 }
