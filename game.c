@@ -86,6 +86,7 @@ int getBaseDamage();
 void changeWeapon();
 int checkBag();
 int useItem(int index);
+void exploreRoom();
 void useHealthPotion();
 void useBandages();
 void useRations();
@@ -154,6 +155,55 @@ int main(int argc, char *argv[])
 			case 3:
 			{
 				puts("room3");
+				char rooms[5][100] = {
+    "You are in devil house.",
+    "You will be with your wife in dreams.",
+    "You meet your favourite hero.",
+    "You fall in lake.",
+    "You saw your first crush"
+};
+
+void exploreRoom() {
+    int choice;
+
+    do {
+        printf("\nWelcome! Choose a room to explore:\n");
+        printf("1. Devil house\n2. Wife\n3. RamCharan\n4. Nice Lake\n5. Kajal\n");
+        printf("Enter your choice (1-5, or 0 to exit): ");
+        scanf("%d", &choice);
+
+        if (choice >= 1 && choice <= 5) {
+            printf("\n%s\n", rooms[choice - 1]);
+
+
+            int encounter = rand() % 3;
+            switch (encounter) {
+                case 0:
+                    printf("You found a mystery treasure\n");
+                    break;
+                case 1:
+                    printf("You see a mystery man.\n");
+                    break;
+                case 2:
+                    printf("A Mystery man attacks you\n");
+                    break;
+            }
+
+
+        } else if (choice != 0) {
+            printf("Wrong choice. Please enter a number between 1 and 5 or 0 to exit.\n");
+        }
+
+    } while (choice != 0);
+}
+
+int main() {
+    srand(time(NULL));
+
+    exploreRoom();
+
+    return 0;
+}
 				break;
 			}
 			case 4:
