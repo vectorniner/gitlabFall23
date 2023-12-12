@@ -21,7 +21,7 @@
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
-
+//SLESHA REDDY ANDE Room 5
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -31,7 +31,10 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-
+// Prototype for magic animal game
+void magicAnimalRescue();
+void displayHabitats();
+void provideClue(char* creature);
 void handleRoom50(const char *name);
 
 void myRoomThirtyOne(int num);
@@ -267,6 +270,7 @@ int main(int argc, char *argv[])
 			case 5:
 			{
 				puts("room5");
+				magicAnimalRescue();
 				break;
 			}
 			case 6:
@@ -3460,3 +3464,64 @@ void findingArtifact(void){
                 scanf("%d", &chosenSpot);
         }
 }
+
+// Magical creatures and their favorite habitats
+char* creatures[] = {"Unicorn", "Phoenix", "Dragon", "Fairy", "Griffin"};
+char* habitats[] = {"Whispering Trees", "Starlit Pond", "Crystal Cave", "Enchanted Garden", "Mystic Mountains"};
+
+// Magic Animal Rescue Game Function Definition
+void magicAnimalRescue() {
+    int creatureIndex, habitatChoice, attempts = 5;
+    char chosenHabitat[30];
+
+    srand(time(NULL));
+    creatureIndex = rand() % 5; // Randomly select a creature
+
+    printf("\nWelcome to the Magic Animal Rescue Game!\n");
+    printf("A %s is lost in the forest. Help find and rescue it!\n", creatures[creatureIndex]);
+
+    while (attempts > 0) {
+        displayHabitats();
+        printf("Choose a habitat to explore (1-5): ");
+        scanf("%d", &habitatChoice);
+
+        strcpy(chosenHabitat, habitats[habitatChoice - 1]);
+        printf("Exploring the %s...\n", chosenHabitat);
+
+        if (strcmp(chosenHabitat, habitats[creatureIndex]) == 0) {
+            printf("Congratulations! You found and rescued the %s!\n", creatures[creatureIndex]);
+            break;
+        } else {
+            printf("The %s is not here.\n", creatures[creatureIndex]);
+            provideClue(creatures[creatureIndex]);
+            attempts--;
+        }
+
+        if (attempts == 0) {
+            printf("You couldn't find the %s. It was in the %s.\n", creatures[creatureIndex], habitats[creatureIndex]);
+        }
+    }
+}
+
+void displayHabitats() {
+    printf("Habitats:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d. %s\n", i + 1, habitats[i]);
+    }
+}
+
+void provideClue(char* creature) {
+    // Provide a clue based on the creature
+    if (strcmp(creature, "Unicorn") == 0) {
+        printf("The Unicorn loves quiet places filled with trees.\n");
+    } else if (strcmp(creature, "Phoenix") == 0) {
+        printf("The Phoenix is drawn to areas with water.\n");
+    } else if (strcmp(creature, "Dragon") == 0) {
+        printf("The Dragon prefers high, rocky places.\n");
+    } else if (strcmp(creature, "Fairy") == 0) {
+        printf("The Fairy is often found in areas with many flowers.\n");
+    } else if (strcmp(creature, "Griffin") == 0) {
+        printf("The Griffin likes places that are both open and high.\n");
+    }
+}
+
