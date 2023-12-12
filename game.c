@@ -21,7 +21,7 @@
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
-
+//Sri Lakshmi Harshita Namuduri 35
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -58,7 +58,10 @@ void containmentSector25(void);
 bool guessGame25(void);
 void FinaleAstralPlane25(void);
 //end of Aether Door Series
-
+// Function Prototypes for Galactic Quest
+void galacticQuest();
+int presentRiddle(int planetIndex);
+void initializePlanets(char* planets[], int size);
 
 //declare prototype
 int car(int num);
@@ -1154,7 +1157,13 @@ int main(int argc, char *argv[])
 			}
 			case 34:
 			{
+				puts("room34");
+				break;
+			}
+			case 35:
+			{
 				puts("room35");
+				galacticQuest();
 				break;
 			}
 
@@ -3459,4 +3468,71 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+
+// Galactic Quest Game
+void galacticQuest() {
+    const int NUM_PLANETS = 5;
+    char* planets[] = {"Mercury", "Venus", "Mars", "Jupiter", "Saturn"};
+    int artifactPlanet, planetChoice, energyPoints = 20, gainedPoints;
+
+    srand(time(NULL));
+    artifactPlanet = rand() % NUM_PLANETS; // Randomly select the planet with the artifact
+
+    printf("\nWelcome to Galactic Quest!\n");
+    printf("Find the cosmic artifact hidden on one of the planets.\n");
+
+    while (energyPoints > 0) {
+        initializePlanets(planets, NUM_PLANETS);
+        printf("Choose a planet to explore (1-5): ");
+        scanf("%d", &planetChoice);
+
+        printf("Exploring %s...\n", planets[planetChoice - 1]);
+
+        if (planetChoice - 1 == artifactPlanet) {
+            printf("Congratulations! You found the cosmic artifact on %s!\n", planets[artifactPlanet]);
+            break;
+        } else {
+            gainedPoints = presentRiddle(planetChoice - 1);
+            energyPoints += gainedPoints;
+            printf("Energy points: %d\n", energyPoints);
+        }
+
+        if (energyPoints <= 0) {
+            printf("You've run out of energy. Game over! The artifact was on %s.\n", planets[artifactPlanet]);
+            break;
+        }
+    }
+}
+
+void initializePlanets(char* planets[], int size) {
+    printf("Planets:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d. %s\n", i + 1, planets[i]);
+    }
+}
+
+int presentRiddle(int planetIndex) {
+    char* riddles[] = {
+            "I am the closest planet to the Sun.",
+            "I am known as Earth's twin.",
+            "I am the red planet.",
+            "I am the largest planet in the solar system.",
+            "I am famous for my beautiful rings."
+    };
+    char answer[30];
+    int riddleIndex = rand() % 5; // Random riddle index
+
+    printf("Riddle: %s\n", riddles[riddleIndex]);
+    printf("Your answer: ");
+    scanf("%s", answer);
+
+    // Check if the answer matches the riddle
+    if (riddleIndex == planetIndex && strcmp(answer, "Yes") == 0) {
+        printf("Correct! You gain 5 energy points.\n");
+        return 5;
+    } else {
+        printf("Incorrect. You lose 5 energy points.\n");
+        return -5;
+    }
 }
