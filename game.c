@@ -35,6 +35,53 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+
+
+// Function to simulate a simple RPG battle
+void playRPG() {
+    int playerHealth = 100;
+    int enemyHealth = 50;
+
+    srand(time(NULL)); // Seed for random number generation
+
+    printf("Welcome to the RPG Battle!\n");
+
+    while (playerHealth > 0 && enemyHealth > 0) {
+        // Player's turn
+        int playerAttack = rand() % 20 + 1; // Random damage between 1 and 20
+        printf("You attack the enemy and deal %d damage!\n", playerAttack);
+        enemyHealth -= playerAttack;
+
+        // Check if the enemy is defeated
+        if (enemyHealth <= 0) {
+            printf("Congratulations! You defeated the enemy!\n");
+            break;
+        }
+
+        // Enemy's turn
+        int enemyAttack = rand() % 10 + 1; // Random damage between 1 and 10
+        printf("The enemy attacks you and deals %d damage!\n", enemyAttack);
+        playerHealth -= enemyAttack;
+
+        // Check if the player is defeated
+        if (playerHealth <= 0) {
+            printf("Game over! You were defeated by the enemy.\n");
+            break;
+        }
+
+        // Display current health
+        printf("Your health: %d  Enemy health: %d\n", playerHealth, enemyHealth);
+    }
+}
+
+int main() {
+    playRPG(); // Call the RPG function
+
+    return 0;
+}
+
+
+
 				break;
 			}
 			case 2:
