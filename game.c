@@ -21,7 +21,7 @@
 //Priscilla Vera room 50
 
 // Christian A. Contreras Room 12
-
+// Omar Mosqueda 32
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -118,11 +118,15 @@ void findingArtifact();
 
 void selection(char *teamOptions[], int option);
 
+void bullets(int arr[]); //ROOM 32 OMAR MOSQUEDA
+void banditCrew(void);
 
 int main(int argc, char *argv[])
 {
 	int choice = 0;
 	char name[30] = "bob";
+	
+	int arr[6];
 
 	srand(time(NULL));
 	
@@ -1142,10 +1146,44 @@ int main(int argc, char *argv[])
 				break;
 			}
 			case 32:
-			{
-				puts("room32");
-				break;
-			}
+							while(choice != 99)
+												{
+																	char gun; 
+
+																					printf("'Welcome to room 32 %s' a mysterious voice says.\n",name);
+																									puts("Shivers run down your spine you look to your left, nothing there.");
+																													puts("You look to your right, again nothing there.");
+																																	puts("Something taps your back and you turn around");
+																																					puts("Its a zombie ready to munch on some of your delicious brains.");
+																																									puts("You say to yourself 'Now is time to use my super quick reactions'.");
+																																													puts("There is a box to your left and inside there is a gun to kill the zombie.");
+																																																	printf("What do you do grab the gun with 'g' or run with 'r'\n");
+																																																					
+																																																					scanf("%c",&gun);
+
+																																																																																					     if(gun == 'g')
+																																																																																						     			{																													     	printf("\n. \n. \n.\nNice choice you shot and killed the zombie, *phew* that was close\n\n");
+																																																																																													   printf("\n\n\n'Nice shot someone says', you look and you find a girl sitting with her 48 revolver around her waist chewing on a piece of wheat, wait where did she get the wheat nevermind that, she says\n");
+																																																																																													   		      	   printf("'Well well well if it isnt the all talked about %s you're quite famous around these parts'\n",name);
+																																																																																																   			   puts("You look at her with a blank stare");
+																																																																																																			   			   puts("She says 'well haven't you ever seen a pretty lady before you look so confused'");
+																																																																																																						   			   puts("You stutter your words 'w w w well you sure are pretty but have we met before?'");
+																																																																																																									   			   printf("'Sure we have' she says my name is Alicia\n");
+																																																																																																												   			   printf("You let her know that you noticed the gun around her waist.\n");
+																																																																																																															   			   puts("She shows you her gun and her ammo and this doesn't look like regular ammo, its silver and they're numbered");
+																																																																																																																		   			   puts("You ask her why they are numbered and she says that each bullet she carries are specific to a certain monster she kills today she is set to carry and kill numbers");
+																																																																																																																					   			   
+																																																																																																																					   			   bullets(arr);
+																																																																																																																								   																																	printf("\n\n\n");
+																																																																																																																																																											   	   puts("You continue to walk and talk with Alicia and she decides to ask you if you want to join her bandit monster killing crew.");
+																																																																																																																																																												   		   
+																																																																																																																																																												   		   	   banditCrew();
+																																																																																																																																																															   			break;																													     }
+																																																																																					     		     																														    	 else if(gun == 'r')
+																																																																																																																							 				{
+																																																																																																																																	puts("\n. \n. \n. \nYou chose to run so you turn and start running full speed away from the zombie but you trip on your shoelace and the zombie gets to you and eats your brains! GG!");						break;		
+																																																																																																																																					}
+																																																																																																																						 			}
 
 			case 33:
 			{
@@ -3460,3 +3498,48 @@ void findingArtifact(void){
                 scanf("%d", &chosenSpot);
         }
 }
+
+void bullets(int arr[])
+{
+
+		int i;
+			for(i=0; i<6; i++)
+					{
+								arr[i] = rand () % 100+1;
+
+									
+									}
+				for(i=0; i<6; i++)
+						{
+									printf("%d \n", arr[i]);
+										
+										}
+
+
+
+}
+
+void banditCrew(void)
+{
+		int join;
+			puts("Type '1' to join or '2' to not join");
+				scanf("%d", &join);
+
+
+					switch(join)
+							{
+										case 1:
+														puts("\n\nWelcome to the crew cowboy!");
+																	puts("....Too be continued");
+																				break;
+
+																						case 2:
+																							puts("\n\n Farewell then loser!");
+																										break;
+																												default:
+																													puts("YOU DID NOT MAKE A CORRECT CHOICE THE ZOMBIE BLODD GOT TO YOUR HEAD NOW YOU ARE DEAD!");	
+																														
+																														
+																														}
+}
+
