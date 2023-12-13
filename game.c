@@ -15,6 +15,11 @@
 //Muhammad Mustafa Imtiazuddin 16
 
 //Jonathan Carpena room9
+
+
+// Abdul Akinbile room 2
+=======
+  
 //Fernando Jimenez room 18
 
 
@@ -119,6 +124,10 @@ void findingArtifact();
 void selection(char *teamOptions[], int option);
 
 
+int obtainGoldReward(); //room 2 
+
+
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -142,13 +151,13 @@ int main(int argc, char *argv[])
 		switch(choice)
 		{
 			case 1:
-			{
-				puts("room1");
 				break;
 			}
 			case 2:
 			{
+			
 				puts("room2");
+    				room2();
 				break;
 			}
 			case 3:
@@ -3426,6 +3435,99 @@ void searchForTheOnePiece(void)
 			printf("After taking Knock-Up Stream, you brace for impact and find nothing but clouds.\n");
 		}
 }
+
+
+// Room 2 
+// Function prototype declaration
+int obtainDoubloons();
+
+void room2() {
+    printf("Welcome to the Dreamdale\n");
+    printf("Your quest is to find the legendary Fountain of Youth to cure your ailing village.\n");
+    printf("Your health bar shows you have 100 HP.\n\n");
+
+    int health = 100;
+    char choice[20];
+
+
+    while (health > 0) {
+        printf("You come across a road with two paths. Do you go left or right?\n");
+        scanf("%s", choice);
+
+        if (strcmp(choice, "left") == 0) {
+            printf("You encounter a friendly wizard who grants you healing powers. You gain 30 health!\n");
+            health += 30;
+        } else if (strcmp(choice, "right") == 0) {
+            printf("A bat flys down from the sky and attacks you. You lose 20 health!\n");
+            health -= 20;
+        }
+
+        printf("You continue on your journey and suddenly see a hairy elf. Approach or retreat?\n");
+        scanf("%s", choice);
+
+        if (strcmp(choice, "approach") == 0) {
+            printf("The elf tests your wit with riddles. You succeed and gain an enchanted map!\n");
+        } else if (strcmp(choice, "retreat") == 0) {
+            printf("You retreat and find a hidden treasure chest. You gain valuable items!\n");
+        }
+
+        printf("As you travel further, you encounter a friendly unicorn that heals your wounds. You gain 25 health!\n");
+        health += 25;
+
+        printf("You enter a mystical forest and hear the trees trying to speak to you. Listen to their wisdom (listen) or continue on (continue) ?\n");
+        scanf("%s", choice);
+
+        if (strcmp(choice, "listen") == 0) {
+            printf("You gain valuable knowledge, strengthening your resolve!\n");
+        } else if (strcmp(choice, "continue") == 0) {
+            printf("You decide to continue your journey without stopping.\n");
+        }
+
+        printf("You approach a strange blue door. Use a magical key (key) or seek another way(seek) ?\n");
+        scanf("%s", choice);
+
+        if (strcmp(choice, "key") == 0) {
+            printf("The gate opens, revealing a hidden path!\n");
+        } else if (strcmp(choice, "seek") == 0) {
+            printf("You search and discover a hidden tunnel leading around the gate!\n");
+        }
+
+        printf("You face your final challenge - a maze guarded by the Enderdragon. Solve the puzzle (solve) or turn back (turn) ?\n");
+        scanf("%s", choice);
+
+        if (strcmp(choice, "solve") == 0) {
+            printf("Congratulations! You solve the puzzle and discover the Fountain of Youth!\n");
+            printf("You heal your village and become a hero!\n");
+
+            int goldReward = obtainDoubloons();
+            printf("As a reward, you receive %d gold doubloons!\n", goldReward);
+            break;
+        } else if (strcmp(choice, "turn") == 0) {
+            printf("You decide to turn back and continue your journey another day.\n");
+            break;
+        }
+
+        if (health <= 0) {
+            printf("You have run out of health and cannot continue. Game Over!\n");
+            break;
+        }
+    }
+
+    printf("Your adventure in Dreamdale comes to an end. You will return home.\n");
+    return EXIT_SUCCESS ;
+}
+
+// Function definition for obtainGoldReward
+int obtainDoubloons() {
+    int goldReward = rand() % 100 + 1;
+    return goldReward;
+}
+
+
+//contributors
+//Marcos Marquez Room#27
+//gpoppe room 55
+=======
 void monkeyChoice(void){
         int answer;
         printf("Will you let the monkey accompany you? 1 for Yes, 0 for No\n");
@@ -3460,3 +3562,4 @@ void findingArtifact(void){
                 scanf("%d", &chosenSpot);
         }
 }
+
