@@ -118,6 +118,93 @@ void findingArtifact();
 
 void selection(char *teamOptions[], int option);
 
+// Prototypes For Treasure Hunt game
+void treasureHunt();
+bool contains(int array[], int size, int value);
+void initializeChests(int treasures[], int traps[], int size);
+void giveHint(int guess, int treasures[], int traps[], int size);
+
+// Definition of the Treasure Hunt game
+void treasureHunt() {
+    const int NUM_CHESTS = 10;
+    int treasures[3], traps[2];
+    int guess, score = 0, lives = 3;
+    bool treasureFound = false, trapTriggered = false;
+
+    initializeChests(treasures, traps, NUM_CHESTS);
+
+    printf("\nWelcome to the Treasure Hunt Room!\n");
+    printf("There are 10 chests, 3 have treasures, and 2 have traps.\n");
+
+    for (int attempts = 0; attempts < 5 && lives > 0; attempts++) {
+        printf("Choose a chest to open (1-10): ");
+        scanf("%d", &guess);
+
+        if (contains(treasures, 3, guess)) {
+            printf("You found a treasure! +10 points.\n");
+            score += 10;
+            treasureFound = true;
+        } else if (contains(traps, 2, guess)) {
+            printf("Oh no! It's a trap! -1 life.\n");
+            lives--;
+            trapTriggered = true;
+        } else {
+            printf("This chest is empty.\n");
+        }
+
+        giveHint(guess, treasures, traps, NUM_CHESTS);
+
+        if (lives <= 0) {
+            printf("You've lost all your lives. Game over!\n");
+            break;
+        }
+
+        if (treasureFound || trapTriggered) {
+            printf("Current score: %d, Lives left: %d\n", score, lives);
+        }
+    }
+
+    if (lives > 0) {
+        printf("Game over! Your final score: %d\n", score);
+    }
+}
+
+bool contains(int array[], int size, int value) {
+    for (int i = 0; i < size; i++) {
+        if (array[i] == value) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void initializeChests(int treasures[], int traps[], int size) {
+    srand(time(NULL));
+    // Randomly assign treasures and traps
+    for (int i = 0; i < 3; i++) {
+        treasures[i] = rand() % size + 1;
+    }
+    for (int i = 0; i < 2; i++) {
+        traps[i] = rand() % size + 1;
+    }
+}
+
+void giveHint(int guess, int treasures[], int traps[], int size) {
+    // Provide hints based on proximity to treasure or trap
+    for (int i = 0; i < 3; i++) {
+        if (abs(guess - treasures[i]) == 1) {
+            printf("You feel a faint aura nearby. A treasure might be close!\n");
+            break;
+        }
+    }
+    for (int i = 0; i < 2; i++) {
+        if (abs(guess - traps[i]) == 1) {
+            printf("You sense danger nearby. Be cautious!\n");
+            break;
+        }
+    }
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -903,6 +990,7 @@ int main(int argc, char *argv[])
 			case 22:
 			{
 				puts("room22");
+				treasureHunt();
 				break;
 			}
 			case 23:
