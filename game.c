@@ -111,7 +111,8 @@ void room44(void);//P Santos
 void separator(void);//P Santos
 
 void printMessage(int result); // Room 12
-
+void treasureHuntGame();
+int generateRandomTreasure(int max);
 
 void monkeyChoice();
 void findingArtifact();
@@ -1386,6 +1387,7 @@ int main(int argc, char *argv[])
 			case 48:
 			{
 				puts("room48");
+				treasureHuntGame();
 				break;
 			}
 			case 49:
@@ -3459,4 +3461,40 @@ void findingArtifact(void){
                 printf("Input a correct option or 99 to exit.");
                 scanf("%d", &chosenSpot);
         }
+}
+void treasureHuntGame() {
+    const int TREASURE_LOCATIONS = 5;
+    char *locations[] = {"Cave", "Forest", "Beach", "Mountain", "River"};
+
+    int userChoice;
+    int treasureLocation = generateRandomTreasure(TREASURE_LOCATIONS);
+
+    printf("Welcome to the Treasure Hunt Game!\n");
+    printf("Choose where to search for the treasure:\n");
+    
+    for (int i = 0; i < TREASURE_LOCATIONS; i++) {
+        printf("%d. Search the %s\n", i + 1, locations[i]);
+    }
+
+    do {
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &userChoice);
+        
+        if (userChoice < 1 || userChoice > TREASURE_LOCATIONS) {
+            printf("Invalid choice. Please choose between 1 and 5.\n");
+        } else if (userChoice - 1 == treasureLocation) {
+            printf("Congratulations! You found the treasure in the %s!\n", locations[treasureLocation]);
+            break;
+        } else {
+            printf("No treasure here. Keep searching!\n");
+        }
+
+    } while (userChoice != treasureLocation + 1);
+
+    printf("Returning to main menu...\n");
+}
+
+int generateRandomTreasure(int max) {
+    srand(time(NULL));
+    return rand() % max;
 }
